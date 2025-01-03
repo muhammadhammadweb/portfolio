@@ -730,7 +730,7 @@ main {
 
 .clients-list {
   display: flex;
-  align-items: center;
+  align-items: center !important;
   gap: 15px;
   margin: 0 -15px;
   padding: 25px;
