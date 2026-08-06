@@ -604,3 +604,313 @@ article.active { display: block; animation: fadeIn 0.5s ease backwards; }
 
   .project-list { grid-template-columns: repeat(3, 1fr); }
 }
+
+
+
+
+
+
+
+
+/* ===================================
+   WHAT I'M DOING - GRID CONFIG
+=================================== */
+.service-list {
+  display: grid;
+  grid-template-columns: 1fr; /* Mobile: 1 column */
+  gap: 20px;
+}
+
+/* Tablet (2 Columns) */
+@media (min-width: 580px) {
+  .service-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop (3 Columns) */
+@media (min-width: 1024px) {
+  .service-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.service-item {
+  position: relative;
+  background: var(--border-gradient-onyx, linear-gradient(to bottom right, hsl(0, 0%, 25%) 0%, hsla(0, 0%, 25%, 0) 50%));
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: var(--shadow-2);
+  z-index: 1;
+  height: 100%;
+}
+
+.service-item::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  background: var(--bg-gradient-jet, linear-gradient(to bottom right, hsla(240, 1%, 18%, 251) 0%, hsla(240, 2%, 11%, 0) 100%));
+  border-radius: inherit;
+  z-index: -1;
+}
+
+/* ===================================
+   SWIPER SLIDERS (TESTIMONIALS & CLIENTS)
+=================================== */
+.swiper {
+  width: 100%;
+  padding-bottom: 40px !important;
+}
+
+.testimonials-slider .swiper-slide {
+  height: auto;
+}
+
+.testimonials-slider .content-card {
+  height: 100%;
+  background: var(--eerie-black-2, #1e1e1f);
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid #383838;
+}
+
+.clients-slider .clients-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background: var(--eerie-black-2, #1e1e1f);
+  border-radius: 12px;
+}
+
+.clients-slider img {
+  max-width: 120px;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: 0.3s ease;
+}
+
+.clients-slider img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* Swiper Pagination Style */
+.swiper-pagination-bullet {
+  background: #ffdb70 !important;
+  opacity: 0.4;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  width: 20px !important;
+  border-radius: 10px !important;
+}
+
+
+
+
+
+
+/* ===================================
+   RESPONSIVE MAP CONTAINER
+=================================== */
+.mapbox {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.map-container {
+  position: relative;
+  width: 100%;
+  /* Modern CSS aspect-ratio for automatic responsive height */
+  aspect-ratio: 16 / 9;
+  min-height: 250px;
+  max-height: 400px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--jet, #383838);
+  box-shadow: var(--shadow-2);
+}
+
+/* Fallback for older browsers & iframe styling */
+.map-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  filter: grayscale(20%) invert(90%) contrast(90%); /* Optional Dark Mode effect */
+  transition: filter 0.3s ease;
+}
+
+.map-container iframe:hover {
+  filter: grayscale(0%) invert(0%) contrast(100%);
+}
+
+/* Mobile fine-tuning */
+@media (max-width: 580px) {
+  .map-container {
+    aspect-ratio: 4 / 3;
+    min-height: 220px;
+  }
+}
+
+.contact-form {
+    padding-top: 20px;
+}
+
+
+
+
+
+
+
+/* ===================================
+   RESUME TIMELINE & SPACING FIXES
+=================================== */
+
+.timeline-section {
+  margin-bottom: 35px;
+  margin-top: 20px;
+}
+
+.timeline-section .title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.timeline-list {
+  position: relative;
+  margin-left: 15px;
+  border-left: 1px solid var(--jet, #383838);
+  padding-left: 25px;
+  list-style: none;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Timeline Left Node Bullet */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: -31px;
+  width: 11px;
+  height: 11px;
+  background: var(--text-gradient-yellow, #ffdb70);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px var(--eerie-black-1, #1e1e1f);
+}
+
+.timeline-item-title {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--white-2, #fafafa);
+}
+
+.timeline-item-title span {
+  font-weight: 400;
+  color: var(--vegas-gold, #ffdb70);
+}
+
+.timeline-item span {
+  display: inline-block;
+  color: var(--vegas-gold, #ffdb70);
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 4px;
+  margin-bottom: 10px;
+}
+
+.timeline-text {
+  color: var(--light-gray, #d6d6d6);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.timeline-text-list {
+  padding-left: 18px;
+  margin-top: 8px;
+}
+
+.timeline-text-list li {
+  color: var(--light-gray-70, #d6d6d6b3);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 6px;
+  list-style-type: disc;
+}
+
+/* ===================================
+   SKILLS PROGRESS BARS
+=================================== */
+
+.skills-title {
+  margin-bottom: 20px;
+}
+
+.skills-list {
+  padding: 25px;
+  border-radius: 14px;
+  background: var(--eerie-black-2, #1e1e1f);
+  border: 1px solid var(--jet, #383838);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.skills-item .title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.skills-item h5 {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--white-2, #fafafa);
+}
+
+.skills-item data {
+  color: var(--light-gray, #d6d6d6);
+  font-size: 14px;
+}
+
+.skill-progress-bg {
+  background: var(--jet, #383838);
+  width: 100%;
+  height: 8px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.skill-progress-fill {
+  background: var(--text-gradient-yellow, linear-gradient(to right, #ffdb70, #ffbb50));
+  height: 100%;
+  border-radius: 10px;
+}
+
+
+
+
+
+.projects {
+    margin-top: 20px;
+}
+
+.mapbox {
+    margin-top: 20px;
+}
