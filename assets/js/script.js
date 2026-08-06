@@ -1,159 +1,175 @@
 'use strict';
 
+// Element toggle function helper
+const elementToggleFunc = function (elem) {
+  elem.classList.toggle("active");
+};
 
-
-// element toggle function
-const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
-
-
-
-// sidebar variables
+// Sidebar variables & toggle for mobile
 const sidebar = document.querySelector("[data-sidebar]");
 const sidebarBtn = document.querySelector("[data-sidebar-btn]");
 
-// sidebar toggle functionality for mobile
-sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); });
-
-
-
-// testimonials variables
-const testimonialsItem = document.querySelectorAll("[data-testimonials-item]");
-const modalContainer = document.querySelector("[data-modal-container]");
-const modalCloseBtn = document.querySelector("[data-modal-close-btn]");
-const overlay = document.querySelector("[data-overlay]");
-
-// modal variable
-const modalImg = document.querySelector("[data-modal-img]");
-const modalTitle = document.querySelector("[data-modal-title]");
-const modalText = document.querySelector("[data-modal-text]");
-
-// modal toggle function
-const testimonialsModalFunc = function () {
-  modalContainer.classList.toggle("active");
-  overlay.classList.toggle("active");
-}
-
-// add click event to all modal items
-for (let i = 0; i < testimonialsItem.length; i++) {
-
-  testimonialsItem[i].addEventListener("click", function () {
-
-    modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
-    modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
-    modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
-    modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
-
-    testimonialsModalFunc();
-
+if (sidebarBtn) {
+  sidebarBtn.addEventListener("click", function () {
+    elementToggleFunc(sidebar);
   });
-
 }
 
-// add click event to modal close button
-modalCloseBtn.addEventListener("click", testimonialsModalFunc);
-overlay.addEventListener("click", testimonialsModalFunc);
-
-
-
-// custom select variables
+// Portfolio Custom Select & Filtering Logic
 const select = document.querySelector("[data-select]");
 const selectItems = document.querySelectorAll("[data-select-item]");
 const selectValue = document.querySelector("[data-selecct-value]");
 const filterBtn = document.querySelectorAll("[data-filter-btn]");
-
-select.addEventListener("click", function () { elementToggleFunc(this); });
-
-// add event in all select items
-for (let i = 0; i < selectItems.length; i++) {
-  selectItems[i].addEventListener("click", function () {
-
-    let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
-    elementToggleFunc(select);
-    filterFunc(selectedValue);
-
-  });
-}
-
-// filter variables
 const filterItems = document.querySelectorAll("[data-filter-item]");
 
-const filterFunc = function (selectedValue) {
-
-  for (let i = 0; i < filterItems.length; i++) {
-
-    if (selectedValue === "all") {
-      filterItems[i].classList.add("active");
-    } else if (selectedValue === filterItems[i].dataset.category) {
-      filterItems[i].classList.add("active");
-    } else {
-      filterItems[i].classList.remove("active");
-    }
-
-  }
-
+if (select) {
+  select.addEventListener("click", function () {
+    elementToggleFunc(this.parentElement);
+  });
 }
 
-// add event in all filter button items for large screen
+// Filter Function
+const filterFunc = function (selectedValue) {
+  const normVal = selectedValue.toLowerCase().trim();
+
+  filterItems.forEach((item) => {
+    const itemCategory = item.dataset.category ? item.dataset.category.toLowerCase().trim() : "";
+    
+    if (normVal === "all" || normVal === itemCategory) {
+      item.classList.add("active");
+    } else {
+      item.classList.remove("active");
+    }
+  });
+};
+
+// Select item click (Mobile Dropdown)
+selectItems.forEach((item) => {
+  item.addEventListener("click", function () {
+    let selectedValue = this.innerText;
+    if (selectValue) selectValue.innerText = selectedValue;
+    if (select) elementToggleFunc(select.parentElement);
+    filterFunc(selectedValue);
+  });
+});
+
+// Filter button click (Desktop / Larger screens)
 let lastClickedBtn = filterBtn[0];
 
-for (let i = 0; i < filterBtn.length; i++) {
-
-  filterBtn[i].addEventListener("click", function () {
-
-    let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
+filterBtn.forEach((btn) => {
+  btn.addEventListener("click", function () {
+    let selectedValue = this.innerText;
+    if (selectValue) selectValue.innerText = selectedValue;
     filterFunc(selectedValue);
 
-    lastClickedBtn.classList.remove("active");
+    if (lastClickedBtn) lastClickedBtn.classList.remove("active");
     this.classList.add("active");
     lastClickedBtn = this;
-
   });
+});
 
-}
-
-
-
-// contact form variables
-const form = document.querySelector("[data-form]");
-const formInputs = document.querySelectorAll("[data-form-input]");
-const formBtn = document.querySelector("[data-form-btn]");
-
-// add event to all form input field
-for (let i = 0; i < formInputs.length; i++) {
-  formInputs[i].addEventListener("input", function () {
-
-    // check form validation
-    if (form.checkValidity()) {
-      formBtn.removeAttribute("disabled");
-    } else {
-      formBtn.setAttribute("disabled", "");
-    }
-
-  });
-}
-
-
-
-// page navigation variables
+// Page Navigation Logic (About, Resume, Portfolio, Contact)
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
-// add event to all nav link
-for (let i = 0; i < navigationLinks.length; i++) {
-  navigationLinks[i].addEventListener("click", function () {
+navigationLinks.forEach((navLink) => {
+  navLink.addEventListener("click", function () {
+    const targetPage = this.dataset.target
+      ? this.dataset.target.toLowerCase().trim()
+      : this.innerText.toLowerCase().trim();
 
-    for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-        pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
+    pages.forEach((page) => {
+      if (targetPage === page.dataset.page) {
+        page.classList.add("active");
         window.scrollTo(0, 0);
       } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
+        page.classList.remove("active");
       }
-    }
+    });
 
+    // Every page has its own copy of the navbar, so sync the active
+    // state across all of them by matching data-target, not just the
+    // exact button that was clicked.
+    navigationLinks.forEach((link) => {
+      link.classList.toggle("active", link.dataset.target === targetPage);
+    });
   });
-}
+});
+
+
+
+
+
+
+
+
+// Append this to assets/js/script.js if image screenshots are missing
+document.querySelectorAll('.project-img img').forEach((img) => {
+  img.onerror = function () {
+    const title = this.alt || 'Project Preview';
+    this.src = `https://via.placeholder.com/600x400/1e1e1e/ffdb70?text=${encodeURIComponent(title)}`;
+  };
+});
+
+
+
+
+
+
+
+// Testimonials Slider Setup
+const testimonialsSwiper = new Swiper('.testimonials-slider', {
+  slidesPerView: 1,
+  spaceBetween: 20,
+  loop: true,
+  autoplay: {
+    delay: 3500,
+    disableOnInteraction: false,
+  },
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+  breakpoints: {
+    // Mobile: 1
+    0: {
+      slidesPerView: 1,
+      spaceBetween: 15
+    },
+    // Tablet: 2
+    640: {
+      slidesPerView: 2,
+      spaceBetween: 20
+    },
+    // Desktop: 3
+    1024: {
+      slidesPerView: 3,
+      spaceBetween: 25
+    }
+  }
+});
+
+// Clients Logo Slider Setup
+const clientsSwiper = new Swiper('.clients-slider', {
+  slidesPerView: 1,
+  spaceBetween: 20,
+  loop: true,
+  autoplay: {
+    delay: 2500,
+    disableOnInteraction: false,
+  },
+  breakpoints: {
+    0: {
+      slidesPerView: 2,
+      spaceBetween: 15
+    },
+    640: {
+      slidesPerView: 3,
+      spaceBetween: 20
+    },
+    1024: {
+      slidesPerView: 4,
+      spaceBetween: 25
+    }
+  }
+});
