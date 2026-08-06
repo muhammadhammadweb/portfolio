@@ -22,6 +22,8 @@
   -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
 </head>
 
@@ -123,7 +125,7 @@
           </li>
 
           <li class="social-item">
-            <a href="https://www.instagram.com/hammad_yaceen/profilecard/?igsh=NHV4cWNyMzJ6cWk1" class="social-link">
+            <a href="https://www.instagram.com/hammad_yaceen" class="social-link">
               <ion-icon name="logo-instagram"></ion-icon>
             </a>
           </li>
@@ -142,41 +144,41 @@
       -->
 
       <article class="about active" data-page="about">
-      <nav class="navbar">
-        <ul class="navbar-list">
-          <li class="navbar-item">
-            <button class="navbar-link active" data-nav-link data-target="about">
-              <ion-icon name="person-outline"></ion-icon>
-              <span>About</span>
-            </button>
-          </li>
+        <nav class="navbar">
+          <ul class="navbar-list">
+            <li class="navbar-item">
+              <button class="navbar-link active" data-nav-link data-target="about">
+                <ion-icon name="person-outline"></ion-icon>
+                <span>About</span>
+              </button>
+            </li>
 
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link data-target="resume">
-              <ion-icon name="document-text-outline"></ion-icon>
-              <span>Resume</span>
-            </button>
-          </li>
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link data-target="resume">
+                <ion-icon name="document-text-outline"></ion-icon>
+                <span>Resume</span>
+              </button>
+            </li>
 
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link data-target="portfolio">
-              <ion-icon name="grid-outline"></ion-icon>
-              <span>Portfolio</span>
-            </button>
-          </li>
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link data-target="portfolio">
+                <ion-icon name="grid-outline"></ion-icon>
+                <span>Portfolio</span>
+              </button>
+            </li>
 
-          <!-- <li class="navbar-item">
+            <!-- <li class="navbar-item">
             <button class="navbar-link" data-nav-link>Blog</button>
           </li> -->
 
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link data-target="contact">
-              <ion-icon name="mail-outline"></ion-icon>
-              <span>Contact</span>
-            </button>
-          </li>
-        </ul>
-      </nav>
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link data-target="contact">
+                <ion-icon name="mail-outline"></ion-icon>
+                <span>Contact</span>
+              </button>
+            </li>
+          </ul>
+        </nav>
 
         <header>
           <h2 class="h2 article-title">About me</h2>
@@ -217,16 +219,12 @@
           <ul class="service-list">
             <li class="service-item">
               <div class="service-icon-box">
-                <img src="./assets/images/icon-design.svg
-                " alt="design icon" width="40" />
+                <img src="./assets/images/icon-design.svg" alt="design icon" width="40" />
               </div>
-
               <div class="service-content-box">
                 <h4 class="h4 service-item-title">Website Development</h4>
-
                 <p class="service-item-text">
-                  Developing responsive websites by transforming PSD, XD, or Figma designs into functional pages,
-                  extracting content, images, and SVG files to build a seamless website.
+                  Developing responsive websites by transforming PSD, XD, or Figma designs into functional pages.
                 </p>
               </div>
             </li>
@@ -235,13 +233,10 @@
               <div class="service-icon-box">
                 <img src="./assets/images/icon-dev.svg" alt="Web development icon" width="40" />
               </div>
-
               <div class="service-content-box">
                 <h4 class="h4 service-item-title">Web Server & Optimization</h4>
-
                 <p class="service-item-text">
-                  Managing domains, hosting, and servers across various platforms, ensuring proper domain parking,
-                  hosting setup, database management, and website deployment.
+                  Managing domains, hosting, and servers across platforms ensuring proper setup and deployment.
                 </p>
               </div>
             </li>
@@ -250,13 +245,10 @@
               <div class="service-icon-box">
                 <img src="./assets/images/icon-app.svg" alt="mobile app icon" width="40" />
               </div>
-
               <div class="service-content-box">
-                <h4 class="h4 service-item-title">CMS Development & Integration</h4>
-
+                <h4 class="h4 service-item-title">CMS Development</h4>
                 <p class="service-item-text">
-                  Enhancing CMS platforms with external code using JavaScript, jQuery, and PHP to implement custom
-                  functionality and conditional logic as needed.
+                  Enhancing CMS platforms using JavaScript, jQuery, and PHP for custom logic and features.
                 </p>
               </div>
             </li>
@@ -265,49 +257,37 @@
               <div class="service-icon-box">
                 <img src="./assets/images/icon-photo.svg" alt="camera icon" width="40" />
               </div>
-
               <div class="service-content-box">
-                <h4 class="h4 service-item-title">E-Commerce & POS Solutions</h4>
-
+                <h4 class="h4 service-item-title">E-Commerce & POS</h4>
                 <p class="service-item-text">
-                  Creating and optimizing online stores with WooCommerce, Shopify, and Square, including integrating POS
-                  systems for efficient inventory and sales management.
+                  Creating and optimizing online stores with WooCommerce, Shopify, and Square.
                 </p>
               </div>
             </li>
 
             <li class="service-item">
               <div class="service-icon-box">
-                <img src="./assets/images/icon-design.svg
-                " alt="design icon" width="40" />
+                <img src="./assets/images/icon-design.svg" alt="design icon" width="40" />
               </div>
-
               <div class="service-content-box">
-                <h4 class="h4 service-item-title">On-Page SEO & Graphics Design</h4>
-
+                <h4 class="h4 service-item-title">On-Page SEO & Graphics</h4>
                 <p class="service-item-text">
-                  Improving website rankings through content optimization, metadata, and high-quality visuals like
-                  icons, banners, and CTAs for a polished look.
+                  Improving website rankings through content optimization and modern visuals.
                 </p>
               </div>
             </li>
 
             <li class="service-item">
               <div class="service-icon-box">
-                <img src="./assets/images/icon-app.svg
-                " alt="design icon" width="40" />
+                <img src="./assets/images/icon-app.svg" alt="design icon" width="40" />
               </div>
-
               <div class="service-content-box">
-                <h4 class="h4 service-item-title">Communication & Collaboration</h4>
-
+                <h4 class="h4 service-item-title">Collaboration</h4>
                 <p class="service-item-text">
-                  Utilizing tools like MS Teams, Slack, Trello, and Asana to streamline remote or in-house collaboration
-                  and ensure effective project management.
+                  Utilizing tools like MS Teams, Slack, Trello, and Asana to streamline workflow.
                 </p>
               </div>
             </li>
-
           </ul>
         </section>
 
@@ -318,105 +298,67 @@
         <section class="testimonials">
           <h3 class="h3 testimonials-title">Testimonials</h3>
 
-          <ul class="testimonials-list has-scrollbar">
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-1.png" alt="Naveed Zafar" width="60" data-testimonials-avatar />
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>
-                  Naveed Zafar
-                </h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    I've worked closely with Muhammad Hammad on CMS
-                    development projects and highly recommend them. Their
-                    proficiency in CMS platforms is commendable, bringing both
-                    technical expertise and a keen eye for detail to every
-                    project.
-                  </p>
+          <div class="swiper testimonials-slider">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="content-card">
+                  <figure class="testimonials-avatar-box">
+                    <img src="./assets/images/avatar-1.png" alt="Naveed Zafar" width="60" />
+                  </figure>
+                  <h4 class="h4 testimonials-item-title">Naveed Zafar</h4>
+                  <div class="testimonials-text">
+                    <p>I've worked closely with Muhammad Hammad on CMS development projects. Highly recommended!</p>
+                  </div>
                 </div>
               </div>
-            </li>
 
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-2.png" alt="Marina" width="60" data-testimonials-avatar />
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>
-                  Marina
-                </h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Now, Recently I have worked on a WordPress project with
-                    Muhammad Hammad. He is a senior Developer and I highly
-                    recommend for your CMS based project.
-                  </p>
+              <div class="swiper-slide">
+                <div class="content-card">
+                  <figure class="testimonials-avatar-box">
+                    <img src="./assets/images/avatar-2.png" alt="Marina" width="60" />
+                  </figure>
+                  <h4 class="h4 testimonials-item-title">Marina</h4>
+                  <div class="testimonials-text">
+                    <p>Recently worked on a WordPress project. He is a senior developer and highly recommended.</p>
+                  </div>
                 </div>
               </div>
-            </li>
 
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-3.png" alt="Amna Tariq" width="60" data-testimonials-avatar />
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>
-                  Amna Tariq
-                </h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    I had the pleasure of collaborating with Muhammad Hammad
-                    on several web development projects. His deep knowledge of
-                    CMS platforms, particularly WordPress, combined with his
-                    excellent problem-solving skills, makes him a standout
-                    developer. His attention to detail and dedication to
-                    delivering high-quality work are truly commendable. I
-                    highly recommend him for any CMS-based project.
-                  </p>
+              <div class="swiper-slide">
+                <div class="content-card">
+                  <figure class="testimonials-avatar-box">
+                    <img src="./assets/images/avatar-3.png" alt="Amna Tariq" width="60" />
+                  </figure>
+                  <h4 class="h4 testimonials-item-title">Amna Tariq</h4>
+                  <div class="testimonials-text">
+                    <p>Deep knowledge of CMS platforms, particularly WordPress, combined with excellent problem-solving.
+                    </p>
+                  </div>
                 </div>
               </div>
-            </li>
 
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-4.png" alt="Wajid Ali" width="60" data-testimonials-avatar />
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>
-                  Wajid Ali
-                </h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    I highly recommend my dedicated and hardworking friend who
-                    excelled as my junior at university. He pursued Computer
-                    Science, showcasing remarkable intelligence,
-                    problem-solving prowess, and innovative thinking. His
-                    skill set spans Group Work, Written Communication, UX/UI
-                    Design, Technical Support, WooCommerce, WordPress
-                    Development, HTML5, and Web Development. A passionate and
-                    self-motivated individual, he's an asset to any team.
-                  </p>
+              <div class="swiper-slide">
+                <div class="content-card">
+                  <figure class="testimonials-avatar-box">
+                    <img src="./assets/images/avatar-4.png" alt="Wajid Ali" width="60" />
+                  </figure>
+                  <h4 class="h4 testimonials-item-title">Wajid Ali</h4>
+                  <div class="testimonials-text">
+                    <p>Dedicated and hardworking developer. Problem-solving prowess and innovative thinking.</p>
+                  </div>
                 </div>
               </div>
-            </li>
-          </ul>
+            </div>
+            <!-- Pagination dots -->
+            <div class="swiper-pagination"></div>
+          </div>
         </section>
 
         <!--
           - testimonials modal
         -->
 
-        <div class="modal-container" data-modal-container>
+        <!-- <div class="modal-container" data-modal-container>
           <div class="overlay" data-overlay></div>
 
           <section class="testimonials-modal">
@@ -449,7 +391,7 @@
               </div>
             </div>
           </section>
-        </div>
+        </div> -->
 
         <!--
           - clients
@@ -458,68 +400,45 @@
         <section class="clients">
           <h3 class="h3 clients-title">Clients</h3>
 
-          <ul class="clients-list has-scrollbar">
-            <li class="clients-item">
-              <a href="https://thepointkitchen.ie/" target="_blank">
-                <img src="./assets/images/Clients-logo/tpk.png" alt="client logo" />
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="https://auadviser.com/" target="_blank">
-                <img src="./assets/images/Clients-logo/auadviser.png" alt="client logo" />
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="https://solarcraft.ie/" target="_blank">
-                <img src="./assets/images/Clients-logo/solar-craft.png" alt="client logo" />
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="https://sohogrill.pk/" target="_blank">
-                <img src="./assets/images/Clients-logo/soho-brand.png" alt="client logo" />
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="https://nexomos.com/" target="_blank">
-                <img src="./assets/images/Clients-logo/nexomos-logo1.png" alt="client logo" />
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="https://juicetogo.ca/" target="_blank">
-                <img src="./assets/images/Clients-logo/juice-footer.png" alt="client logo" />
-              </a>
-            </li>
-            <li class="clients-item">
-              <a href="http://synko.tech/" target="_blank">
-                <img src="./assets/images/Clients-logo/Logo-Synko.png" alt="client logo" />
-              </a>
-            </li>
-            <li class="clients-item">
-              <a href="https://inkwellbookwriting.com/" target="_blank">
-                <img src="./assets/images/Clients-logo/inkwell-logo.png" alt="client logo" />
-              </a>
-            </li>
-            <li class="clients-item">
-              <a href="https://cloud9shishalounge.com/" target="_blank">
-                <img src="./assets/images/Clients-logo/cloudshisha.png" alt="client logo" />
-              </a>
-            </li>
-            <li class="clients-item">
-              <a href="https://thriversity.ie/" target="_blank">
-                <img src="./assets/images/Clients-logo/ThriversityLogo.png" alt="client logo" />
-              </a>
-            </li>
-            <li class="clients-item">
-              <a href="https://absoltech.com/" target="_blank">
-                <img src="./assets/images/Clients-logo/absol-tech.png" alt="client logo" />
-              </a>
-            </li>
-          </ul>
+          <div class="swiper clients-slider">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide clients-item">
+                <a href="https://thepointkitchen.ie/" target="_blank">
+                  <img src="./assets/images/Clients-logo/tpk.png" alt="client logo" />
+                </a>
+              </div>
+              <div class="swiper-slide clients-item">
+                <a href="https://auadviser.com/" target="_blank">
+                  <img src="./assets/images/Clients-logo/auadviser.png" alt="client logo" />
+                </a>
+              </div>
+              <div class="swiper-slide clients-item">
+                <a href="https://solarcraft.ie/" target="_blank">
+                  <img src="./assets/images/Clients-logo/solar-craft.png" alt="client logo" />
+                </a>
+              </div>
+              <div class="swiper-slide clients-item">
+                <a href="https://sohogrill.pk/" target="_blank">
+                  <img src="./assets/images/Clients-logo/soho-brand.png" alt="client logo" />
+                </a>
+              </div>
+              <div class="swiper-slide clients-item">
+                <a href="https://nexomos.com/" target="_blank">
+                  <img src="./assets/images/Clients-logo/nexomos-logo1.png" alt="client logo" />
+                </a>
+              </div>
+              <div class="swiper-slide clients-item">
+                <a href="https://juicetogo.ca/" target="_blank">
+                  <img src="./assets/images/Clients-logo/juice-footer.png" alt="client logo" />
+                </a>
+              </div>
+              <div class="swiper-slide clients-item">
+                <a href="http://synko.tech/" target="_blank">
+                  <img src="./assets/images/Clients-logo/Logo-Synko.png" alt="client logo" />
+                </a>
+              </div>
+            </div>
+          </div>
         </section>
       </article>
 
@@ -528,156 +447,128 @@
       -->
 
       <article class="resume" data-page="resume">
-      <nav class="navbar">
-        <ul class="navbar-list">
-          <li class="navbar-item">
-            <button class="navbar-link active" data-nav-link data-target="about">
-              <ion-icon name="person-outline"></ion-icon>
-              <span>About</span>
-            </button>
-          </li>
+        <nav class="navbar">
+          <ul class="navbar-list">
+            <li class="navbar-item">
+              <button class="navbar-link active" data-nav-link data-target="about">
+                <ion-icon name="person-outline"></ion-icon>
+                <span>About</span>
+              </button>
+            </li>
 
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link data-target="resume">
-              <ion-icon name="document-text-outline"></ion-icon>
-              <span>Resume</span>
-            </button>
-          </li>
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link data-target="resume">
+                <ion-icon name="document-text-outline"></ion-icon>
+                <span>Resume</span>
+              </button>
+            </li>
 
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link data-target="portfolio">
-              <ion-icon name="grid-outline"></ion-icon>
-              <span>Portfolio</span>
-            </button>
-          </li>
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link data-target="portfolio">
+                <ion-icon name="grid-outline"></ion-icon>
+                <span>Portfolio</span>
+              </button>
+            </li>
 
-          <!-- <li class="navbar-item">
+            <!-- <li class="navbar-item">
             <button class="navbar-link" data-nav-link>Blog</button>
           </li> -->
 
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link data-target="contact">
-              <ion-icon name="mail-outline"></ion-icon>
-              <span>Contact</span>
-            </button>
-          </li>
-        </ul>
-      </nav>
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link data-target="contact">
+                <ion-icon name="mail-outline"></ion-icon>
+                <span>Contact</span>
+              </button>
+            </li>
+          </ul>
+        </nav>
 
         <header>
           <h2 class="h2 article-title">Resume</h2>
         </header>
 
-        <section class="timeline">
+        <!-- EDUCATION SECTION -->
+        <section class="timeline-section">
           <div class="title-wrapper">
             <div class="icon-box">
               <ion-icon name="book-outline"></ion-icon>
             </div>
-
             <h3 class="h3">Education</h3>
           </div>
 
           <ol class="timeline-list">
             <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">
-                Benazir Bhutto Shaheed University Lyari Karachi
-              </h4>
-
-              <span>2019-2022</span>
-
+              <h4 class="h4 timeline-item-title">Benazir Bhutto Shaheed University Lyari, Karachi</h4>
+              <span>2019 — 2022</span>
               <p class="timeline-text">BS Computer Science</p>
             </li>
 
             <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">
-                Aisha Bawany Govt. College (Morning)
-              </h4>
-
+              <h4 class="h4 timeline-item-title">Aisha Bawany Govt. College (Morning)</h4>
               <span>2018</span>
-
               <p class="timeline-text">Intermediate (Computer Science)</p>
             </li>
 
             <li class="timeline-item">
               <h4 class="h4 timeline-item-title">Faliq ul Isbah Academy</h4>
-
               <span>2016</span>
-
               <p class="timeline-text">Matriculation (Science)</p>
             </li>
           </ol>
         </section>
 
-        <section class="timeline">
+        <!-- EXPERIENCE SECTION -->
+        <section class="timeline-section">
           <div class="title-wrapper">
             <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
+              <ion-icon name="briefcase-outline"></ion-icon>
             </div>
-
             <h3 class="h3">Experience</h3>
           </div>
 
           <ol class="timeline-list">
             <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">CMS Developer | Nexomos</h4>
-
-              <span>August 2023 – Present</span>
-
-              <p class="timeline-text">
-                Spearheaded development of various website types using LMS,
-                WooCommerce, and membership systems. Types. Designed and
-                optimized websites for performance, focusing on speed,
-                responsiveness, and SEO best practices. Implemented email
-                integrations using tools like Fluent Forms, creating
-                multi-step forms and dashboards for seamless user management.
-                Managed LMS platforms, creating and organizing courses,
-                memberships, and dashboards for efficient admin control.
-                Customized WooCommerce stores, including: Configuring product
-                variations (sizes, colors, categories). Setting up dual
-                product options to sell or rent items simultaneously. Built
-                and automated workflows for dynamic and user-friendly
-                e-commerce solutions.
-              </p>
+              <h4 class="h4 timeline-item-title">CMS Developer <span>| Nexomos</span></h4>
+              <span>August 2023 — Present</span>
+              <ul class="timeline-text-list">
+                <li>Spearheaded development of diverse website architectures integrating LMS, WooCommerce, and
+                  membership engines.</li>
+                <li>Optimized site performance focusing on speed score, mobile responsiveness, and on-page SEO best
+                  practices.</li>
+                <li>Implemented complex email integrations via Fluent Forms with multi-step logic and dynamic user
+                  dashboards.</li>
+                <li>Configured WooCommerce for complex logic including custom variations and dual purchase/rental
+                  offerings.</li>
+              </ul>
             </li>
 
             <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">
-                Website Developer | Tafsol Technologies
-              </h4>
-
-              <span>September 2021 – November 2021</span>
-
-              <p class="timeline-text">
-                Built websites for clients using WordPress and Bootstrap,
-                converting designs from PSD/XD/Figma to responsive websites.
-                Customized themes to meet client requirements, wrote clean
-                code using HTML, CSS, and ensured cross-browser compatibility.
-              </p>
+              <h4 class="h4 timeline-item-title">Website Developer <span>| Tafsol Technologies</span></h4>
+              <span>September 2021 — November 2021</span>
+              <ul class="timeline-text-list">
+                <li>Converted PSD, XD, and Figma designs into pixel-perfect responsive web templates using HTML, CSS,
+                  and Bootstrap.</li>
+                <li>Engineered cross-browser compatible custom themes tuned to specific client requirements.</li>
+              </ul>
             </li>
 
             <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">
-                Freelance Roles at Teckflux & The Web Gateway
-              </h4>
-
-              <span>May 2022 – April 2022 (Teckflux)</span>
-              <span>November 2021 – April 2022 (The Web Gateway)</span>
-
-              <p class="timeline-text">
-                Developed dynamic websites with WordPress and Bootstrap,
-                ensuring design-to-development consistency. Customized
-                websites with WP Bakery, Elementor, and diverse themes like
-                Astra, BeTheme, and plugins such as Gravity Forms, LearnPress.
-                Expanded skills in Webflow CMS, creating custom listing types
-                and layouts. Broadened expertise by working on CMS platforms
-                like WIX, Squarespace, and Craft.
-              </p>
+              <h4 class="h4 timeline-item-title">Freelance Web Specialist <span>| Teckflux & The Web Gateway</span></h4>
+              <span>November 2021 — May 2022</span>
+              <ul class="timeline-text-list">
+                <li>Built dynamic CMS applications using WPBakery, Elementor, Astra, BeTheme, and custom form engines
+                  (Gravity Forms).</li>
+                <li>Architected Webflow CMS custom listing types, dynamic collections, and specialized grid layouts.
+                </li>
+                <li>Delivered customized client web projects across WIX, Squarespace, and Craft CMS ecosystems.</li>
+              </ul>
             </li>
           </ol>
         </section>
 
+        <!-- SKILLS SECTION -->
         <section class="skill">
-          <h3 class="h3 skills-title">My skills</h3>
+          <h3 class="h3 skills-title">My Skills</h3>
 
           <ul class="skills-list content-card">
             <li class="skills-item">
@@ -685,20 +576,18 @@
                 <h5 class="h5">Front-End CMS Development</h5>
                 <data value="90">90%</data>
               </div>
-
               <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 90%"></div>
+                <div class="skill-progress-fill" style="width: 90%;"></div>
               </div>
             </li>
 
             <li class="skills-item">
               <div class="title-wrapper">
-                <h5 class="h5">SaaS/CMS Tools Integration</h5>
+                <h5 class="h5">SaaS / CMS Tools Integration</h5>
                 <data value="80">80%</data>
               </div>
-
               <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 80%"></div>
+                <div class="skill-progress-fill" style="width: 80%;"></div>
               </div>
             </li>
 
@@ -707,20 +596,18 @@
                 <h5 class="h5">Website Optimization & On-Page SEO</h5>
                 <data value="90">90%</data>
               </div>
-
               <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 90%"></div>
+                <div class="skill-progress-fill" style="width: 90%;"></div>
               </div>
             </li>
 
             <li class="skills-item">
               <div class="title-wrapper">
-                <h5 class="h5">CMS Customization (JavaScript/PHP)</h5>
-                <data value="80">70%</data>
+                <h5 class="h5">CMS Customization (JavaScript / PHP)</h5>
+                <data value="70">70%</data>
               </div>
-
               <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 80%"></div>
+                <div class="skill-progress-fill" style="width: 70%;"></div>
               </div>
             </li>
           </ul>
@@ -732,41 +619,41 @@
       -->
 
       <article class="portfolio" data-page="portfolio">
-      <nav class="navbar">
-        <ul class="navbar-list">
-          <li class="navbar-item">
-            <button class="navbar-link active" data-nav-link data-target="about">
-              <ion-icon name="person-outline"></ion-icon>
-              <span>About</span>
-            </button>
-          </li>
+        <nav class="navbar">
+          <ul class="navbar-list">
+            <li class="navbar-item">
+              <button class="navbar-link active" data-nav-link data-target="about">
+                <ion-icon name="person-outline"></ion-icon>
+                <span>About</span>
+              </button>
+            </li>
 
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link data-target="resume">
-              <ion-icon name="document-text-outline"></ion-icon>
-              <span>Resume</span>
-            </button>
-          </li>
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link data-target="resume">
+                <ion-icon name="document-text-outline"></ion-icon>
+                <span>Resume</span>
+              </button>
+            </li>
 
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link data-target="portfolio">
-              <ion-icon name="grid-outline"></ion-icon>
-              <span>Portfolio</span>
-            </button>
-          </li>
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link data-target="portfolio">
+                <ion-icon name="grid-outline"></ion-icon>
+                <span>Portfolio</span>
+              </button>
+            </li>
 
-          <!-- <li class="navbar-item">
+            <!-- <li class="navbar-item">
             <button class="navbar-link" data-nav-link>Blog</button>
           </li> -->
 
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link data-target="contact">
-              <ion-icon name="mail-outline"></ion-icon>
-              <span>Contact</span>
-            </button>
-          </li>
-        </ul>
-      </nav>
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link data-target="contact">
+                <ion-icon name="mail-outline"></ion-icon>
+                <span>Contact</span>
+              </button>
+            </li>
+          </ul>
+        </nav>
 
         <header>
           <h2 class="h2 article-title">Portfolio</h2>
@@ -1491,8 +1378,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/playuss.png" alt="PlayUs"
-                    loading="lazy" />
+                  <img src="./assets/images/projects/playuss.png" alt="PlayUs" loading="lazy" />
                 </figure>
 
                 <h3 class="project-title">PlayUs</h3>
@@ -1508,8 +1394,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/martinez.png" alt="Martinez Legal"
-                    loading="lazy" />
+                  <img src="./assets/images/projects/martinez.png" alt="Martinez Legal" loading="lazy" />
                 </figure>
 
                 <h3 class="project-title">Martinez Legal</h3>
@@ -1525,8 +1410,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <div class="platform-badge custom">Custom HTML/PHP</div>
-                  <img src="./assets/images/projects/souzet.png" alt="Souzet"
-                    loading="lazy" />
+                  <img src="./assets/images/projects/souzet.png" alt="Souzet" loading="lazy" />
                 </figure>
 
                 <h3 class="project-title">Souzet</h3>
@@ -1542,8 +1426,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/britain-acad.png"
-                    alt="Britain Academics" loading="lazy" />
+                  <img src="./assets/images/projects/britain-acad.png" alt="Britain Academics" loading="lazy" />
                 </figure>
 
                 <h3 class="project-title">Britain Academics</h3>
@@ -1559,8 +1442,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/taxi.png"
-                    alt="Kirkcaldy Taxis" loading="lazy" />
+                  <img src="./assets/images/projects/taxi.png" alt="Kirkcaldy Taxis" loading="lazy" />
                 </figure>
 
                 <h3 class="project-title">Kirkcaldy Taxis</h3>
@@ -1576,8 +1458,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/flyntravel.png" alt="FlightsnTravel"
-                    loading="lazy" />
+                  <img src="./assets/images/projects/flyntravel.png" alt="FlightsnTravel" loading="lazy" />
                 </figure>
 
                 <h3 class="project-title">FlightsnTravel</h3>
@@ -1593,8 +1474,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/ahlesa.png" alt="Ahlesa"
-                    loading="lazy" />
+                  <img src="./assets/images/projects/ahlesa.png" alt="Ahlesa" loading="lazy" />
                 </figure>
 
                 <h3 class="project-title">Ahlesa</h3>
@@ -1610,8 +1490,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/theclasstaker.png"
-                    alt="The Class Taker" loading="lazy" />
+                  <img src="./assets/images/projects/theclasstaker.png" alt="The Class Taker" loading="lazy" />
                 </figure>
 
                 <h3 class="project-title">The Class Taker</h3>
@@ -1627,8 +1506,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/academic-wisdom.png"
-                    alt="Academic Wisdom" loading="lazy" />
+                  <img src="./assets/images/projects/academic-wisdom.png" alt="Academic Wisdom" loading="lazy" />
                 </figure>
 
                 <h3 class="project-title">Academic Wisdom</h3>
@@ -1644,8 +1522,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/mecdemag.png" alt="MEC Demag"
-                    loading="lazy" />
+                  <img src="./assets/images/projects/mecdemag.png" alt="MEC Demag" loading="lazy" />
                 </figure>
 
                 <h3 class="project-title">MEC Demag</h3>
@@ -1661,8 +1538,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/thespecter.png" alt="The Specterink"
-                    loading="lazy" />
+                  <img src="./assets/images/projects/thespecter.png" alt="The Specterink" loading="lazy" />
                 </figure>
 
                 <h3 class="project-title">The Specterink</h3>
@@ -1678,8 +1554,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/thegraphics.png"
-                    alt="The Graphic Concept" loading="lazy" />
+                  <img src="./assets/images/projects/thegraphics.png" alt="The Graphic Concept" loading="lazy" />
                 </figure>
 
                 <h3 class="project-title">The Graphic Concept</h3>
@@ -1695,8 +1570,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <div class="platform-badge custom">Custom HTML/PHP</div>
-                  <img src="./assets/images/projects/acadmics.png"
-                    alt="The Academic Assistance" loading="lazy" />
+                  <img src="./assets/images/projects/acadmics.png" alt="The Academic Assistance" loading="lazy" />
                 </figure>
 
                 <h3 class="project-title">The Academic Assistance</h3>
@@ -1712,9 +1586,8 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <div class="platform-badge wordpress">WordPress</div>
-                  <img
-                    src="./assets/images/projects/savechild.png"
-                    alt="Save Our Children Education Sierra Leone" loading="lazy" />
+                  <img src="./assets/images/projects/savechild.png" alt="Save Our Children Education Sierra Leone"
+                    loading="lazy" />
                 </figure>
 
                 <h3 class="project-title">Save Our Children Education Sierra Leone</h3>
@@ -1730,8 +1603,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/solar-craft.png" alt="Solar Craft"
-                    loading="lazy" />
+                  <img src="./assets/images/projects/solar-craft.png" alt="Solar Craft" loading="lazy" />
                 </figure>
 
                 <h3 class="project-title">Solar Craft</h3>
@@ -1747,8 +1619,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/absoltech.png" alt="Absol Tech"
-                    loading="lazy" />
+                  <img src="./assets/images/projects/absoltech.png" alt="Absol Tech" loading="lazy" />
                 </figure>
 
                 <h3 class="project-title">Absol Tech</h3>
@@ -1764,8 +1635,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/badegg.png" alt="Bad Egg"
-                    loading="lazy" />
+                  <img src="./assets/images/projects/badegg.png" alt="Bad Egg" loading="lazy" />
                 </figure>
 
                 <h3 class="project-title">Bad Egg</h3>
@@ -1781,8 +1651,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/cloud9shisha.png"
-                    alt="Cloud 9 Shisha Lounge" loading="lazy" />
+                  <img src="./assets/images/projects/cloud9shisha.png" alt="Cloud 9 Shisha Lounge" loading="lazy" />
                 </figure>
 
                 <h3 class="project-title">Cloud 9 Shisha Lounge</h3>
@@ -1798,8 +1667,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/juicetogo.png" alt="Juice To Go"
-                    loading="lazy" />
+                  <img src="./assets/images/projects/juicetogo.png" alt="Juice To Go" loading="lazy" />
                 </figure>
 
                 <h3 class="project-title">Juice To Go</h3>
@@ -1815,8 +1683,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <div class="platform-badge custom">Custom HTML/PHP</div>
-                  <img src="./assets/images/projects/nexodesign.png" alt="Nexo Design"
-                    loading="lazy" />
+                  <img src="./assets/images/projects/nexodesign.png" alt="Nexo Design" loading="lazy" />
                 </figure>
 
                 <h3 class="project-title">Nexo Design</h3>
@@ -1832,8 +1699,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/nexomos.png" alt="Nexomos"
-                    loading="lazy" />
+                  <img src="./assets/images/projects/nexomos.png" alt="Nexomos" loading="lazy" />
                 </figure>
 
                 <h3 class="project-title">Nexomos</h3>
@@ -1865,8 +1731,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/theriversity.png" alt="Thriversity"
-                    loading="lazy" />
+                  <img src="./assets/images/projects/theriversity.png" alt="Thriversity" loading="lazy" />
                 </figure>
 
                 <h3 class="project-title">Thriversity</h3>
@@ -1882,8 +1747,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <div class="platform-badge webflow">Webflow</div>
-                  <img src="./assets/images/projects/xomalabs.png" alt="Xoma Labs"
-                    loading="lazy" />
+                  <img src="./assets/images/projects/xomalabs.png" alt="Xoma Labs" loading="lazy" />
                 </figure>
 
                 <h3 class="project-title">Xoma Labs</h3>
@@ -1899,8 +1763,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <div class="platform-badge shopify">Shopify</div>
-                  <img src="./assets/images/loveself.png" alt="LoveSelf"
-                    loading="lazy" />
+                  <img src="./assets/images/loveself.png" alt="LoveSelf" loading="lazy" />
                 </figure>
 
                 <h3 class="project-title">LoveSelf</h3>
@@ -1916,8 +1779,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/career.png" alt="Careers Safari"
-                    loading="lazy" />
+                  <img src="./assets/images/projects/career.png" alt="Careers Safari" loading="lazy" />
                 </figure>
 
                 <h3 class="project-title">Careers Safari</h3>
@@ -1933,8 +1795,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/techlearner.png"
-                    alt="Teach Learn Research" loading="lazy" />
+                  <img src="./assets/images/projects/techlearner.png" alt="Teach Learn Research" loading="lazy" />
                 </figure>
 
                 <h3 class="project-title">Teach Learn Research</h3>
@@ -2148,54 +2009,59 @@
       -->
 
       <article class="contact" data-page="contact">
-      <nav class="navbar">
-        <ul class="navbar-list">
-          <li class="navbar-item">
-            <button class="navbar-link active" data-nav-link data-target="about">
-              <ion-icon name="person-outline"></ion-icon>
-              <span>About</span>
-            </button>
-          </li>
+        <nav class="navbar">
+          <ul class="navbar-list">
+            <li class="navbar-item">
+              <button class="navbar-link active" data-nav-link data-target="about">
+                <ion-icon name="person-outline"></ion-icon>
+                <span>About</span>
+              </button>
+            </li>
 
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link data-target="resume">
-              <ion-icon name="document-text-outline"></ion-icon>
-              <span>Resume</span>
-            </button>
-          </li>
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link data-target="resume">
+                <ion-icon name="document-text-outline"></ion-icon>
+                <span>Resume</span>
+              </button>
+            </li>
 
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link data-target="portfolio">
-              <ion-icon name="grid-outline"></ion-icon>
-              <span>Portfolio</span>
-            </button>
-          </li>
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link data-target="portfolio">
+                <ion-icon name="grid-outline"></ion-icon>
+                <span>Portfolio</span>
+              </button>
+            </li>
 
-          <!-- <li class="navbar-item">
+            <!-- <li class="navbar-item">
             <button class="navbar-link" data-nav-link>Blog</button>
           </li> -->
 
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link data-target="contact">
-              <ion-icon name="mail-outline"></ion-icon>
-              <span>Contact</span>
-            </button>
-          </li>
-        </ul>
-      </nav>
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link data-target="contact">
+                <ion-icon name="mail-outline"></ion-icon>
+                <span>Contact</span>
+              </button>
+            </li>
+          </ul>
+        </nav>
 
         <header>
           <h2 class="h2 article-title">Contact</h2>
         </header>
 
         <section class="mapbox" data-mapbox>
-          <figure>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d226.1983573379167!2d67.19116396015463!3d24.892055444624837!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1735837010111!5m2!1sen!2s"
-              width="600" height="450" style="border: 0" allowfullscreen="" loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <figure class="map-container">
+            <iframe src="https://maps.google.com/maps?q=24.892231,67.191295&hl=en&z=16&output=embed" width="100%"
+              height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="C Area Malir Colony, Saudabad Kala Board, Karachi"></iframe>
           </figure>
         </section>
+
+        <a href="https://maps.app.goo.gl/y7rFeb9n2WWL8G3n6" target="_blank" rel="noopener noreferrer"
+          class="map-link-btn">
+          Open in Google Maps
+        </a>
 
         <section class="contact-form">
           <ul class="contacts-list">
@@ -2299,6 +2165,7 @@
   -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 </body>
 
 </html>
