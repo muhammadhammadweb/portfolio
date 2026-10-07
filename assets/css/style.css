@@ -998,3 +998,10 @@ article.active { display: block; animation: fadeIn 0.5s ease backwards; }
   .clients-marquee .marquee-track { animation: none; }
   .clients-marquee { overflow-x: auto; }
 }
+
+
+  .timeline-item .timeline-item-title span {
+    display: inline;
+    font-size: inherit;
+    margin: 0;
+  }
