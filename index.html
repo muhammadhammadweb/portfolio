@@ -609,20 +609,7 @@
             </ul>
           </div>
 
-          <!-- Loop ke liye list ko duplicate karta hai -->
-          <script>
-            (function () {
-              var track = document.querySelector('[data-marquee-track]');
-              if (!track || track.dataset.cloned) return;
-              Array.from(track.children).forEach(function (li) {
-                var c = li.cloneNode(true);
-                c.setAttribute('aria-hidden', 'true');
-                c.querySelectorAll('a').forEach(function (a) { a.tabIndex = -1; });
-                track.appendChild(c);
-              });
-              track.dataset.cloned = 'true';
-            })();
-          </script>
+          
         </section>
       </article>
 
