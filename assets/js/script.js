@@ -103,12 +103,28 @@ navigationLinks.forEach((navLink) => {
 
 
 
-// Append this to assets/js/script.js if image screenshots are missing
+// Agar project screenshot load na ho to simple placeholder dikhao
+const fallbackImage = (img) => {
+  img.onerror = null; // baar baar retry se bachne ke liye
+  const title = (img.alt || 'Project Preview')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+  img.src =
+    'data:image/svg+xml;utf8,' +
+    encodeURIComponent(
+      `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400">
+        <rect width="100%" height="100%" fill="#1e1e1e"/>
+        <text x="50%" y="50%" fill="#ffdb70" font-size="26" font-family="Arial"
+          text-anchor="middle" dominant-baseline="middle">${title}</text>
+      </svg>`
+    );
+};
+
 document.querySelectorAll('.project-img img').forEach((img) => {
-  img.onerror = function () {
-    const title = this.alt || 'Project Preview';
-    this.src = `https://via.placeholder.com/600x400/1e1e1e/ffdb70?text=${encodeURIComponent(title)}`;
-  };
+  img.onerror = () => fallbackImage(img);
+  // Agar image script chalne se pehle hi fail ho chuki thi
+  if (img.complete && img.naturalWidth === 0 && img.getAttribute('src')) fallbackImage(img);
 });
 
 
@@ -149,27 +165,17 @@ const testimonialsSwiper = new Swiper('.testimonials-slider', {
   }
 });
 
-// Clients Logo Slider Setup
-const clientsSwiper = new Swiper('.clients-slider', {
-  slidesPerView: 1,
-  spaceBetween: 20,
-  loop: true,
-  autoplay: {
-    delay: 2500,
-    disableOnInteraction: false,
-  },
-  breakpoints: {
-    0: {
-      slidesPerView: 2,
-      spaceBetween: 15
-    },
-    640: {
-      slidesPerView: 3,
-      spaceBetween: 20
-    },
-    1024: {
-      slidesPerView: 4,
-      spaceBetween: 25
-    }
-  }
-});
+
+
+(function () {
+    var track = document.querySelector('[data-marquee-track]');
+    if (!track || track.dataset.cloned) return;
+    track.querySelectorAll('img').forEach(function (img) { img.loading = 'eager'; });
+    Array.from(track.children).forEach(function (li) {
+      var c = li.cloneNode(true);
+      c.setAttribute('aria-hidden', 'true');
+      c.querySelectorAll('a').forEach(function (a) { a.tabIndex = -1; });
+      track.appendChild(c);
+    });
+    track.dataset.cloned = 'true';
+  })();
