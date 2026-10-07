@@ -1,94 +1,109 @@
 /**
  * check-links.js
- * Checks every project URL in index.html and reports which are live/dead.
+ * index.html ke saare external links (Portfolio + Clients marquee) check karta hai.
  *
- * Usage:
+ * Chalane ka tareeqa (index.html wale folder me):
  *   node check-links.js
  *
- * Requires Node 18+ (uses built-in fetch). No npm install needed.
+ * Node 18+ chahiye (built-in fetch). Koi npm install nahi.
  */
 
 const fs = require("fs");
 const path = require("path");
 
 const HTML_FILE = path.join(__dirname, "index.html");
-const TIMEOUT_MS = 10000;
+const TIMEOUT_MS = 15000;
+const CONCURRENCY = 6;
+const UA =
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36";
 
-function extractProjectUrls(html) {
+// Ye status aksar bot-protection ki wajah se aate hain, site asal me live hoti hai
+const BLOCKED_STATUSES = new Set([401, 403, 405, 429, 999]);
+
+function extractUrls(html) {
   const urls = [];
-  const regex = /<a href="(https?:\/\/[^"]+)" target="_blank">/g;
+  // <a href="..." ... target="_blank"> (single line ya multi-line, rel="noopener" ke saath ya bina)
+  const regex = /<a\s+href="(https?:\/\/[^"]+)"[^>]*target="_blank"/g;
   let match;
-  while ((match = regex.exec(html)) !== null) {
-    urls.push(match[1]);
-  }
+  while ((match = regex.exec(html)) !== null) urls.push(match[1]);
   return [...new Set(urls)];
 }
 
-async function checkUrl(url) {
+async function request(url, method) {
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), TIMEOUT_MS);
+  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
   try {
-    let res = await fetch(url, {
-      method: "HEAD",
+    return await fetch(url, {
+      method,
       redirect: "follow",
       signal: controller.signal,
+      headers: { "User-Agent": UA, Accept: "text/html,*/*" },
     });
-    // Some servers don't support HEAD properly — retry with GET if it looks off
-    if (!res.ok && res.status >= 400) {
-      res = await fetch(url, {
-        method: "GET",
-        redirect: "follow",
-        signal: controller.signal,
-      });
-    }
-    clearTimeout(timeout);
-    return { url, status: res.status, ok: res.ok, error: null };
-  } catch (err) {
-    clearTimeout(timeout);
-    return { url, status: null, ok: false, error: err.message };
+  } finally {
+    clearTimeout(timer);
   }
+}
+
+async function checkUrl(url) {
+  let lastError = null;
+  for (const method of ["HEAD", "GET"]) {
+    try {
+      const res = await request(url, method);
+      if (res.ok) return { url, status: res.status, state: "live" };
+      if (method === "GET") {
+        return {
+          url,
+          status: res.status,
+          state: BLOCKED_STATUSES.has(res.status) ? "blocked" : "dead",
+        };
+      }
+      // HEAD fail hui to GET se dobara try hoga
+    } catch (err) {
+      lastError = err.name === "AbortError" ? "timeout" : err.cause?.code || err.message;
+    }
+  }
+  return { url, status: null, state: "dead", error: lastError };
 }
 
 async function main() {
   if (!fs.existsSync(HTML_FILE)) {
-    console.error("index.html not found next to this script.");
+    console.error("index.html is script ke saath wale folder me nahi mila.");
     process.exit(1);
   }
 
-  const html = fs.readFileSync(HTML_FILE, "utf-8");
-  const urls = extractProjectUrls(html);
-
-  console.log(`Found ${urls.length} project URLs. Checking...\n`);
+  const urls = extractUrls(fs.readFileSync(HTML_FILE, "utf-8"));
+  console.log(`${urls.length} links mile. Check ho rahe hain...\n`);
 
   const results = [];
-  const CONCURRENCY = 8;
-  let i = 0;
+  let next = 0;
 
   async function worker() {
-    while (i < urls.length) {
-      const idx = i++;
-      const url = urls[idx];
-      const result = await checkUrl(url);
+    while (next < urls.length) {
+      const result = await checkUrl(urls[next++]);
       results.push(result);
-      const statusLabel = result.ok
-        ? `LIVE (${result.status})`
-        : result.error
-        ? `DEAD (${result.error})`
-        : `DEAD (status ${result.status})`;
-      console.log(`${result.ok ? "✅" : "❌"} ${url} — ${statusLabel}`);
+      const icon = { live: "✅", blocked: "⚠️ ", dead: "❌" }[result.state];
+      const detail = result.error ? result.error : `status ${result.status}`;
+      console.log(`${icon} ${result.url} — ${result.state.toUpperCase()} (${detail})`);
     }
   }
 
   await Promise.all(Array.from({ length: CONCURRENCY }, worker));
 
-  const dead = results.filter((r) => !r.ok);
+  const live = results.filter((r) => r.state === "live");
+  const blocked = results.filter((r) => r.state === "blocked");
+  const dead = results.filter((r) => r.state === "dead");
+
   console.log("\n--- Summary ---");
-  console.log(`Live: ${results.length - dead.length} / ${results.length}`);
+  console.log(`Live: ${live.length} | Blocked (browser me khol ke dekho): ${blocked.length} | Dead: ${dead.length}`);
+  if (blocked.length) {
+    console.log("\nBlocked (shayad live, bot-protection):");
+    blocked.forEach((r) => console.log(`  - ${r.url} (${r.status})`));
+  }
   if (dead.length) {
-    console.log(`\nDead / unreachable (${dead.length}):`);
-    dead.forEach((r) => console.log(`  - ${r.url}`));
+    console.log("\nDead / unreachable:");
+    dead.forEach((r) => console.log(`  - ${r.url} (${r.error || "status " + r.status})`));
   } else {
-    console.log("All project links are live 🎉");
+    console.log("\nKoi dead link nahi mila 🎉");
   }
 }
 
