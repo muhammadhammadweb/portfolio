@@ -914,3 +914,87 @@ article.active { display: block; animation: fadeIn 0.5s ease backwards; }
 .mapbox {
     margin-top: 20px;
 }
+
+
+
+
+
+
+
+
+/* ===== Clients marquee (continuous logo scroll) ===== */
+.clients-marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+
+.clients-marquee .marquee-track {
+  --marquee-speed: 170s; /* chhota number = tez, bara number = slow */
+  display: flex;
+  align-items: center;
+  width: max-content;
+  margin: 0;
+  padding: 4px 0;
+  list-style: none;
+  animation: clients-scroll var(--marquee-speed) linear infinite;
+}
+
+.clients-marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.clients .marquee-item {
+  flex: 0 0 auto;
+  width: 120px;
+  height: 64px;
+  margin-right: 16px;
+  padding: 10px 12px;
+  background: #f4f4f4;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Jis logo ka rang safed ho, us item par ye class laga do */
+.clients .marquee-item.dark-tile {
+  background: #2b2b2c;
+}
+
+.clients .marquee-item a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.clients .marquee-item img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: none;
+  opacity: 1;
+}
+
+@keyframes clients-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (max-width: 580px) {
+  .clients .marquee-item {
+    width: 96px;
+    height: 52px;
+    margin-right: 12px;
+    padding: 8px 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clients-marquee .marquee-track { animation: none; }
+  .clients-marquee { overflow-x: auto; }
+}
