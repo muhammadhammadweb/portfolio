@@ -954,6 +954,7 @@ article.active { display: block; animation: fadeIn 0.5s ease backwards; }
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #ffffff60;
 }
 
 /* Jis logo ka rang safed ho, us item par ye class laga do */
