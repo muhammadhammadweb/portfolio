@@ -96,13 +96,6 @@ navigationLinks.forEach((navLink) => {
   });
 });
 
-
-
-
-
-
-
-
 // Agar project screenshot load na ho to simple placeholder dikhao
 const fallbackImage = (img) => {
   img.onerror = null; // baar baar retry se bachne ke liye
@@ -127,14 +120,8 @@ document.querySelectorAll('.project-img img').forEach((img) => {
   if (img.complete && img.naturalWidth === 0 && img.getAttribute('src')) fallbackImage(img);
 });
 
-
-
-
-
-
-
 // Testimonials Slider Setup
-const testimonialsSwiper = new Swiper('.testimonials-slider', {
+new Swiper('.testimonials-slider', {
   slidesPerView: 1,
   spaceBetween: 20,
   loop: true,
@@ -164,8 +151,6 @@ const testimonialsSwiper = new Swiper('.testimonials-slider', {
     }
   }
 });
-
-
 
 (function () {
     var track = document.querySelector('[data-marquee-track]');
