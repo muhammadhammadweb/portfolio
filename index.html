@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Muhammad Hammad — Web Developer</title>
-<meta name="description" content="Muhammad Hammad — web developer building fast, pixel-perfect WordPress, Shopify, Webflow, Wix, Squarespace and custom PHP websites.">
-<link rel="icon" href="./assets/images/M.hammad.png">
 <style>
 :root{--bg:#07070b;--fg:#f2f2f5;--mut:#8b8b9a;--acc:#7cf5c8;--acc2:#8b7bff;--line:rgba(255,255,255,.1);color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *,*::before,*::after{box-sizing:inherit;margin:0;padding:0}
@@ -50,34 +48,30 @@ section{padding:14vh 5vw}
 .about .txt p{font-size:clamp(1.1rem,2.2vw,1.7rem);line-height:1.45;color:var(--mut)}
 .about .txt p .w{transition:color .2s}
 .stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.stat{border:1px solid var(--line);border-radius:20px;padding:26px;background:rgba(255,255,255,.03);backdrop-filter:blur(10px)}
-.stat b{display:block;font-size:clamp(2.2rem,5vw,3.8rem);letter-spacing:-.04em}
+.stat{border:1px solid var(--line);border-radius:20px;padding:26px;background:rgba(255,255,255,.03);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+/* Numbers ko bara aur responsive banane ke liye update */
+.stat b{display:block;font-size:clamp(3.5rem,8vw,6.5rem);line-height:1;font-weight:800;letter-spacing:-.04em;margin-bottom:8px}
 .stat span{color:var(--mut);font-size:.85rem}
-.mq{padding:4vh 0;overflow:hidden;border-block:1px solid var(--line);background:rgba(7,7,11,.6);backdrop-filter:blur(8px)}
-.mq .t{display:flex;align-items:center;width:max-content}
+.mq{padding:6vh 0;overflow:hidden;border-block:1px solid var(--line);background:rgba(7,7,11,.6);backdrop-filter:blur(8px)}
+.mq .t{display:flex;width:max-content;gap:0;font-size:clamp(2rem,5vw,4rem);font-weight:700;letter-spacing:-.03em;white-space:nowrap}
+.mq span{padding:0 28px;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.4);transition:.3s}
+.mq span:hover{color:var(--acc);-webkit-text-stroke-color:var(--acc)}
+.mq span::after{content:"✦";margin-left:56px;color:var(--acc2);-webkit-text-stroke:0;font-size:.5em;vertical-align:middle}
 .mq.r .t{margin-top:10px}
-.mq .lg{display:flex;align-items:center;justify-content:center;height:72px;min-width:130px;margin:0 14px;padding:12px 24px;background:rgba(255,255,255,.92);border-radius:16px;opacity:.9;transition:transform .3s,opacity .3s}
-.mq .lg:hover{opacity:1;transform:translateY(-4px)}
-.mq .lg img{height:44px;width:auto;max-width:150px;object-fit:contain;display:block}
 .hs{height:100svh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;padding:0}
-.hs .top{padding:9vh 5vw 3vh}
-.hs .h{font-size:clamp(2rem,4.5vw,3.8rem)}
+.hs .top{padding:0 5vw 4vh}
 .track{display:flex;gap:28px;padding:0 5vw;width:max-content}
-.card{position:relative;flex:none;width:min(78vw,380px);height:clamp(260px,40vh,380px);border-radius:26px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;border:1px solid var(--line);background:#101018;transform-style:preserve-3d;will-change:transform}
-.card .shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;opacity:.6;z-index:0;transition:transform .8s cubic-bezier(.2,.7,.2,1),opacity .4s}
-.card:hover .shot{opacity:.9;transform:scale(1.07)}
-.card::before{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),hsla(var(--h),90%,65%,.45),transparent 55%);opacity:.5;transition:opacity .4s;pointer-events:none}
-.card::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(7,7,11,.95) 0%,rgba(7,7,11,.55) 38%,transparent 70%);pointer-events:none}
+/* Card/Logo background ko top 4 stats boxes jaisa transparent + blur kar diya gaya hai */
+.card{position:relative;width:min(78vw,400px);height:min(46vh,400px);border-radius:26px;padding:26px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;border:1px solid var(--line);background:rgba(255,255,255,.03);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transform-style:preserve-3d;will-change:transform}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),hsla(var(--h),90%,65%,.55),transparent 55%);opacity:.5;transition:opacity .4s}
 .card:hover::before{opacity:1}
-.card .num{position:absolute;right:-6px;top:-14px;z-index:2;font-size:7rem;font-weight:800;letter-spacing:-.08em;color:hsla(var(--h),90%,80%,.16);line-height:1;pointer-events:none}
-.card>:not(.shot){position:relative;z-index:2}
-.card .num{position:absolute}
-.pill{align-self:flex-start;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;padding:7px 14px;border-radius:99px;border:1px solid var(--line);background:rgba(0,0,0,.45);backdrop-filter:blur(8px)}
-.card h3{font-size:1.7rem;letter-spacing:-.03em;line-height:1.08;transform:translateZ(40px)}
-.card .go{display:flex;justify-content:space-between;align-items:center;margin-top:12px;color:#c9c9d4;font-size:.85rem}
+.card .num{position:absolute;right:-10px;bottom:-30px;font-size:12rem;font-weight:800;letter-spacing:-.08em;color:hsla(var(--h),90%,70%,.12);line-height:1}
+.card>*{position:relative}
+.pill{align-self:flex-start;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;padding:7px 14px;border-radius:99px;border:1px solid var(--line);background:rgba(0,0,0,.35)}
+.card h3{font-size:2rem;letter-spacing:-.03em;line-height:1.05;transform:translateZ(40px)}
+.card .go{display:flex;justify-content:space-between;align-items:center;margin-top:14px;color:var(--mut);font-size:.85rem}
 .card .go b{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#fff;color:#000;transition:transform .4s}
 .card:hover .go b{transform:rotate(-45deg) scale(1.15)}
-.card.off{display:none}
 .tl{margin-top:6vh;position:relative;padding-left:34px;max-width:900px}
 .tl .ln{position:absolute;left:6px;top:6px;bottom:0;width:2px;background:var(--line)}
 .tl .ln i{position:absolute;inset:0;background:linear-gradient(var(--acc),var(--acc2));transform:scaleY(0);transform-origin:top}
@@ -96,7 +90,7 @@ section{padding:14vh 5vw}
 .links{display:flex;gap:26px;margin-top:6vh;flex-wrap:wrap;justify-content:center;color:var(--mut)}
 .links a:hover{color:var(--acc)}
 footer{padding:30px 5vw;display:flex;justify-content:space-between;color:var(--mut);font-size:.8rem;border-top:1px solid var(--line)}
-@media(max-width:800px){.about{grid-template-columns:1fr}nav ul{display:none}.hs{height:auto;padding:14vh 0}.track{overflow-x:auto;width:100%;scroll-snap-type:x mandatory}.card{scroll-snap-align:center}}
+@media(max-width:800px){.about{grid-template-columns:1fr}nav ul{display:none}.hs{height:auto;padding:14vh 0}.track{overflow-x:auto;width:100%;scroll-snap-type:x mandatory}.card{flex:none;scroll-snap-align:center}}
 .dock{position:relative;display:inline-flex;flex-wrap:wrap;gap:4px;margin-top:3vh;padding:6px;border-radius:30px;border:1px solid var(--line);background:rgba(255,255,255,.05);backdrop-filter:blur(14px)}
 .dock button{position:relative;z-index:1;background:none;border:0;color:var(--fg);font:inherit;font-size:.85rem;padding:10px 18px;border-radius:99px;cursor:pointer;transition:color .3s,transform .3s}
 .dock button:hover{transform:translateY(-2px)}
@@ -104,6 +98,7 @@ footer{padding:30px 5vw;display:flex;justify-content:space-between;color:var(--m
 .dock sup{font-size:.6rem;margin-left:4px;opacity:.6}
 .blob{position:absolute;z-index:0;top:0;left:0;width:0;height:0;border-radius:99px;background:var(--acc);box-shadow:0 0 34px var(--acc);margin:6px 0 0 6px}
 .cnt{margin-left:22px;color:var(--mut);font-variant-numeric:tabular-nums;font-size:.9rem;letter-spacing:.1em}
+.card.off{display:none}
 @media(prefers-reduced-motion:reduce){.grain{animation:none}}
 </style>
 </head>
@@ -163,109 +158,102 @@ footer{padding:30px 5vw;display:flex;justify-content:space-between;color:var(--m
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script>
 (function(){
-gsap.registerPlugin(ScrollTrigger);var hsT=null;
+gsap.registerPlugin(ScrollTrigger,Flip);var hsT=null;
 var RM=matchMedia("(prefers-reduced-motion:reduce)").matches;
 var $=function(s,c){return(c||document).querySelector(s)},$$=function(s,c){return[].slice.call((c||document).querySelectorAll(s))};
 
-/* ---------- data: name | platform | url | screenshot (in assets/images/projects/) ---------- */
+/* ---------- data (78 sites) ---------- */
 var P=[
-"AUS NRG|WordPress|https://ausnrg.com.au/|ausnrg.png",
-"Lighthouse Property Watch|WordPress|https://lighthousepropertywatch.com/|lighthouse.png",
-"AIA Contracts|WordPress|https://aiacontracts.com/|aiacontracts.png",
-"ClearVu Cam|WordPress|https://clearvucam.com/|clearvucam.png",
-"Law Writing|Custom PHP|https://www.lawwriting.co.uk/|lawwriting.png",
-"Wanlin|WordPress|https://wanlin.com.au/|wanlin.png",
-"Abzgate|WordPress|https://abzgate.com/|abzgate.png",
-"Best Assignment Writers|Custom PHP|https://www.bestassignmentwriters.co.uk/|bestassignment.png",
-"Canny Book Writers|WordPress|https://cannybookwriters.com/|cannybookwriting.png",
-"Prism Lights|Shopify|https://prismlights.shop/|prismlights.png",
-"The Show Me Expo|WordPress|https://theshowmeexpo.com/|showmewatersportsexpo.png",
-"Walsall Wall Experts|WordPress|https://walsallwallexperts.co.uk/|walsallwallexperts.png",
-"Winning Commerce|Shopify|http://winningcommerce.com/|winningcommerce.png",
-"Dissertation Writing Ace|Custom PHP|https://www.dissertationwritingace.co.uk/|dissertationwriting.png",
-"Assignment Help Zone|Custom PHP|https://assignmenthelpzone.co.uk/|assignmenthelpzone.png",
-"David Neal McPhee|Squarespace|https://www.davidnealmcphee.com/|sq-davidnealmcphee.png",
-"Colin C. McKay|Squarespace|https://www.colincmckay.com/|sq-colincmckay.png",
-"Padel 360|Squarespace|https://www.padel360.com.au/|sq-padel360.png",
-"Choice Health & Wellness|Squarespace|https://www.choicehealthwellness.com/|choicehealthwellness.png",
-"Il Regno Dorato Kennel|WordPress|https://ilregnodoratokennel.it/|wp-ilregnodoratokennel.png",
-"Global Citation|Custom PHP|https://globalcitation.com/|wp-globalcitation.png",
-"iPack|WordPress|https://ipack.com.sa/|wp-ipack.png",
-"Renodomi|WordPress|https://renodomi.nl/|wp-renodomi.png",
-"Delis|WordPress|https://delis.co.in/|wp-delis.png",
-"Utility Select|WordPress|https://utility-select.com/|utility-select.png",
-"Aero Maritime Group|WordPress|https://aeromaritimegroup.com/|wp-aeromaritimegroup.png",
-"Garage Dijkhuizen|WordPress|https://garagedijkhuizen.nl/|wp-garagedijkhuizen.png",
-"Punkworx|WordPress|https://punkworx.org.uk/|wp-punkworx.png",
-"Sky ACP|WordPress|https://sky-acp.com/|wp-sky-acp.png",
-"Alior Studio|WordPress|https://aliorstudio.com/|wp-aliorstudio.png",
-"Rock Blues Jazz Gambarogno|WordPress|https://rock-blues-jazz-gambarogno.ch/|wp-rock-blues-jazz.png",
-"Dr. Marina Borisenko|WordPress|https://drmarinaborisenko.com.au/|wp-drmarinaborisenko.png",
-"Painting By Moli|WordPress|https://paintingbymoli.com.au/|wp-paintingbymoli.png",
-"Rise In Confidence|WordPress|https://riseinconfidence.org/|wp-riseinconfidence.png",
-"iPack (New)|WordPress|https://new.ipack.com.sa/|wp-new-ipack.png",
-"Agar Advisory|WordPress|https://agaradvisory.com/|wp-agaradvisory.png",
-"Martin Kaonga|WordPress|https://martinkaonga.com/|wp-martinkaonga.png",
-"Complete Detox|Shopify|https://www.completedetox.co.uk/|sp-completedetox.png",
-"Forefront Label|Shopify|https://forefrontlabel.ca/|sp-forefrontlabel.png",
-"Nordpure|Shopify|https://nordpure.com/gb-en|sp-nordpure.png",
-"Field & Fire Coffee|Shopify|https://fieldandfirecoffee.co.uk/|sp-fieldandfirecoffee.png",
-"Custom Varsity Jackets|Shopify|https://customvarsityjackets.co.uk/|sp-customvarsityjackets.png",
-"Enduo Sports|Shopify|https://www.enduosports.com/|sp-enduosports.png",
-"Deemed Fit|Shopify|https://deemedfit.co/|sp-deemedfit.png",
-"Florawell|Shopify|https://florawell.co.uk/|sp-florawell.png",
-"Rua Norte|Shopify|https://ruanorte.com/|sp-ruanorte.png",
-"Scopus Journal Publisher|Custom PHP|https://scopusjournalpublisher.com/|custom-scopusjournal.png",
-"Nursing Assignments Writer|Custom PHP|https://nursingassignmentswriter.co.uk/|custom-nursingassignments.png",
-"Personal Statement Experts|Custom PHP|https://personalstatementexperts.com/|custom-personalstatement.png",
-"Evera Coaching|Wix|https://www.everacoaching.com/|evera-coaching.png",
-"iMyoo Health|Wix|https://www.imyoo.health/|imyo-health.png",
-"The Nibbles App|Webflow|https://www.thenibblesapp.com/|wf-thenibblesapp.png",
-"PlayUs|WordPress|https://playusapp.com/|playuss.png",
-"Martinez Legal|WordPress|https://martinezlegal.com/|martinez.png",
-"Souzet|Custom PHP|https://souzet.com/|souzet.png",
-"Britain Academics|WordPress|https://britainacademics.co.uk/|britain-acad.png",
-"Kirkcaldy Taxis|WordPress|https://kirkcaldytaxis.com/|taxi.png",
-"Ahlesa|WordPress|https://ahlesa.com/|ahlesa.png",
-"The Class Taker|WordPress|https://theclasstaker.com/|theclasstaker.png",
-"Academic Wisdom|WordPress|https://academicwisdom.co.uk/|academic-wisdom.png",
-"MEC Demag|WordPress|https://mecdemag.com/|mecdemag.png",
-"The Specterink|WordPress|https://thespecterink.com/|thespecter.png",
-"The Graphic Concept|WordPress|https://thegraphicconcept.com/|thegraphics.png",
-"The Academic Assistance|Custom PHP|https://theacademicassistance.com/|acadmics.png",
-"Save Our Children Education Sierra Leone|WordPress|https://saveourchildreneducationsierraleone.org/|savechild.png",
-"Solar Craft|WordPress|https://solarcraft.ie/|solar-craft.png",
-"Absol Tech|WordPress|https://absoltech.com/|absoltech.png",
-"Bad Egg|WordPress|https://badegg.ie/|badegg.png",
-"Cloud 9 Shisha Lounge|WordPress|https://cloud9shishalounge.com/|cloud9shisha.png",
-"Juice To Go|WordPress|https://juicetogo.ca/|juicetogo.png",
-"Nexo Design|Custom PHP|https://nexodesigns.com/|nexodesign.png",
-"Nexomos|WordPress|https://nexomos.com/|nexomos.png",
-"Synko|Custom PHP|https://synko.tech/|synko.png",
-"Thriversity|WordPress|https://thriversity.ie/|theriversity.png",
-"Xoma Labs|Webflow|https://xomalabs-com.webflow.io/|xomalabs.png",
-"LoveSelf|Shopify|https://www.loveself.uk/|../loveself.png",
-"Careers Safari|WordPress|https://careerssafari.com.au/|career.png",
-"Teach Learn Research|WordPress|https://teachlearnresearch.com/|techlearner.png"
+["AUS NRG","WordPress","https://ausnrg.com.au/"],
+["Lighthouse Property Watch","WordPress","https://lighthousepropertywatch.com/"],
+["AIA Contracts","WordPress","https://aiacontracts.com/"],
+["ClearVu Cam","WordPress","https://clearvucam.com/"],
+["Law Writing","Custom PHP","https://www.lawwriting.co.uk/"],
+["Wanlin","WordPress","https://wanlin.com.au/"],
+["Abzgate","WordPress","https://abzgate.com/"],
+["Best Assignment Writers","Custom PHP","https://www.bestassignmentwriters.co.uk/"],
+["Canny Book Writers","WordPress","https://cannybookwriters.com/"],
+["Prism Lights","Shopify","https://prismlights.shop/"],
+["The Show Me Expo","WordPress","https://theshowmeexpo.com/"],
+["Walsall Wall Experts","WordPress","https://walsallwallexperts.co.uk/"],
+["Winning Commerce","Shopify","http://winningcommerce.com/"],
+["Dissertation Writing Ace","Custom PHP","https://www.dissertationwritingace.co.uk/"],
+["Assignment Help Zone","Custom PHP","https://assignmenthelpzone.co.uk/"],
+["David Neal McPhee","Squarespace","https://www.davidnealmcphee.com/"],
+["Colin C. McKay","Squarespace","https://www.colincmckay.com/"],
+["Padel 360","Squarespace","https://www.padel360.com.au/"],
+["Choice Health & Wellness","Squarespace","https://www.choicehealthwellness.com/"],
+["Il Regno Dorato Kennel","WordPress","https://ilregnodoratokennel.it/"],
+["Global Citation","Custom PHP","https://globalcitation.com/"],
+["iPack","WordPress","https://ipack.com.sa/"],
+["Renodomi","WordPress","https://renodomi.nl/"],
+["Delis","WordPress","https://delis.co.in/"],
+["Utility Select","WordPress","https://utility-select.com/"],
+["Aero Maritime Group","WordPress","https://aeromaritimegroup.com/"],
+["Garage Dijkhuizen","WordPress","https://garagedijkhuizen.nl/"],
+["Punkworx","WordPress","https://punkworx.org.uk/"],
+["Sky ACP","WordPress","https://sky-acp.com/"],
+["Alior Studio","WordPress","https://aliorstudio.com/"],
+["Rock Blues Jazz Gambarogno","WordPress","https://rock-blues-jazz-gambarogno.ch/"],
+["Dr. Marina Borisenko","WordPress","https://drmarinaborisenko.com.au/"],
+["Painting By Moli","WordPress","https://paintingbymoli.com.au/"],
+["Rise In Confidence","WordPress","https://riseinconfidence.org/"],
+["iPack (New)","WordPress","https://new.ipack.com.sa/"],
+["Agar Advisory","WordPress","https://agaradvisory.com/"],
+["Martin Kaonga","WordPress","https://martinkaonga.com/"],
+["Complete Detox","Shopify","https://www.completedetox.co.uk/"],
+["Forefront Label","Shopify","https://forefrontlabel.ca/"],
+["Nordpure","Shopify","https://nordpure.com/gb-en"],
+["Field & Fire Coffee","Shopify","https://fieldandfirecoffee.co.uk/"],
+["Custom Varsity Jackets","Shopify","https://customvarsityjackets.co.uk/"],
+["Enduo Sports","Shopify","https://www.enduosports.com/"],
+["Deemed Fit","Shopify","https://deemedfit.co/"],
+["Florawell","Shopify","https://florawell.co.uk/"],
+["Rua Norte","Shopify","https://ruanorte.com/"],
+["Scopus Journal Publisher","Custom PHP","https://scopusjournalpublisher.com/"],
+["Nursing Assignments Writer","Custom PHP","https://nursingassignmentswriter.co.uk/"],
+["Personal Statement Experts","Custom PHP","https://personalstatementexperts.com/"],
+["Evera Coaching","Wix","https://www.everacoaching.com/"],
+["iMyoo Health","Wix","https://www.imyoo.health/"],
+["The Nibbles App","Webflow","https://www.thenibblesapp.com/"],
+["PlayUs","WordPress","https://playusapp.com/"],
+["Martinez Legal","WordPress","https://martinezlegal.com/"],
+["Souzet","Custom PHP","https://souzet.com/"],
+["Britain Academics","WordPress","https://britainacademics.co.uk/"],
+["Kirkcaldy Taxis","WordPress","https://kirkcaldytaxis.com/"],
+["Ahlesa","WordPress","https://ahlesa.com/"],
+["The Class Taker","WordPress","https://theclasstaker.com/"],
+["Academic Wisdom","WordPress","https://academicwisdom.co.uk/"],
+["MEC Demag","WordPress","https://mecdemag.com/"],
+["The Specterink","WordPress","https://thespecterink.com/"],
+["The Graphic Concept","WordPress","https://thegraphicconcept.com/"],
+["The Academic Assistance","Custom PHP","https://theacademicassistance.com/"],
+["Save Our Children Education Sierra Leone","WordPress","https://saveourchildreneducationsierraleone.org/"],
+["Solar Craft","WordPress","https://solarcraft.ie/"],
+["Absol Tech","WordPress","https://absoltech.com/"],
+["Bad Egg","WordPress","https://badegg.ie/"],
+["Cloud 9 Shisha Lounge","WordPress","https://cloud9shishalounge.com/"],
+["Juice To Go","WordPress","https://juicetogo.ca/"],
+["Nexo Design","Custom PHP","https://nexodesigns.com/"],
+["Nexomos","WordPress","https://nexomos.com/"],
+["Synko","Custom PHP","https://synko.tech/"],
+["Thriversity","WordPress","https://thriversity.ie/"],
+["Xoma Labs","Webflow","https://xomalabs-com.webflow.io/"],
+["LoveSelf","Shopify","https://www.loveself.uk/"],
+["Careers Safari","WordPress","https://careerssafari.com.au/"],
+["Teach Learn Research","WordPress","https://teachlearnresearch.com/"]
 ];
-
-/* client logos (in assets/images/Clients-logo/) */
-var L1="ausnrg.png,lighthouse.webp,aiacontracts.png,clearvucam.webp,lawwriting.webp,wanlin.png,abzgate.png,bestassignmentwriters.webp,cannybookwriters.png,prismlights.png,theshowmeexpo.png,walsallwallexperts.png,winningcommerce.png,dissertationwritingace.webp,assignmenthelpzone.webp,davidnealmcphee.webp,colincmckay.webp,padel360.webp,choicehealthwellness.webp,ilregnodoratokennel.png,globalcitation.png,ipack.png,rendomi.png,delis.webp".split(",");
-var L2="utility-select.png,aeromaritimegroup.png,garagedijkhuizen.png,punkworx.png,sky-acp.png,aliorstudio.png,rock-blues-jazz.png,drmarinaborisenko.png,paintingbymoli.webp,riseinconfidence.png,completedetox.png,forefrontlabel.png,nordpure.webp,fieldandfirecoffee.png,customvarsityjackets.png,enduosports.png,deemedfit.png,florawell.png,ruanorte.png,loveself.png,thenibblesapp.png,xomalabs.png,imyoo.png,everacoaching.png".split(",");
-
+var C=["AUS NRG","AIA Contracts","ClearVu Cam","Wanlin","Abzgate","Prism Lights","Winning Commerce","Nordpure","Florawell","Padel 360","iPack","Renodomi","Nibbles App","Xoma Labs","Deemed Fit","Rua Norte"];
 var trk=$("#track");
-P.forEach(function(r,i){var p=r.split("|"),h=(i*47+150)%360,a=document.createElement("a");
-a.className="card";a.dataset.cat=p[1];a.href=p[2];a.target="_blank";a.rel="noopener";a.style.setProperty("--h",h);
-a.innerHTML='<img class="shot" src="./assets/images/projects/'+p[3]+'" alt="'+p[0]+' website screenshot" loading="lazy" decoding="async" onerror="this.remove()">'+
-'<span class="pill">'+p[1]+'</span><span class="num">'+String(i+1).padStart(2,"0")+'</span><div><h3>'+p[0]+'</h3><div class="go"><span>View live site</span><b>→</b></div></div>';
-trk.appendChild(a)});
-
-function fillMq(el,arr){var t=$(".t",el),h="";for(var k=0;k<2;k++)arr.forEach(function(f){h+='<span class="lg"><img src="./assets/images/Clients-logo/'+f+'" alt="Client logo" decoding="async" onerror="this.parentNode.style.display=\'none\'"></span>'});t.innerHTML=h;return t}
-var m1=fillMq($("#mq1"),L1),m2=fillMq($("#mq2"),L2);
+P.forEach(function(p,i){var h=(i*47+150)%360;var a=document.createElement("a");a.className="card";a.dataset.cat=p[1];a.href=p[2];a.target="_blank";a.rel="noopener";a.style.setProperty("--h",h);
+a.innerHTML='<span class="pill">'+p[1]+'</span><span class="num">'+String(i+1).padStart(2,"0")+'</span><div><h3>'+p[0]+'</h3><div class="go"><span>View live site</span><b>→</b></div></div>';trk.appendChild(a)});
+function fillMq(el,arr){var t=$(".t",el),h="";for(var k=0;k<2;k++)arr.forEach(function(n){h+="<span>"+n+"</span>"});t.innerHTML=h;return t}
+var m1=fillMq($("#mq1"),C),m2=fillMq($("#mq2"),C.slice().reverse());
 
 /* split text */
 $$("[data-split]").forEach(function(el){var t=el.textContent;el.textContent="";t.split("").forEach(function(ch){var s=document.createElement("span");s.className="c";s.textContent=ch;el.appendChild(s)})});
@@ -329,22 +317,12 @@ var btns=$$("button",dock);
 function mv(b,fast){gsap.to(blob,{x:b.offsetLeft-6,y:b.offsetTop-6,width:b.offsetWidth,height:b.offsetHeight,duration:fast?0:.9,ease:"elastic.out(1,.65)",overwrite:true})}
 function setCnt(n){var q={v:+cnt.dataset.v||0},tot=String(cardEls.length).padStart(2,"0");gsap.to(q,{v:n,duration:.6,onUpdate:function(){cnt.textContent=String(Math.round(q.v)).padStart(2,"0")+" / "+tot;cnt.dataset.v=q.v}})}
 function tint(h){var col=new THREE.Color().setHSL(h/360,.85,.66);gsap.to(c1,{r:col.r,g:col.g,b:col.b,duration:1});document.documentElement.style.setProperty("--acc","hsl("+h+",85%,66%)")}
-
-/* filter: fade out -> toggle cards -> refresh pin -> fade in (no absolute positioning, so no overlap) */
-function run(c){
- var vis=cardEls.filter(function(e){return c=="All"||e.dataset.cat==c});
- setCnt(vis.length);
- gsap.to(trk,{opacity:0,duration:.25,onComplete:function(){
-  cardEls.forEach(function(e){e.classList.toggle("off",!(c=="All"||e.dataset.cat==c))});
-  trk.scrollLeft=0;
-  ScrollTrigger.refresh();
-  gsap.set(trk,{opacity:1});
-  gsap.fromTo(vis,{opacity:0,y:50,scale:.92},{opacity:1,y:0,scale:1,duration:.55,ease:"power3.out",stagger:{amount:.6},onComplete:function(){busy=false}});
- }});
-}
-function pick(b){if(b==act||busy)return;act=b;busy=true;btns.forEach(function(x){x.classList.toggle("on",x==b)});mv(b);tint(hues[b.dataset.c]);
- var go=function(){run(b.dataset.c)};
- if(hsT&&innerWidth>800&&Math.abs(lenis.scroll-hsT.scrollTrigger.start)>8){lenis.scrollTo(hsT.scrollTrigger.start,{duration:.6,onComplete:go})}else go()}
+function run(c){var st=Flip.getState(cardEls);
+ cardEls.forEach(function(e){e.classList.toggle("off",c!="All"&&e.dataset.cat!=c)});
+ Flip.from(st,{duration:.8,ease:"power3.inOut",absolute:true,scale:true,stagger:.03,onEnter:function(e){return gsap.fromTo(e,{opacity:0,scale:.4},{opacity:1,scale:1,duration:.6,stagger:.04})},onLeave:function(e){return gsap.to(e,{opacity:0,scale:.4,duration:.4})},onComplete:function(){ScrollTrigger.refresh();busy=false}});
+ setCnt(cardEls.filter(function(e){return!e.classList.contains("off")}).length)}
+function pick(b){if(b==act||busy)return;act=b;busy=true;btns.forEach(function(x){x.classList.toggle("on",x==b)});mv(b);tint(hues[b.dataset.c]);trk.scrollLeft=0;
+ if(hsT&&innerWidth>800&&Math.abs(lenis.scroll-hsT.scrollTrigger.start)>8){lenis.scrollTo(hsT.scrollTrigger.start,{duration:.6,onComplete:function(){gsap.delayedCall(.4,function(){run(b.dataset.c)})}})}else run(b.dataset.c)}
 btns.forEach(function(b){b.addEventListener("click",function(){pick(b)})});
 act=btns[0];btns[0].classList.add("on");setTimeout(function(){mv(btns[0],true);setCnt(cardEls.length)},150);
 addEventListener("resize",function(){mv(act,true)});
@@ -371,13 +349,13 @@ gsap.from(".contact .big",{y:80,opacity:0,duration:1.1,ease:"power3.out",scrollT
 gsap.from(".mag",{scale:0,duration:1.2,ease:"elastic.out(1,.5)",scrollTrigger:{trigger:".mag",start:"top 95%"}});
 
 /* marquees reacting to scroll velocity */
-var tw1=gsap.to(m1,{xPercent:-50,duration:60,ease:"none",repeat:-1}),tw2=gsap.fromTo(m2,{xPercent:-50},{xPercent:0,duration:60,ease:"none",repeat:-1}),ts=1;
+var tw1=gsap.to(m1,{xPercent:-50,duration:40,ease:"none",repeat:-1}),tw2=gsap.fromTo(m2,{xPercent:-50},{xPercent:0,duration:40,ease:"none",repeat:-1}),ts=1;
 lenis.on("scroll",function(e){ts=1+Math.min(Math.abs(e.velocity),25)*.5});
 gsap.ticker.add(function(){ts+=(1-ts)*.05;tw1.timeScale(ts);tw2.timeScale(ts)});
 
 /* horizontal scroll work section */
 ScrollTrigger.matchMedia({"(min-width: 801px)":function(){
-  var d=function(){return Math.max(1,trk.scrollWidth-innerWidth+innerWidth*.1)};
+  var d=function(){return trk.scrollWidth-innerWidth+innerWidth*.1};
   hsT=gsap.to(trk,{x:function(){return -d()},ease:"none",scrollTrigger:{trigger:"#work",pin:true,scrub:.8,start:"top top",end:function(){return "+="+d()},invalidateOnRefresh:true}});
 }});
 })();
