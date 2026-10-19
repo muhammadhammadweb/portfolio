@@ -1,2237 +1,386 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Muhammad Hammad - Personal Portfolio</title>
-
-  <!--
-    - favicon
-  -->
-  <link rel="shortcut icon" href="./assets/images/M.hammad.png" type="image/x-icon" />
-
-  <!--
-    - custom css link
-  -->
-  <link rel="stylesheet" href="./assets/css/style.css" />
-
-  <!--
-    - google font link
-  -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Muhammad Hammad — Web Developer</title>
+<meta name="description" content="Muhammad Hammad — web developer building fast, pixel-perfect WordPress, Shopify, Webflow, Wix, Squarespace and custom PHP websites.">
+<link rel="icon" href="./assets/images/M.hammad.png">
+<style>
+:root{--bg:#07070b;--fg:#f2f2f5;--mut:#8b8b9a;--acc:#7cf5c8;--acc2:#8b7bff;--line:rgba(255,255,255,.1);color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit;margin:0;padding:0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--fg);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+a{color:inherit;text-decoration:none}
+#gl{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+main,nav,footer{position:relative;z-index:1}
+.grain{position:fixed;inset:-50%;z-index:5;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence baseFrequency='.9' numOctaves='2'/></filter><rect width='120' height='120' filter='url(%23n)'/></svg>");animation:g 1s steps(4) infinite}
+@keyframes g{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}}
+#bar{position:fixed;top:0;left:0;height:3px;width:100%;background:linear-gradient(90deg,var(--acc),var(--acc2));transform:scaleX(0);transform-origin:0 50%;z-index:50}
+#loader{position:fixed;inset:0;background:var(--bg);z-index:100;display:flex;align-items:flex-end;justify-content:space-between;padding:6vw;font-size:clamp(4rem,16vw,12rem);font-weight:700;letter-spacing:-.05em}
+#loader small{font-size:.9rem;letter-spacing:.2em;color:var(--mut);font-weight:400;text-transform:uppercase}
+nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:22px 5vw;z-index:20;mix-blend-mode:difference}
+nav .logo{font-weight:700;letter-spacing:-.02em}
+nav ul{display:flex;gap:28px;list-style:none;font-size:.85rem}
+nav ul a{position:relative;padding:4px 0}
+nav ul a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:#fff;transform:scaleX(0);transform-origin:right;transition:transform .4s}
+nav ul a:hover::after{transform:scaleX(1);transform-origin:left}
+#cur,#cur2{position:fixed;top:0;left:0;pointer-events:none;z-index:60;border-radius:50%;mix-blend-mode:difference;background:#fff}
+#cur{width:8px;height:8px;margin:-4px 0 0 -4px}
+#cur2{width:44px;height:44px;margin:-22px 0 0 -22px;background:none;border:1px solid #fff;transition:width .3s,height .3s,margin .3s}
+#cur2.big{width:90px;height:90px;margin:-45px 0 0 -45px;background:#fff}
+@media(hover:none){#cur,#cur2{display:none}}
+section{padding:14vh 5vw}
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:9vh}
+.hero .tag{color:var(--acc);font-size:.85rem;letter-spacing:.25em;text-transform:uppercase;margin-bottom:2vh}
+.hero h1{font-size:clamp(3.2rem,12.5vw,11rem);line-height:.9;letter-spacing:-.05em;font-weight:700}
+.hero h1 .l{display:block;overflow:hidden;padding-bottom:.06em}
+.hero h1 .c{display:inline-block;transform:translateY(110%) rotate(8deg);transition:color .3s}
+.hero h1 .c:hover{color:var(--acc)}
+.hero .sub{display:flex;justify-content:space-between;gap:30px;margin-top:5vh;flex-wrap:wrap;color:var(--mut);max-width:1200px}
+.hero .sub p{max-width:480px;line-height:1.6}
+.scroll{display:flex;align-items:center;gap:10px;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase}
+.scroll i{width:1px;height:46px;background:var(--line);position:relative;overflow:hidden}
+.scroll i::after{content:"";position:absolute;inset:0;background:var(--acc);animation:dr 1.8s infinite}
+@keyframes dr{0%{transform:translateY(-100%)}100%{transform:translateY(100%)}}
+.h{font-size:clamp(2rem,6vw,5rem);letter-spacing:-.04em;line-height:1;font-weight:700}
+.eyebrow{color:var(--acc);font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;margin-bottom:20px}
+.about{display:grid;grid-template-columns:1.2fr 1fr;gap:6vw;align-items:start}
+.about .txt p{font-size:clamp(1.1rem,2.2vw,1.7rem);line-height:1.45;color:var(--mut)}
+.about .txt p .w{transition:color .2s}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.stat{border:1px solid var(--line);border-radius:20px;padding:26px;background:rgba(255,255,255,.03);backdrop-filter:blur(10px)}
+.stat b{display:block;font-size:clamp(2.2rem,5vw,3.8rem);letter-spacing:-.04em}
+.stat span{color:var(--mut);font-size:.85rem}
+.mq{padding:4vh 0;overflow:hidden;border-block:1px solid var(--line);background:rgba(7,7,11,.6);backdrop-filter:blur(8px)}
+.mq .t{display:flex;align-items:center;width:max-content}
+.mq.r .t{margin-top:10px}
+.mq .lg{display:flex;align-items:center;justify-content:center;height:72px;min-width:130px;margin:0 14px;padding:12px 24px;background:rgba(255,255,255,.92);border-radius:16px;opacity:.9;transition:transform .3s,opacity .3s}
+.mq .lg:hover{opacity:1;transform:translateY(-4px)}
+.mq .lg img{height:44px;width:auto;max-width:150px;object-fit:contain;display:block}
+.hs{height:100svh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;padding:0}
+.hs .top{padding:9vh 5vw 3vh}
+.hs .h{font-size:clamp(2rem,4.5vw,3.8rem)}
+.track{display:flex;gap:28px;padding:0 5vw;width:max-content}
+.card{position:relative;flex:none;width:min(78vw,380px);height:clamp(260px,40vh,380px);border-radius:26px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;border:1px solid var(--line);background:#101018;transform-style:preserve-3d;will-change:transform}
+.card .shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;opacity:.6;z-index:0;transition:transform .8s cubic-bezier(.2,.7,.2,1),opacity .4s}
+.card:hover .shot{opacity:.9;transform:scale(1.07)}
+.card::before{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),hsla(var(--h),90%,65%,.45),transparent 55%);opacity:.5;transition:opacity .4s;pointer-events:none}
+.card::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(7,7,11,.95) 0%,rgba(7,7,11,.55) 38%,transparent 70%);pointer-events:none}
+.card:hover::before{opacity:1}
+.card .num{position:absolute;right:-6px;top:-14px;z-index:2;font-size:7rem;font-weight:800;letter-spacing:-.08em;color:hsla(var(--h),90%,80%,.16);line-height:1;pointer-events:none}
+.card>:not(.shot){position:relative;z-index:2}
+.card .num{position:absolute}
+.pill{align-self:flex-start;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;padding:7px 14px;border-radius:99px;border:1px solid var(--line);background:rgba(0,0,0,.45);backdrop-filter:blur(8px)}
+.card h3{font-size:1.7rem;letter-spacing:-.03em;line-height:1.08;transform:translateZ(40px)}
+.card .go{display:flex;justify-content:space-between;align-items:center;margin-top:12px;color:#c9c9d4;font-size:.85rem}
+.card .go b{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#fff;color:#000;transition:transform .4s}
+.card:hover .go b{transform:rotate(-45deg) scale(1.15)}
+.card.off{display:none}
+.tl{margin-top:6vh;position:relative;padding-left:34px;max-width:900px}
+.tl .ln{position:absolute;left:6px;top:6px;bottom:0;width:2px;background:var(--line)}
+.tl .ln i{position:absolute;inset:0;background:linear-gradient(var(--acc),var(--acc2));transform:scaleY(0);transform-origin:top}
+.job{position:relative;padding:0 0 7vh}
+.job::before{content:"";position:absolute;left:-34px;top:8px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:2px solid var(--acc)}
+.job small{color:var(--acc);letter-spacing:.15em;text-transform:uppercase;font-size:.75rem}
+.job h4{font-size:clamp(1.4rem,3vw,2.2rem);margin:8px 0;letter-spacing:-.02em}
+.job p{color:var(--mut);line-height:1.6;max-width:600px}
+.sk{display:flex;flex-wrap:wrap;gap:12px;margin-top:5vh}
+.sk span{padding:14px 24px;border:1px solid var(--line);border-radius:99px;font-size:1.05rem;background:rgba(255,255,255,.03);transition:.3s;cursor:default}
+.sk span:hover{background:var(--acc);color:#000;border-color:var(--acc);transform:translateY(-6px) rotate(-3deg)}
+.contact{min-height:90svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.contact .big{font-size:clamp(2.6rem,11vw,10rem);letter-spacing:-.05em;line-height:.95;font-weight:700}
+.contact .big em{font-style:normal;background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.mag{display:inline-flex;margin-top:6vh;width:170px;height:170px;border-radius:50%;background:var(--acc);color:#000;align-items:center;justify-content:center;font-weight:600;position:relative}
+.links{display:flex;gap:26px;margin-top:6vh;flex-wrap:wrap;justify-content:center;color:var(--mut)}
+.links a:hover{color:var(--acc)}
+footer{padding:30px 5vw;display:flex;justify-content:space-between;color:var(--mut);font-size:.8rem;border-top:1px solid var(--line)}
+@media(max-width:800px){.about{grid-template-columns:1fr}nav ul{display:none}.hs{height:auto;padding:14vh 0}.track{overflow-x:auto;width:100%;scroll-snap-type:x mandatory}.card{scroll-snap-align:center}}
+.dock{position:relative;display:inline-flex;flex-wrap:wrap;gap:4px;margin-top:3vh;padding:6px;border-radius:30px;border:1px solid var(--line);background:rgba(255,255,255,.05);backdrop-filter:blur(14px)}
+.dock button{position:relative;z-index:1;background:none;border:0;color:var(--fg);font:inherit;font-size:.85rem;padding:10px 18px;border-radius:99px;cursor:pointer;transition:color .3s,transform .3s}
+.dock button:hover{transform:translateY(-2px)}
+.dock button.on{color:#000;font-weight:600}
+.dock sup{font-size:.6rem;margin-left:4px;opacity:.6}
+.blob{position:absolute;z-index:0;top:0;left:0;width:0;height:0;border-radius:99px;background:var(--acc);box-shadow:0 0 34px var(--acc);margin:6px 0 0 6px}
+.cnt{margin-left:22px;color:var(--mut);font-variant-numeric:tabular-nums;font-size:.9rem;letter-spacing:.1em}
+@media(prefers-reduced-motion:reduce){.grain{animation:none}}
+</style>
 </head>
-
 <body>
-  <!--
-    - #MAIN
-  -->
-
-  <main>
-    <!--
-      - #SIDEBAR
-    -->
-
-    <aside class="sidebar" data-sidebar>
-      <div class="sidebar-info">
-        <figure class="avatar-box">
-          <img src="./assets/images/M.hammad.png" alt="Muhammad Hammad" width="80" />
-        </figure>
-
-        <div class="info-content">
-          <h1 class="name" title="Muhammad Hammad">Muhammad<br />Hammad</h1>
-
-          <p class="title">Web developer</p>
-        </div>
-
-        <button class="info_more-btn" data-sidebar-btn>
-          <span>Show Contacts</span>
-
-          <ion-icon name="chevron-down"></ion-icon>
-        </button>
-      </div>
-
-      <div class="sidebar-info_more">
-        <div class="separator"></div>
-
-        <ul class="contacts-list">
-          <li class="contact-item">
-            <div class="icon-box">
-              <ion-icon name="mail-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Email</p>
-
-              <a href="mailto:hammadyaseen949@gmail.com" class="contact-link">hammadyaseen949@gmail.com</a>
-            </div>
-          </li>
-
-          <li class="contact-item">
-            <div class="icon-box">
-              <ion-icon name="phone-portrait-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Phone</p>
-
-              <a href="tel:+923482829845" class="contact-link">+92 3482829845</a>
-            </div>
-          </li>
-
-          <li class="contact-item">
-            <div class="icon-box">
-              <ion-icon name="calendar-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Birthday</p>
-
-              <time datetime="1999-02-18">Feb 18, 1999</time>
-            </div>
-          </li>
-
-          <li class="contact-item">
-            <div class="icon-box">
-              <ion-icon name="location-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Location</p>
-
-              <address>C-68/2 Malir Colony Karachi</address>
-            </div>
-          </li>
-        </ul>
-
-        <div class="separator"></div>
-
-        <ul class="social-list">
-          <li class="social-item">
-            <a href="https://www.linkedin.com/in/muhammadhammad479/" class="social-link">
-              <ion-icon name="logo-linkedin"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://www.facebook.com/hammad707?mibextid=ZbWKwL" class="social-link">
-              <ion-icon name="logo-facebook"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://www.instagram.com/hammad_yaceen" class="social-link">
-              <ion-icon name="logo-instagram"></ion-icon>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </aside>
-
-    <!--
-      - #main-content
-    -->
-
-    <div class="main-content">
-
-      <!--
-        - #ABOUT
-      -->
-
-      <article class="about active" data-page="about">
-        <nav class="navbar">
-          <ul class="navbar-list">
-            <li class="navbar-item">
-              <button class="navbar-link active" data-nav-link data-target="about">
-                <ion-icon name="person-outline"></ion-icon>
-                <span>About</span>
-              </button>
-            </li>
-
-            <li class="navbar-item">
-              <button class="navbar-link" data-nav-link data-target="resume">
-                <ion-icon name="document-text-outline"></ion-icon>
-                <span>Resume</span>
-              </button>
-            </li>
-
-            <li class="navbar-item">
-              <button class="navbar-link" data-nav-link data-target="portfolio">
-                <ion-icon name="grid-outline"></ion-icon>
-                <span>Portfolio</span>
-              </button>
-            </li>
-
-            <li class="navbar-item">
-              <button class="navbar-link" data-nav-link data-target="contact">
-                <ion-icon name="mail-outline"></ion-icon>
-                <span>Contact</span>
-              </button>
-            </li>
-          </ul>
-        </nav>
-
-        <header>
-          <h2 class="h2 article-title">About me</h2>
-        </header>
-
-        <section class="about-text">
-          <p>
-            I’m Muhammad Hammad, a Website Developer with extensive experience in creating responsive, user-friendly
-            websites using platforms like WordPress, Webflow, Shopify, Wix, and Squarespace. I specialize in turning
-            designs from PSD, XD, or Figma into functional websites with clean, efficient code and seamless
-            functionality. My expertise includes customizing WordPress themes and plugins, integrating custom post
-            types, and working with popular page builders like Elementor, Kadence Blocks, Divi, and WP Bakery.
-          </p>
-
-          <p>
-            Beyond WordPress, I’m skilled in Webflow development, creating dynamic sites with its CMS for custom
-            listings and post types. I have a strong foundation in HTML, CSS, JavaScript basics, jQuery basics, and PHP
-            basics, allowing me to handle both front-end and back-end tasks effectively. Additionally, I’ve managed
-            e-commerce platforms like WooCommerce, Shopify, and Square.com, setting up and optimizing online stores with
-            ease.
-          </p>
-
-          <p>
-            I’m passionate about crafting visually appealing, high-quality websites that prioritize user experience. I
-            love solving problems and focusing on the smallest details to ensure every project meets the highest
-            standards. If you’d like to collaborate or discuss opportunities, let’s connect!
-          </p>
-        </section>
-
-        <!--
-          - service
-        -->
-
-        <section class="service">
-          <h3 class="h3 service-title">What i'm doing</h3>
-
-          <ul class="service-list">
-            <li class="service-item">
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-design.svg" alt="design icon" width="40" />
-              </div>
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Website Development</h4>
-                <p class="service-item-text">
-                  Developing responsive websites by transforming PSD, XD, or Figma designs into functional pages.
-                </p>
-              </div>
-            </li>
-
-            <li class="service-item">
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-dev.svg" alt="Web development icon" width="40" />
-              </div>
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Web Server & Optimization</h4>
-                <p class="service-item-text">
-                  Managing domains, hosting, and servers across platforms ensuring proper setup and deployment.
-                </p>
-              </div>
-            </li>
-
-            <li class="service-item">
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-app.svg" alt="mobile app icon" width="40" />
-              </div>
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">CMS Development</h4>
-                <p class="service-item-text">
-                  Enhancing CMS platforms using JavaScript, jQuery, and PHP for custom logic and features.
-                </p>
-              </div>
-            </li>
-
-            <li class="service-item">
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-photo.svg" alt="camera icon" width="40" />
-              </div>
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">E-Commerce & POS</h4>
-                <p class="service-item-text">
-                  Creating and optimizing online stores with WooCommerce, Shopify, and Square.
-                </p>
-              </div>
-            </li>
-
-            <li class="service-item">
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-design.svg" alt="design icon" width="40" />
-              </div>
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">On-Page SEO & Graphics</h4>
-                <p class="service-item-text">
-                  Improving website rankings through content optimization and modern visuals.
-                </p>
-              </div>
-            </li>
-
-            <li class="service-item">
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-app.svg" alt="design icon" width="40" />
-              </div>
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Collaboration</h4>
-                <p class="service-item-text">
-                  Utilizing tools like MS Teams, Slack, Trello, and Asana to streamline workflow.
-                </p>
-              </div>
-            </li>
-          </ul>
-        </section>
-
-        <!--
-          - testimonials
-        -->
-
-        <section class="testimonials">
-          <h3 class="h3 testimonials-title">Testimonials</h3>
-
-          <div class="swiper testimonials-slider">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <div class="content-card">
-                  <figure class="testimonials-avatar-box">
-                    <img src="./assets/images/avatar-1.png" alt="Naveed Zafar" width="60" />
-                  </figure>
-                  <h4 class="h4 testimonials-item-title">Naveed Zafar</h4>
-                  <div class="testimonials-text">
-                    <p>I've worked closely with Muhammad Hammad on CMS development projects. Highly recommended!</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="swiper-slide">
-                <div class="content-card">
-                  <figure class="testimonials-avatar-box">
-                    <img src="./assets/images/avatar-2.png" alt="Marina" width="60" />
-                  </figure>
-                  <h4 class="h4 testimonials-item-title">Marina</h4>
-                  <div class="testimonials-text">
-                    <p>Recently worked on a WordPress project. He is a senior developer and highly recommended.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="swiper-slide">
-                <div class="content-card">
-                  <figure class="testimonials-avatar-box">
-                    <img src="./assets/images/avatar-3.png" alt="Amna Tariq" width="60" />
-                  </figure>
-                  <h4 class="h4 testimonials-item-title">Amna Tariq</h4>
-                  <div class="testimonials-text">
-                    <p>Deep knowledge of CMS platforms, particularly WordPress, combined with excellent problem-solving.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="swiper-slide">
-                <div class="content-card">
-                  <figure class="testimonials-avatar-box">
-                    <img src="./assets/images/avatar-4.png" alt="Wajid Ali" width="60" />
-                  </figure>
-                  <h4 class="h4 testimonials-item-title">Wajid Ali</h4>
-                  <div class="testimonials-text">
-                    <p>Dedicated and hardworking developer. Problem-solving prowess and innovative thinking.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Pagination dots -->
-            <div class="swiper-pagination"></div>
-          </div>
-        </section>
-
-        <!--
-          - clients
-        -->
-
-        <section class="clients">
-          <h3 class="h3 clients-title">Clients</h3>
-
-          <div class="clients-marquee">
-            <ul class="marquee-track" data-marquee-track>
-
-              <!-- ===== New projects ===== -->
-              <li class="marquee-item"><a href="https://ausnrg.com.au/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/ausnrg.png" alt="AUS NRG" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://lighthousepropertywatch.com/" target="_blank"
-                  rel="noopener"><img src="./assets/images/Clients-logo/lighthouse.webp" alt="Lighthouse Property Watch"
-                    loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://aiacontracts.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/aiacontracts.png" alt="AIA Contracts" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://clearvucam.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/clearvucam.webp" alt="ClearVu Cam" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://www.lawwriting.co.uk/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/lawwriting.webp" alt="Law Writing" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://wanlin.com.au/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/wanlin.png" alt="Wanlin" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://abzgate.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/abzgate.png" alt="Abzgate" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://www.bestassignmentwriters.co.uk/" target="_blank"
-                  rel="noopener"><img src="./assets/images/Clients-logo/bestassignmentwriters.webp"
-                    alt="Best Assignment Writers" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://cannybookwriters.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/cannybookwriters.png" alt="Canny Book Writers"
-                    loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://prismlights.shop/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/prismlights.png" alt="Prism Lights" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://theshowmeexpo.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/theshowmeexpo.png" alt="The Show Me Expo" loading="lazy" /></a>
-              </li>
-              <li class="marquee-item"><a href="https://walsallwallexperts.co.uk/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/walsallwallexperts.png" alt="Walsall Wall Experts"
-                    loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="http://winningcommerce.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/winningcommerce.png" alt="Winning Commerce" loading="lazy" /></a>
-              </li>
-              <li class="marquee-item"><a href="https://www.dissertationwritingace.co.uk/" target="_blank"
-                  rel="noopener"><img src="./assets/images/Clients-logo/dissertationwritingace.webp"
-                    alt="Dissertation Writing Ace" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://assignmenthelpzone.co.uk/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/assignmenthelpzone.webp" alt="Assignment Help Zone"
-                    loading="lazy" /></a></li>
-
-              <!-- ===== Squarespace ===== -->
-              <li class="marquee-item"><a href="https://www.davidnealmcphee.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/davidnealmcphee.webp" alt="David Neal McPhee"
-                    loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://www.colincmckay.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/colincmckay.webp" alt="Colin C. McKay" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://www.padel360.com.au/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/padel360.webp" alt="Padel 360" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://www.choicehealthwellness.com/" target="_blank"
-                  rel="noopener"><img src="./assets/images/Clients-logo/choicehealthwellness.webp"
-                    alt="Choice Health &amp; Wellness" loading="lazy" /></a></li>
-
-              <!-- ===== WordPress ===== -->
-              <li class="marquee-item"><a href="https://ilregnodoratokennel.it/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/ilregnodoratokennel.png" alt="Il Regno Dorato Kennel"
-                    loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://globalcitation.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/globalcitation.png" alt="Global Citation" loading="lazy" /></a>
-              </li>
-              <li class="marquee-item"><a href="https://ipack.com.sa/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/ipack.png" alt="iPack" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://renodomi.nl/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/rendomi.png" alt="Renodomi" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://delis.co.in/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/delis.webp" alt="Delis" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://utility-select.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/utility-select.png" alt="Utility Select" loading="lazy" /></a>
-              </li>
-              <li class="marquee-item"><a href="https://aeromaritimegroup.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/aeromaritimegroup.png" alt="Aero Maritime Group"
-                    loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://garagedijkhuizen.nl/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/garagedijkhuizen.png" alt="Garage Dijkhuizen"
-                    loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://punkworx.org.uk/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/punkworx.png" alt="Punkworx" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://sky-acp.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/sky-acp.png" alt="Sky ACP" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://aliorstudio.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/aliorstudio.png" alt="Alior Studio" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://rock-blues-jazz-gambarogno.ch/" target="_blank"
-                  rel="noopener"><img src="./assets/images/Clients-logo/rock-blues-jazz.png"
-                    alt="Rock Blues Jazz Gambarogno" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://drmarinaborisenko.com.au/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/drmarinaborisenko.png" alt="Dr. Marina Borisenko"
-                    loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://paintingbymoli.com.au/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/paintingbymoli.webp" alt="Painting By Moli" loading="lazy" /></a>
-              </li>
-              <li class="marquee-item"><a href="https://riseinconfidence.org/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/riseinconfidence.png" alt="Rise In Confidence"
-                    loading="lazy" /></a></li>
-
-              <!-- ===== Shopify ===== -->
-              <li class="marquee-item"><a href="https://www.completedetox.co.uk/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/completedetox.png" alt="Complete Detox" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://forefrontlabel.ca/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/forefrontlabel.png" alt="Forefront Label" loading="lazy" /></a>
-              </li>
-              <li class="marquee-item"><a href="https://nordpure.com/gb-en" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/nordpure.webp" alt="Nordpure" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://fieldandfirecoffee.co.uk/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/fieldandfirecoffee.png" alt="Field &amp; Fire Coffee"
-                    loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://customvarsityjackets.co.uk/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/customvarsityjackets.png" alt="Custom Varsity Jackets"
-                    loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://www.enduosports.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/enduosports.png" alt="Enduo Sports" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://deemedfit.co/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/deemedfit.png" alt="Deemed Fit" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://florawell.co.uk/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/florawell.png" alt="Florawell" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://ruanorte.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/ruanorte.png" alt="Rua Norte" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://www.loveself.uk/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/loveself.png" alt="LoveSelf" loading="lazy" /></a></li>
-
-              <!-- ===== Custom HTML/PHP ===== -->
-              <li class="marquee-item"><a href="https://scopusjournalpublisher.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/scopusjournalpublisher.png" alt="Scopus Journal Publisher"
-                    loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://nursingassignmentswriter.co.uk/" target="_blank"
-                  rel="noopener"><img src="./assets/images/Clients-logo/nursingassignmentswriter.png"
-                    alt="Nursing Assignments Writer" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://personalstatementexperts.com/" target="_blank"
-                  rel="noopener"><img src="./assets/images/Clients-logo/personalstatementexperts.png"
-                    alt="Personal Statement Experts" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://theacademicassistance.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/theacademicassistance.png" alt="The Academic Assistance"
-                    loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://nexodesigns.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/nexodesigns.png" alt="Nexo Design" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://souzet.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/souzet.png" alt="Souzet" loading="lazy" /></a></li>
-
-              <!-- ===== Wix + Webflow ===== -->
-              <li class="marquee-item"><a href="https://www.everacoaching.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/everacoaching.png" alt="Evera Coaching" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://www.imyoo.health/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/imyoo.png" alt="iMyoo Health" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://www.thenibblesapp.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/thenibblesapp.png" alt="The Nibbles App" loading="lazy" /></a>
-              </li>
-              <li class="marquee-item"><a href="https://xomalabs-com.webflow.io/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/xomalabs.png" alt="Xoma Labs" loading="lazy" /></a></li>
-
-              <!-- ===== Previous projects ===== -->
-              <li class="marquee-item"><a href="https://playusapp.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/playusapp.png" alt="PlayUs" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://martinezlegal.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/martinezlegal.webp" alt="Martinez Legal" loading="lazy" /></a>
-              </li>
-              <li class="marquee-item"><a href="https://britainacademics.co.uk/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/britainacademics.png" alt="Britain Academics"
-                    loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://kirkcaldytaxis.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/kirkcaldytaxis.png" alt="Kirkcaldy Taxis" loading="lazy" /></a>
-              </li>
-              <li class="marquee-item"><a href="https://ahlesa.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/ahlesa.png" alt="Ahlesa" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://theclasstaker.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/theclasstaker.webp" alt="The Class Taker" loading="lazy" /></a>
-              </li>
-              <li class="marquee-item"><a href="https://academicwisdom.co.uk/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/academicwisdom.png" alt="Academic Wisdom" loading="lazy" /></a>
-              </li>
-              <li class="marquee-item"><a href="https://mecdemag.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/mecdemag.jpg" alt="MEC Demag" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://thespecterink.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/thespecterink.png" alt="The Specterink" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://thegraphicconcept.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/thegraphicconcept.webp" alt="The Graphic Concept"
-                    loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://saveourchildreneducationsierraleone.org/" target="_blank"
-                  rel="noopener"><img src="./assets/images/Clients-logo/saveourchildreneducationsierraleone.png"
-                    alt="Save Our Children Education Sierra Leone" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://absoltech.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/absoltech.png" alt="Absol Tech" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://badegg.ie/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/badegg.png" alt="Bad Egg" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://cloud9shishalounge.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/cloud9shishalounge.webp" alt="Cloud 9 Shisha Lounge"
-                    loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://thriversity.ie/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/thriversity.png" alt="Thriversity" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://careerssafari.com.au/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/careerssafari.png" alt="Careers Safari" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://teachlearnresearch.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/teachlearnresearch.png" alt="Teach Learn Research"
-                    loading="lazy" /></a></li>
-
-              <!-- ===== Original clients ===== -->
-              <li class="marquee-item"><a href="https://thepointkitchen.ie/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/tpk.png" alt="The Point Kitchen" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://auadviser.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/auadviser.png" alt="AU Adviser" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://solarcraft.ie/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/solar-craft.png" alt="Solar Craft" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://sohogrill.pk/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/soho-brand.png" alt="Soho Grill" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://nexomos.com/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/nexomos-logo1.png" alt="Nexomos" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="https://juicetogo.ca/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/juice-footer.png" alt="Juice To Go" loading="lazy" /></a></li>
-              <li class="marquee-item"><a href="http://synko.tech/" target="_blank" rel="noopener"><img
-                    src="./assets/images/Clients-logo/Logo-Synko.png" alt="Synko" loading="lazy" /></a></li>
-
-            </ul>
-          </div>
-
-        </section>
-      </article>
-
-      <!--
-        - #RESUME
-      -->
-
-      <article class="resume" data-page="resume">
-        <nav class="navbar">
-          <ul class="navbar-list">
-            <li class="navbar-item">
-              <button class="navbar-link active" data-nav-link data-target="about">
-                <ion-icon name="person-outline"></ion-icon>
-                <span>About</span>
-              </button>
-            </li>
-
-            <li class="navbar-item">
-              <button class="navbar-link" data-nav-link data-target="resume">
-                <ion-icon name="document-text-outline"></ion-icon>
-                <span>Resume</span>
-              </button>
-            </li>
-
-            <li class="navbar-item">
-              <button class="navbar-link" data-nav-link data-target="portfolio">
-                <ion-icon name="grid-outline"></ion-icon>
-                <span>Portfolio</span>
-              </button>
-            </li>
-
-            <li class="navbar-item">
-              <button class="navbar-link" data-nav-link data-target="contact">
-                <ion-icon name="mail-outline"></ion-icon>
-                <span>Contact</span>
-              </button>
-            </li>
-          </ul>
-        </nav>
-
-        <header>
-          <h2 class="h2 article-title">Resume</h2>
-        </header>
-
-        <!-- EDUCATION SECTION -->
-        <section class="timeline-section">
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
-            </div>
-            <h3 class="h3">Education</h3>
-          </div>
-
-          <ol class="timeline-list">
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">Benazir Bhutto Shaheed University Lyari, Karachi</h4>
-              <span>2019 — 2022</span>
-              <p class="timeline-text">BS Computer Science</p>
-            </li>
-
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">Aisha Bawany Govt. College (Morning)</h4>
-              <span>2018</span>
-              <p class="timeline-text">Intermediate (Computer Science)</p>
-            </li>
-
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">Faliq ul Isbah Academy</h4>
-              <span>2016</span>
-              <p class="timeline-text">Matriculation (Science)</p>
-            </li>
-          </ol>
-        </section>
-
-        <!-- EXPERIENCE SECTION -->
-        <section class="timeline-section">
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="briefcase-outline"></ion-icon>
-            </div>
-            <h3 class="h3">Experience</h3>
-          </div>
-
-          <ol class="timeline-list">
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">CMS Developer <span>| Divinatory Solutions</span></h4>
-              <span>February 2026 — Present</span>
-              <ul class="timeline-text-list">
-                <li>Built CMS solutions using AI prompt engineering for rapid code generation.</li>
-                <li>Developed custom scripts, conditional logic, and modified plugins and themes for dynamic workflows.
-                </li>
-                <li>Managed theme customizations, WooCommerce, and complex site features.</li>
-              </ul>
-            </li>
-
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">CMS/Frontend Developer <span>| DevOp360</span></h4>
-              <span>April 2025 — January 2026</span>
-              <ul class="timeline-text-list">
-                <li>Worked on WordPress, Webflow, and Shopify sites with clean UI/UX standards.</li>
-                <li>Built responsive layouts with HTML, CSS, Bootstrap, and JavaScript.</li>
-                <li>Customized WordPress sites with WooCommerce and LMS features.</li>
-              </ul>
-            </li>
-
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">Website Developer <span>| Nexomos</span></h4>
-              <span>August 2023 — March 2025</span>
-              <ul class="timeline-text-list">
-                <li>Developed and customized WordPress websites for multiple clients.</li>
-                <li>Built and managed WooCommerce-based eCommerce stores.</li>
-                <li>Handled website optimization, basic security, and regular maintenance.</li>
-              </ul>
-            </li>
-          </ol>
-        </section>
-
-        <!-- SKILLS SECTION -->
-        <section class="skill">
-          <h3 class="h3 skills-title">My Skills</h3>
-
-          <ul class="skills-list content-card">
-            <li class="skills-item">
-              <div class="title-wrapper">
-                <h5 class="h5">Front-End CMS Development</h5>
-                <data value="90">90%</data>
-              </div>
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 90%;"></div>
-              </div>
-            </li>
-
-            <li class="skills-item">
-              <div class="title-wrapper">
-                <h5 class="h5">SaaS / CMS Tools Integration</h5>
-                <data value="80">80%</data>
-              </div>
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 80%;"></div>
-              </div>
-            </li>
-
-            <li class="skills-item">
-              <div class="title-wrapper">
-                <h5 class="h5">Website Optimization & On-Page SEO</h5>
-                <data value="90">90%</data>
-              </div>
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 90%;"></div>
-              </div>
-            </li>
-
-            <li class="skills-item">
-              <div class="title-wrapper">
-                <h5 class="h5">CMS Customization (JavaScript / PHP)</h5>
-                <data value="70">70%</data>
-              </div>
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 70%;"></div>
-              </div>
-            </li>
-          </ul>
-        </section>
-      </article>
-
-      <!--
-        - #PORTFOLIO
-      -->
-
-      <article class="portfolio" data-page="portfolio">
-        <nav class="navbar">
-          <ul class="navbar-list">
-            <li class="navbar-item">
-              <button class="navbar-link active" data-nav-link data-target="about">
-                <ion-icon name="person-outline"></ion-icon>
-                <span>About</span>
-              </button>
-            </li>
-
-            <li class="navbar-item">
-              <button class="navbar-link" data-nav-link data-target="resume">
-                <ion-icon name="document-text-outline"></ion-icon>
-                <span>Resume</span>
-              </button>
-            </li>
-
-            <li class="navbar-item">
-              <button class="navbar-link" data-nav-link data-target="portfolio">
-                <ion-icon name="grid-outline"></ion-icon>
-                <span>Portfolio</span>
-              </button>
-            </li>
-
-            <li class="navbar-item">
-              <button class="navbar-link" data-nav-link data-target="contact">
-                <ion-icon name="mail-outline"></ion-icon>
-                <span>Contact</span>
-              </button>
-            </li>
-          </ul>
-        </nav>
-
-        <header>
-          <h2 class="h2 article-title">Portfolio</h2>
-        </header>
-
-        <section class="projects">
-          <!-- Filter Buttons -->
-          <ul class="filter-list">
-            <li class="filter-item">
-              <button class="active" data-filter-btn>All</button>
-            </li>
-            <li class="filter-item">
-              <button data-filter-btn>WordPress</button>
-            </li>
-            <li class="filter-item">
-              <button data-filter-btn>Shopify</button>
-            </li>
-            <li class="filter-item">
-              <button data-filter-btn>Squarespace</button>
-            </li>
-            <li class="filter-item">
-              <button data-filter-btn>Wix</button>
-            </li>
-            <li class="filter-item">
-              <button data-filter-btn>Webflow</button>
-            </li>
-            <li class="filter-item">
-              <button data-filter-btn>Custom</button>
-            </li>
-          </ul>
-
-          <!-- Select Box for Mobile -->
-          <div class="filter-select-box">
-            <button class="filter-select" data-select>
-              <div class="select-value" data-selecct-value>
-                Select category
-              </div>
-              <div class="select-icon">
-                <ion-icon name="chevron-down"></ion-icon>
-              </div>
-            </button>
-
-            <ul class="select-list">
-              <li class="select-item">
-                <button data-select-item>All</button>
-              </li>
-              <li class="select-item">
-                <button data-select-item>wordpress</button>
-              </li>
-              <li class="select-item">
-                <button data-select-item>shopify</button>
-              </li>
-              <li class="select-item">
-                <button data-select-item>squarespace</button>
-              </li>
-              <li class="select-item">
-                <button data-select-item>wix</button>
-              </li>
-              <li class="select-item">
-                <button data-select-item>webflow</button>
-              </li>
-              <li class="select-item">
-                <button data-select-item>custom</button>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Project List -->
-          <ul class="project-list">
-            <!-- ==== New Client Websites ==== -->
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://ausnrg.com.au/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/ausnrg.png" alt="AUS NRG" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">AUS NRG</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://lighthousepropertywatch.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/lighthouse.png" alt="Lighthouse Property Watch" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Lighthouse Property Watch</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://aiacontracts.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/aiacontracts.png" alt="AIA Contracts" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">AIA Contracts</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://clearvucam.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/clearvucam.png" alt="ClearVu Cam" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">ClearVu Cam</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="custom">
-              <a href="https://www.lawwriting.co.uk/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge custom">Custom HTML/PHP</div>
-                  <img src="./assets/images/projects/lawwriting.png" alt="Law Writing" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Law Writing</h3>
-
-                <p class="project-category">Custom HTML/PHP project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://wanlin.com.au/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/wanlin.png" alt="Wanlin" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Wanlin</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://abzgate.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/abzgate.png" alt="Abzgate" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Abzgate</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="custom">
-              <a href="https://www.bestassignmentwriters.co.uk/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge custom">Custom HTML/PHP</div>
-                  <img src="./assets/images/projects/bestassignment.png" alt="Best Assignment Writers" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Best Assignment Writers</h3>
-
-                <p class="project-category">Custom HTML/PHP project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://cannybookwriters.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/cannybookwriting.png" alt="Canny Book Writers" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Canny Book Writers</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="shopify">
-              <a href="https://prismlights.shop/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge shopify">Shopify</div>
-                  <img src="./assets/images/projects/prismlights.png" alt="Prism Lights" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Prism Lights</h3>
-
-                <p class="project-category">Shopify project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://theshowmeexpo.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/showmewatersportsexpo.png" alt="The Show Me Expo" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">The Show Me Expo</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://walsallwallexperts.co.uk/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/walsallwallexperts.png" alt="Walsall Wall Experts"
-                    loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Walsall Wall Experts</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="shopify">
-              <a href="http://winningcommerce.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge shopify">Shopify</div>
-                  <img src="./assets/images/projects/winningcommerce.png" alt="Winning Commerce" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Winning Commerce</h3>
-
-                <p class="project-category">Shopify project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="custom">
-              <a href="https://www.dissertationwritingace.co.uk/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge custom">Custom HTML/PHP</div>
-                  <img src="./assets/images/projects/dissertationwriting.png" alt="Dissertation Writing Ace"
-                    loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Dissertation Writing Ace</h3>
-
-                <p class="project-category">Custom HTML/PHP project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="custom">
-              <a href="https://assignmenthelpzone.co.uk/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge custom">Custom HTML/PHP</div>
-                  <img src="./assets/images/projects/assignmenthelpzone.png" alt="Assignment Help Zone"
-                    loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Assignment Help Zone</h3>
-
-                <p class="project-category">Custom HTML/PHP project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="squarespace">
-              <a href="https://www.davidnealmcphee.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge squarespace">Squarespace</div>
-                  <img src="./assets/images/projects/sq-davidnealmcphee.png" alt="David Neal McPhee" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">David Neal McPhee</h3>
-
-                <p class="project-category">Squarespace project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="squarespace">
-              <a href="https://www.colincmckay.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge squarespace">Squarespace</div>
-                  <img src="./assets/images/projects/sq-colincmckay.png" alt="Colin C. McKay" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Colin C. McKay</h3>
-
-                <p class="project-category">Squarespace project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="squarespace">
-              <a href="https://www.padel360.com.au/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge squarespace">Squarespace</div>
-                  <img src="./assets/images/projects/sq-padel360.png" alt="Padel 360" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Padel 360</h3>
-
-                <p class="project-category">Squarespace project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="squarespace">
-              <a href="https://www.choicehealthwellness.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge squarespace">Squarespace</div>
-                  <img src="./assets/images/projects/choicehealthwellness.png" alt="Choice Health & Wellness"
-                    loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Choice Health & Wellness</h3>
-
-                <p class="project-category">Squarespace project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://ilregnodoratokennel.it/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/wp-ilregnodoratokennel.png" alt="Il Regno Dorato Kennel"
-                    loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Il Regno Dorato Kennel</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="custom">
-              <a href="https://globalcitation.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge custom">Custom HTML/PHP</div>
-                  <img src="./assets/images/projects/wp-globalcitation.png" alt="Global Citation" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Global Citation</h3>
-
-                <p class="project-category">Custom HTML/PHP project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://ipack.com.sa/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/wp-ipack.png" alt="iPack" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">iPack</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://renodomi.nl/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/wp-renodomi.png" alt="Renodomi" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Renodomi</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://delis.co.in/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/wp-delis.png" alt="Delis" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Delis</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://utility-select.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/utility-select.png" alt="Utility Select" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Utility Select</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://aeromaritimegroup.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/wp-aeromaritimegroup.png" alt="Aero Maritime Group"
-                    loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Aero Maritime Group</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://garagedijkhuizen.nl/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/wp-garagedijkhuizen.png" alt="Garage Dijkhuizen" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Garage Dijkhuizen</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://punkworx.org.uk/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/wp-punkworx.png" alt="Punkworx" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Punkworx</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://sky-acp.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/wp-sky-acp.png" alt="Sky ACP" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Sky ACP</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://aliorstudio.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/wp-aliorstudio.png" alt="Alior Studio" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Alior Studio</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://rock-blues-jazz-gambarogno.ch/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/wp-rock-blues-jazz.png" alt="Rock Blues Jazz Gambarogno"
-                    loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Rock Blues Jazz Gambarogno</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://drmarinaborisenko.com.au/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/wp-drmarinaborisenko.png" alt="Dr. Marina Borisenko"
-                    loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Dr. Marina Borisenko</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://paintingbymoli.com.au/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/wp-paintingbymoli.png" alt="Painting By Moli" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Painting By Moli</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://riseinconfidence.org/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/wp-riseinconfidence.png" alt="Rise In Confidence" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Rise In Confidence</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://new.ipack.com.sa/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/wp-new-ipack.png" alt="iPack (New)" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">iPack (New)</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://agaradvisory.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/wp-agaradvisory.png" alt="Agar Advisory" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Agar Advisory</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://martinkaonga.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/wp-martinkaonga.png" alt="Martin Kaonga" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Martin Kaonga</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="shopify">
-              <a href="https://www.completedetox.co.uk/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge shopify">Shopify</div>
-                  <img src="./assets/images/projects/sp-completedetox.png" alt="Complete Detox" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Complete Detox</h3>
-
-                <p class="project-category">Shopify project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="shopify">
-              <a href="https://forefrontlabel.ca/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge shopify">Shopify</div>
-                  <img src="./assets/images/projects/sp-forefrontlabel.png" alt="Forefront Label" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Forefront Label</h3>
-
-                <p class="project-category">Shopify project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="shopify">
-              <a href="https://nordpure.com/gb-en" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge shopify">Shopify</div>
-                  <img src="./assets/images/projects/sp-nordpure.png" alt="Nordpure" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Nordpure</h3>
-
-                <p class="project-category">Shopify project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="shopify">
-              <a href="https://fieldandfirecoffee.co.uk/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge shopify">Shopify</div>
-                  <img src="./assets/images/projects/sp-fieldandfirecoffee.png" alt="Field & Fire Coffee"
-                    loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Field & Fire Coffee</h3>
-
-                <p class="project-category">Shopify project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="shopify">
-              <a href="https://customvarsityjackets.co.uk/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge shopify">Shopify</div>
-                  <img src="./assets/images/projects/sp-customvarsityjackets.png" alt="Custom Varsity Jackets"
-                    loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Custom Varsity Jackets</h3>
-
-                <p class="project-category">Shopify project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="shopify">
-              <a href="https://www.enduosports.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge shopify">Shopify</div>
-                  <img src="./assets/images/projects/sp-enduosports.png" alt="Enduo Sports" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Enduo Sports</h3>
-
-                <p class="project-category">Shopify project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="shopify">
-              <a href="https://deemedfit.co/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge shopify">Shopify</div>
-                  <img src="./assets/images/projects/sp-deemedfit.png" alt="Deemed Fit" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Deemed Fit</h3>
-
-                <p class="project-category">Shopify project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="shopify">
-              <a href="https://florawell.co.uk/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge shopify">Shopify</div>
-                  <img src="./assets/images/projects/sp-florawell.png" alt="Florawell" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Florawell</h3>
-
-                <p class="project-category">Shopify project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="shopify">
-              <a href="https://ruanorte.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge shopify">Shopify</div>
-                  <img src="./assets/images/projects/sp-ruanorte.png" alt="Rua Norte" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Rua Norte</h3>
-
-                <p class="project-category">Shopify project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="custom">
-              <a href="https://scopusjournalpublisher.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge custom">Custom HTML/PHP</div>
-                  <img src="./assets/images/projects/custom-scopusjournal.png" alt="Scopus Journal Publisher"
-                    loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Scopus Journal Publisher</h3>
-
-                <p class="project-category">Custom HTML/PHP project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="custom">
-              <a href="https://nursingassignmentswriter.co.uk/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge custom">Custom HTML/PHP</div>
-                  <img src="./assets/images/projects/custom-nursingassignments.png" alt="Nursing Assignments Writer"
-                    loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Nursing Assignments Writer</h3>
-
-                <p class="project-category">Custom HTML/PHP project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="custom">
-              <a href="https://personalstatementexperts.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge custom">Custom HTML/PHP</div>
-                  <img src="./assets/images/projects/custom-personalstatement.png" alt="Personal Statement Experts"
-                    loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Personal Statement Experts</h3>
-
-                <p class="project-category">Custom HTML/PHP project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wix">
-              <a href="https://www.everacoaching.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wix">Wix</div>
-                  <img src="./assets/images/projects/evera-coaching.png" alt="Evera Coaching" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Evera Coaching</h3>
-
-                <p class="project-category">Wix project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wix">
-              <a href="https://www.imyoo.health/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wix">Wix</div>
-                  <img src="./assets/images/projects/imyo-health.png" alt="iMyoo Health" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">iMyoo Health</h3>
-
-                <p class="project-category">Wix project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="webflow">
-              <a href="https://www.thenibblesapp.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge webflow">Webflow</div>
-                  <img src="./assets/images/projects/wf-thenibblesapp.png" alt="The Nibbles App" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">The Nibbles App</h3>
-
-                <p class="project-category">Webflow project.</p>
-              </a>
-            </li>
-
-            <!-- ==== Previous Projects ==== -->
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://playusapp.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/playuss.png" alt="PlayUs" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">PlayUs</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://martinezlegal.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/martinez.png" alt="Martinez Legal" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Martinez Legal</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="custom">
-              <a href="https://souzet.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge custom">Custom HTML/PHP</div>
-                  <img src="./assets/images/projects/souzet.png" alt="Souzet" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Souzet</h3>
-
-                <p class="project-category">Custom HTML/PHP project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://britainacademics.co.uk/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/britain-acad.png" alt="Britain Academics" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Britain Academics</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://kirkcaldytaxis.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/taxi.png" alt="Kirkcaldy Taxis" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Kirkcaldy Taxis</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://ahlesa.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/ahlesa.png" alt="Ahlesa" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Ahlesa</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://theclasstaker.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/theclasstaker.png" alt="The Class Taker" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">The Class Taker</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://academicwisdom.co.uk/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/academic-wisdom.png" alt="Academic Wisdom" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Academic Wisdom</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://mecdemag.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/mecdemag.png" alt="MEC Demag" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">MEC Demag</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://thespecterink.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/thespecter.png" alt="The Specterink" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">The Specterink</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://thegraphicconcept.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/thegraphics.png" alt="The Graphic Concept" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">The Graphic Concept</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="custom">
-              <a href="https://theacademicassistance.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge custom">Custom HTML/PHP</div>
-                  <img src="./assets/images/projects/acadmics.png" alt="The Academic Assistance" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">The Academic Assistance</h3>
-
-                <p class="project-category">Custom HTML/PHP project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://saveourchildreneducationsierraleone.org/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/savechild.png" alt="Save Our Children Education Sierra Leone"
-                    loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Save Our Children Education Sierra Leone</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://solarcraft.ie/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/solar-craft.png" alt="Solar Craft" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Solar Craft</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://absoltech.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/absoltech.png" alt="Absol Tech" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Absol Tech</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://badegg.ie/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/badegg.png" alt="Bad Egg" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Bad Egg</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://cloud9shishalounge.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/cloud9shisha.png" alt="Cloud 9 Shisha Lounge" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Cloud 9 Shisha Lounge</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://juicetogo.ca/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/juicetogo.png" alt="Juice To Go" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Juice To Go</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="custom">
-              <a href="https://nexodesigns.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge custom">Custom HTML/PHP</div>
-                  <img src="./assets/images/projects/nexodesign.png" alt="Nexo Design" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Nexo Design</h3>
-
-                <p class="project-category">Custom HTML/PHP project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://nexomos.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/nexomos.png" alt="Nexomos" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Nexomos</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="custom">
-              <a href="https://synko.tech/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge custom">Custom HTML/PHP</div>
-                  <img src="./assets/images/projects/synko.png" alt="Synko" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Synko</h3>
-
-                <p class="project-category">Custom HTML/PHP project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://thriversity.ie/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/theriversity.png" alt="Thriversity" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Thriversity</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="webflow">
-              <a href="https://xomalabs-com.webflow.io/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge webflow">Webflow</div>
-                  <img src="./assets/images/projects/xomalabs.png" alt="Xoma Labs" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Xoma Labs</h3>
-
-                <p class="project-category">Webflow project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="shopify">
-              <a href="https://www.loveself.uk/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge shopify">Shopify</div>
-                  <img src="./assets/images/loveself.png" alt="LoveSelf" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">LoveSelf</h3>
-
-                <p class="project-category">Shopify project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://careerssafari.com.au/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/career.png" alt="Careers Safari" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Careers Safari</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="https://teachlearnresearch.com/" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <div class="platform-badge wordpress">WordPress</div>
-                  <img src="./assets/images/projects/techlearner.png" alt="Teach Learn Research" loading="lazy" />
-                </figure>
-
-                <h3 class="project-title">Teach Learn Research</h3>
-
-                <p class="project-category">WordPress project.</p>
-              </a>
-            </li>
-
-          </ul>
-        </section>
-      </article>
-
-      <!--
-        - #CONTACT
-      -->
-
-      <article class="contact" data-page="contact">
-        <nav class="navbar">
-          <ul class="navbar-list">
-            <li class="navbar-item">
-              <button class="navbar-link active" data-nav-link data-target="about">
-                <ion-icon name="person-outline"></ion-icon>
-                <span>About</span>
-              </button>
-            </li>
-
-            <li class="navbar-item">
-              <button class="navbar-link" data-nav-link data-target="resume">
-                <ion-icon name="document-text-outline"></ion-icon>
-                <span>Resume</span>
-              </button>
-            </li>
-
-            <li class="navbar-item">
-              <button class="navbar-link" data-nav-link data-target="portfolio">
-                <ion-icon name="grid-outline"></ion-icon>
-                <span>Portfolio</span>
-              </button>
-            </li>
-
-            <li class="navbar-item">
-              <button class="navbar-link" data-nav-link data-target="contact">
-                <ion-icon name="mail-outline"></ion-icon>
-                <span>Contact</span>
-              </button>
-            </li>
-          </ul>
-        </nav>
-
-        <header>
-          <h2 class="h2 article-title">Contact</h2>
-        </header>
-
-        <section class="mapbox">
-          <figure class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d226.19804114269374!2d67.19114144881165!3d24.89222804991589!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sC-68%2F2%20Malir%20Colony%20Karachi!5e0!3m2!1sen!2s!4v1792420645282!5m2!1sen!2s" width="100%"
-              height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-              referrerpolicy="strict-origin-when-cross-origin"
-              title="C Area Malir Colony, Saudabad Kala Board, Karachi"></iframe>
-          </figure>
-        </section>
-
-        <a href="https://maps.app.goo.gl/y7rFeb9n2WWL8G3n6" target="_blank" rel="noopener noreferrer"
-          class="map-link-btn">
-          Open in Google Maps
-        </a>
-
-        <section class="contact-form">
-          <ul class="contacts-list">
-            <li class="contact-item">
-              <div class="icon-box">
-                <ion-icon name="mail-outline"></ion-icon>
-              </div>
-
-              <div class="contact-info">
-                <p class="contact-title">Email</p>
-
-                <a href="mailto:hammadyaseen949@gmail.com" class="contact-link">hammadyaseen949@gmail.com</a>
-              </div>
-            </li>
-
-            <li class="contact-item">
-              <div class="icon-box">
-                <ion-icon name="phone-portrait-outline"></ion-icon>
-              </div>
-
-              <div class="contact-info">
-                <p class="contact-title">Phone</p>
-
-                <a href="tel:+923482829845" class="contact-link">+92 3482829845</a>
-              </div>
-            </li>
-
-            <li class="contact-item">
-              <div class="icon-box">
-                <ion-icon name="calendar-outline"></ion-icon>
-              </div>
-
-              <div class="contact-info">
-                <p class="contact-title">Birthday</p>
-
-                <time datetime="1999-02-18">Feb 18, 1999</time>
-              </div>
-            </li>
-
-            <li class="contact-item">
-              <div class="icon-box">
-                <ion-icon name="location-outline"></ion-icon>
-              </div>
-
-              <div class="contact-info">
-                <p class="contact-title">Location</p>
-
-                <address>C-68/2 Malir Colony Karachi</address>
-              </div>
-            </li>
-          </ul>
-
-        </section>
-      </article>
-    </div>
-  </main>
-
-  <!--
-    - custom js link
-  -->
-  <script src="./assets/js/script.js"></script>
-
-  <!--
-    - ionicon link
-  -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
+<div id="loader"><small>Loading portfolio</small><span id="pct">0</span></div>
+<div id="bar"></div><div class="grain"></div><div id="cur"></div><div id="cur2"></div>
+<canvas id="gl"></canvas>
+
+<nav><a class="logo" href="#top">M.Hammad</a>
+<ul><li><a href="#about">About</a></li><li><a href="#work">Work</a></li><li><a href="#exp">Experience</a></li><li><a href="#contact">Contact</a></li></ul></nav>
+
+<main id="top">
+<section class="hero">
+  <div class="tag">Web Developer · Karachi, PK</div>
+  <h1 aria-label="Muhammad Hammad"><span class="l" data-split>Muhammad</span><span class="l" data-split>Hammad.</span></h1>
+  <div class="sub"><p>I turn Figma, XD &amp; PSD designs into fast, pixel-perfect WordPress, Shopify, Webflow &amp; custom sites — with the small details done right.</p>
+  <div class="scroll"><i></i>Scroll</div></div>
+</section>
+
+<section id="about" class="about">
+  <div><div class="eyebrow">About</div>
+  <div class="txt"><p id="aboutTxt">Website developer crafting responsive, user-friendly websites on WordPress, Webflow, Shopify, Wix and Squarespace — customizing themes, plugins and page builders like Elementor, Kadence, Divi and WP Bakery, with clean code and obsessive attention to detail.</p></div></div>
+  <div class="stats">
+    <div class="stat"><b><span data-n="78">0</span>+</b><span>Websites delivered</span></div>
+    <div class="stat"><b><span data-n="6">0</span></b><span>Platforms mastered</span></div>
+    <div class="stat"><b><span data-n="3">0</span>+</b><span>Years of experience</span></div>
+    <div class="stat"><b><span data-n="90">0</span>%</b><span>Front-end CMS skill</span></div>
+  </div>
+</section>
+
+<div class="mq" id="mq1"><div class="t"></div></div>
+<div class="mq r" id="mq2"><div class="t"></div></div>
+
+<section class="hs" id="work">
+  <div class="top"><div class="eyebrow">Selected Work</div><h2 class="h">Projects that<br>shipped.</h2><div class="dock" id="dock"><i class="blob"></i></div><span class="cnt" id="cnt"></span></div>
+  <div class="track" id="track"></div>
+</section>
+
+<section id="exp">
+  <div class="eyebrow">Experience</div><h2 class="h">Where I've<br>built things.</h2>
+  <div class="tl"><div class="ln"><i id="lnFill"></i></div>
+    <div class="job"><small>Feb 2026 — Present</small><h4>CMS Developer · Divinatory Solutions</h4><p>CMS solutions with AI prompt engineering, custom scripts, conditional logic, modified plugins/themes, WooCommerce and complex site features.</p></div>
+    <div class="job"><small>Apr 2025 — Jan 2026</small><h4>CMS / Frontend Developer · DevOp360</h4><p>WordPress, Webflow and Shopify builds with clean UI/UX, responsive layouts in HTML, CSS, Bootstrap &amp; JS, WooCommerce and LMS features.</p></div>
+    <div class="job"><small>Aug 2023 — Mar 2025</small><h4>Website Developer · Nexomos</h4><p>Custom WordPress sites, WooCommerce stores, optimization, basic security and ongoing maintenance.</p></div>
+  </div>
+  <div class="sk"><span>WordPress</span><span>Shopify</span><span>Webflow</span><span>Elementor</span><span>WooCommerce</span><span>Liquid</span><span>PHP</span><span>JavaScript</span><span>SEO</span><span>Figma → Code</span></div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="eyebrow">Contact</div>
+  <div class="big">Let's build<br>something <em>wild.</em></div>
+  <a class="mag" href="mailto:hammadyaseen949@gmail.com" data-mag><span>Say Hello ↗</span></a>
+  <div class="links"><a href="mailto:hammadyaseen949@gmail.com">hammadyaseen949@gmail.com</a><a href="tel:+923482829845">+92 348 2829845</a><a href="https://www.linkedin.com/in/muhammadhammad479/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.instagram.com/hammad_yaceen" target="_blank" rel="noopener">Instagram</a></div>
+</section>
+</main>
+<footer><span>© 2026 Muhammad Hammad</span></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(function(){
+gsap.registerPlugin(ScrollTrigger);var hsT=null;
+var RM=matchMedia("(prefers-reduced-motion:reduce)").matches;
+var $=function(s,c){return(c||document).querySelector(s)},$$=function(s,c){return[].slice.call((c||document).querySelectorAll(s))};
+
+/* ---------- data: name | platform | url | screenshot (in assets/images/projects/) ---------- */
+var P=[
+"AUS NRG|WordPress|https://ausnrg.com.au/|ausnrg.png",
+"Lighthouse Property Watch|WordPress|https://lighthousepropertywatch.com/|lighthouse.png",
+"AIA Contracts|WordPress|https://aiacontracts.com/|aiacontracts.png",
+"ClearVu Cam|WordPress|https://clearvucam.com/|clearvucam.png",
+"Law Writing|Custom PHP|https://www.lawwriting.co.uk/|lawwriting.png",
+"Wanlin|WordPress|https://wanlin.com.au/|wanlin.png",
+"Abzgate|WordPress|https://abzgate.com/|abzgate.png",
+"Best Assignment Writers|Custom PHP|https://www.bestassignmentwriters.co.uk/|bestassignment.png",
+"Canny Book Writers|WordPress|https://cannybookwriters.com/|cannybookwriting.png",
+"Prism Lights|Shopify|https://prismlights.shop/|prismlights.png",
+"The Show Me Expo|WordPress|https://theshowmeexpo.com/|showmewatersportsexpo.png",
+"Walsall Wall Experts|WordPress|https://walsallwallexperts.co.uk/|walsallwallexperts.png",
+"Winning Commerce|Shopify|http://winningcommerce.com/|winningcommerce.png",
+"Dissertation Writing Ace|Custom PHP|https://www.dissertationwritingace.co.uk/|dissertationwriting.png",
+"Assignment Help Zone|Custom PHP|https://assignmenthelpzone.co.uk/|assignmenthelpzone.png",
+"David Neal McPhee|Squarespace|https://www.davidnealmcphee.com/|sq-davidnealmcphee.png",
+"Colin C. McKay|Squarespace|https://www.colincmckay.com/|sq-colincmckay.png",
+"Padel 360|Squarespace|https://www.padel360.com.au/|sq-padel360.png",
+"Choice Health & Wellness|Squarespace|https://www.choicehealthwellness.com/|choicehealthwellness.png",
+"Il Regno Dorato Kennel|WordPress|https://ilregnodoratokennel.it/|wp-ilregnodoratokennel.png",
+"Global Citation|Custom PHP|https://globalcitation.com/|wp-globalcitation.png",
+"iPack|WordPress|https://ipack.com.sa/|wp-ipack.png",
+"Renodomi|WordPress|https://renodomi.nl/|wp-renodomi.png",
+"Delis|WordPress|https://delis.co.in/|wp-delis.png",
+"Utility Select|WordPress|https://utility-select.com/|utility-select.png",
+"Aero Maritime Group|WordPress|https://aeromaritimegroup.com/|wp-aeromaritimegroup.png",
+"Garage Dijkhuizen|WordPress|https://garagedijkhuizen.nl/|wp-garagedijkhuizen.png",
+"Punkworx|WordPress|https://punkworx.org.uk/|wp-punkworx.png",
+"Sky ACP|WordPress|https://sky-acp.com/|wp-sky-acp.png",
+"Alior Studio|WordPress|https://aliorstudio.com/|wp-aliorstudio.png",
+"Rock Blues Jazz Gambarogno|WordPress|https://rock-blues-jazz-gambarogno.ch/|wp-rock-blues-jazz.png",
+"Dr. Marina Borisenko|WordPress|https://drmarinaborisenko.com.au/|wp-drmarinaborisenko.png",
+"Painting By Moli|WordPress|https://paintingbymoli.com.au/|wp-paintingbymoli.png",
+"Rise In Confidence|WordPress|https://riseinconfidence.org/|wp-riseinconfidence.png",
+"iPack (New)|WordPress|https://new.ipack.com.sa/|wp-new-ipack.png",
+"Agar Advisory|WordPress|https://agaradvisory.com/|wp-agaradvisory.png",
+"Martin Kaonga|WordPress|https://martinkaonga.com/|wp-martinkaonga.png",
+"Complete Detox|Shopify|https://www.completedetox.co.uk/|sp-completedetox.png",
+"Forefront Label|Shopify|https://forefrontlabel.ca/|sp-forefrontlabel.png",
+"Nordpure|Shopify|https://nordpure.com/gb-en|sp-nordpure.png",
+"Field & Fire Coffee|Shopify|https://fieldandfirecoffee.co.uk/|sp-fieldandfirecoffee.png",
+"Custom Varsity Jackets|Shopify|https://customvarsityjackets.co.uk/|sp-customvarsityjackets.png",
+"Enduo Sports|Shopify|https://www.enduosports.com/|sp-enduosports.png",
+"Deemed Fit|Shopify|https://deemedfit.co/|sp-deemedfit.png",
+"Florawell|Shopify|https://florawell.co.uk/|sp-florawell.png",
+"Rua Norte|Shopify|https://ruanorte.com/|sp-ruanorte.png",
+"Scopus Journal Publisher|Custom PHP|https://scopusjournalpublisher.com/|custom-scopusjournal.png",
+"Nursing Assignments Writer|Custom PHP|https://nursingassignmentswriter.co.uk/|custom-nursingassignments.png",
+"Personal Statement Experts|Custom PHP|https://personalstatementexperts.com/|custom-personalstatement.png",
+"Evera Coaching|Wix|https://www.everacoaching.com/|evera-coaching.png",
+"iMyoo Health|Wix|https://www.imyoo.health/|imyo-health.png",
+"The Nibbles App|Webflow|https://www.thenibblesapp.com/|wf-thenibblesapp.png",
+"PlayUs|WordPress|https://playusapp.com/|playuss.png",
+"Martinez Legal|WordPress|https://martinezlegal.com/|martinez.png",
+"Souzet|Custom PHP|https://souzet.com/|souzet.png",
+"Britain Academics|WordPress|https://britainacademics.co.uk/|britain-acad.png",
+"Kirkcaldy Taxis|WordPress|https://kirkcaldytaxis.com/|taxi.png",
+"Ahlesa|WordPress|https://ahlesa.com/|ahlesa.png",
+"The Class Taker|WordPress|https://theclasstaker.com/|theclasstaker.png",
+"Academic Wisdom|WordPress|https://academicwisdom.co.uk/|academic-wisdom.png",
+"MEC Demag|WordPress|https://mecdemag.com/|mecdemag.png",
+"The Specterink|WordPress|https://thespecterink.com/|thespecter.png",
+"The Graphic Concept|WordPress|https://thegraphicconcept.com/|thegraphics.png",
+"The Academic Assistance|Custom PHP|https://theacademicassistance.com/|acadmics.png",
+"Save Our Children Education Sierra Leone|WordPress|https://saveourchildreneducationsierraleone.org/|savechild.png",
+"Solar Craft|WordPress|https://solarcraft.ie/|solar-craft.png",
+"Absol Tech|WordPress|https://absoltech.com/|absoltech.png",
+"Bad Egg|WordPress|https://badegg.ie/|badegg.png",
+"Cloud 9 Shisha Lounge|WordPress|https://cloud9shishalounge.com/|cloud9shisha.png",
+"Juice To Go|WordPress|https://juicetogo.ca/|juicetogo.png",
+"Nexo Design|Custom PHP|https://nexodesigns.com/|nexodesign.png",
+"Nexomos|WordPress|https://nexomos.com/|nexomos.png",
+"Synko|Custom PHP|https://synko.tech/|synko.png",
+"Thriversity|WordPress|https://thriversity.ie/|theriversity.png",
+"Xoma Labs|Webflow|https://xomalabs-com.webflow.io/|xomalabs.png",
+"LoveSelf|Shopify|https://www.loveself.uk/|../loveself.png",
+"Careers Safari|WordPress|https://careerssafari.com.au/|career.png",
+"Teach Learn Research|WordPress|https://teachlearnresearch.com/|techlearner.png"
+];
+
+/* client logos (in assets/images/Clients-logo/) */
+var L1="ausnrg.png,lighthouse.webp,aiacontracts.png,clearvucam.webp,lawwriting.webp,wanlin.png,abzgate.png,bestassignmentwriters.webp,cannybookwriters.png,prismlights.png,theshowmeexpo.png,walsallwallexperts.png,winningcommerce.png,dissertationwritingace.webp,assignmenthelpzone.webp,davidnealmcphee.webp,colincmckay.webp,padel360.webp,choicehealthwellness.webp,ilregnodoratokennel.png,globalcitation.png,ipack.png,rendomi.png,delis.webp".split(",");
+var L2="utility-select.png,aeromaritimegroup.png,garagedijkhuizen.png,punkworx.png,sky-acp.png,aliorstudio.png,rock-blues-jazz.png,drmarinaborisenko.png,paintingbymoli.webp,riseinconfidence.png,completedetox.png,forefrontlabel.png,nordpure.webp,fieldandfirecoffee.png,customvarsityjackets.png,enduosports.png,deemedfit.png,florawell.png,ruanorte.png,loveself.png,thenibblesapp.png,xomalabs.png,imyoo.png,everacoaching.png".split(",");
+
+var trk=$("#track");
+P.forEach(function(r,i){var p=r.split("|"),h=(i*47+150)%360,a=document.createElement("a");
+a.className="card";a.dataset.cat=p[1];a.href=p[2];a.target="_blank";a.rel="noopener";a.style.setProperty("--h",h);
+a.innerHTML='<img class="shot" src="./assets/images/projects/'+p[3]+'" alt="'+p[0]+' website screenshot" loading="lazy" decoding="async" onerror="this.remove()">'+
+'<span class="pill">'+p[1]+'</span><span class="num">'+String(i+1).padStart(2,"0")+'</span><div><h3>'+p[0]+'</h3><div class="go"><span>View live site</span><b>→</b></div></div>';
+trk.appendChild(a)});
+
+function fillMq(el,arr){var t=$(".t",el),h="";for(var k=0;k<2;k++)arr.forEach(function(f){h+='<span class="lg"><img src="./assets/images/Clients-logo/'+f+'" alt="Client logo" decoding="async" onerror="this.parentNode.style.display=\'none\'"></span>'});t.innerHTML=h;return t}
+var m1=fillMq($("#mq1"),L1),m2=fillMq($("#mq2"),L2);
+
+/* split text */
+$$("[data-split]").forEach(function(el){var t=el.textContent;el.textContent="";t.split("").forEach(function(ch){var s=document.createElement("span");s.className="c";s.textContent=ch;el.appendChild(s)})});
+var aw=$("#aboutTxt");aw.innerHTML=aw.textContent.split(" ").map(function(w){return'<span class="w">'+w+"</span>"}).join(" ");
+
+/* ---------- smooth scroll ---------- */
+var lenis=new Lenis({lerp:.09,smoothWheel:!RM});
+lenis.on("scroll",ScrollTrigger.update);
+gsap.ticker.add(function(t){lenis.raf(t*1000)});gsap.ticker.lagSmoothing(0);
+$$('a[href^="#"]').forEach(function(a){a.addEventListener("click",function(e){var t=$(a.getAttribute("href"));if(t){e.preventDefault();lenis.scrollTo(t)}})});
+
+/* ---------- three.js morphing particles ---------- */
+var cv=$("#gl"),R=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:false});
+R.setPixelRatio(Math.min(devicePixelRatio,1.5));
+var S=new THREE.Scene(),Cam=new THREE.PerspectiveCamera(60,1,.1,100);Cam.position.z=7;
+var N=2600,shapes=[];
+function mk(f){var a=new Float32Array(N*3);for(var i=0;i<N;i++){var v=f(i);a[i*3]=v[0];a[i*3+1]=v[1];a[i*3+2]=v[2]}return a}
+shapes.push(mk(function(i){var y=1-2*(i+.5)/N,r=Math.sqrt(1-y*y),t=i*2.39996;return[Math.cos(t)*r*2.6,y*2.6,Math.sin(t)*r*2.6]}));
+shapes.push(mk(function(i){var u=i/N*Math.PI*2*30,v=i/N*Math.PI*2;return[(3+1*Math.cos(u))*Math.cos(v)*.85,(3+1*Math.cos(u))*Math.sin(v)*.85,Math.sin(u)*.9]}));
+shapes.push(mk(function(i){var f=Math.floor(Math.random()*3),s=Math.random()>.5?2.2:-2.2,a=Math.random()*4.4-2.2,b=Math.random()*4.4-2.2;return f==0?[s,a,b]:f==1?[a,s,b]:[a,b,s]}));
+shapes.push(mk(function(i){var r=Math.pow(i/N,.6)*4.6,a=i*.35+r*1.1;return[Math.cos(a)*r,(Math.random()-.5)*.5*(1-r/5),Math.sin(a)*r]}));
+var cur=new Float32Array(shapes[0]),geo=new THREE.BufferGeometry();geo.setAttribute("position",new THREE.BufferAttribute(cur,3));
+var mat=new THREE.PointsMaterial({size:.035,color:0x7cf5c8,transparent:true,opacity:.85,depthWrite:false,blending:THREE.AdditiveBlending});
+var pts=new THREE.Points(geo,mat);S.add(pts);
+function rs(){var w=innerWidth,h=innerHeight;R.setSize(w,h,false);Cam.aspect=w/h;Cam.updateProjectionMatrix();pts.position.x=w>800?2.2:0}
+addEventListener("resize",rs);rs();
+var mx=0,my=0,prog=0,tgtProg=0,c1=new THREE.Color(0x7cf5c8),c2=new THREE.Color(0x8b7bff),vel=0;
+addEventListener("pointermove",function(e){mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
+lenis.on("scroll",function(e){tgtProg=Math.min(1,e.scroll/Math.max(1,document.body.scrollHeight-innerHeight));vel=e.velocity});
+var clock=new THREE.Clock();
+gsap.ticker.add(function(){
+  var t=clock.getElapsedTime();prog+=(tgtProg-prog)*.06;
+  var f=prog*(shapes.length-1),a=Math.min(Math.floor(f),shapes.length-2),k=f-a;k=k*k*(3-2*k);
+  var A=shapes[a],B=shapes[a+1];
+  for(var i=0;i<N*3;i++){cur[i]+=((A[i]+(B[i]-A[i])*k)-cur[i])*.08}
+  geo.attributes.position.needsUpdate=true;
+  pts.rotation.y=t*.12+mx*1.2+prog*3;pts.rotation.x=my*.8+Math.sin(t*.3)*.1;
+  pts.scale.setScalar(1+Math.min(Math.abs(vel),30)*.012);
+  mat.color.copy(c1).lerp(c2,Math.sin(prog*Math.PI));
+  R.render(S,Cam)});
+
+/* ---------- cursor + magnetic ---------- */
+var cx=gsap.quickTo("#cur","x",{duration:.1}),cy=gsap.quickTo("#cur","y",{duration:.1}),dx=gsap.quickTo("#cur2","x",{duration:.45,ease:"power3"}),dy=gsap.quickTo("#cur2","y",{duration:.45,ease:"power3"});
+addEventListener("pointermove",function(e){cx(e.clientX);cy(e.clientY);dx(e.clientX);dy(e.clientY)});
+$$("a,.sk span").forEach(function(el){el.addEventListener("mouseenter",function(){$("#cur2").classList.add("big")});el.addEventListener("mouseleave",function(){$("#cur2").classList.remove("big")})});
+$$("[data-mag]").forEach(function(b){var xx=gsap.quickTo(b,"x",{duration:.6,ease:"elastic.out(1,.4)"}),yy=gsap.quickTo(b,"y",{duration:.6,ease:"elastic.out(1,.4)"});
+b.addEventListener("pointermove",function(e){var r=b.getBoundingClientRect();xx((e.clientX-r.left-r.width/2)*.45);yy((e.clientY-r.top-r.height/2)*.45)});
+b.addEventListener("pointerleave",function(){xx(0);yy(0)})});
+
+/* ---------- 3D tilt cards ---------- */
+$$(".card").forEach(function(c){var rx=gsap.quickTo(c,"rotationX",{duration:.4}),ry=gsap.quickTo(c,"rotationY",{duration:.4});
+gsap.set(c,{transformPerspective:900});
+c.addEventListener("pointermove",function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+c.style.setProperty("--mx",x*100+"%");c.style.setProperty("--my",y*100+"%");ry((x-.5)*16);rx((.5-y)*16)});
+c.addEventListener("pointerleave",function(){rx(0);ry(0)})});
+
+/* ---------- liquid filter dock ---------- */
+var cats=["All","WordPress","Shopify","Custom PHP","Squarespace","Wix","Webflow"],hues={All:158,WordPress:205,Shopify:95,"Custom PHP":28,Squarespace:300,Wix:50,Webflow:250},dock=$("#dock"),blob=$(".blob",dock),cardEls=$$(".card"),cnt=$("#cnt"),act=null,busy=false;
+cats.forEach(function(c){var n=c=="All"?cardEls.length:cardEls.filter(function(e){return e.dataset.cat==c}).length,b=document.createElement("button");b.innerHTML=c+"<sup>"+n+"</sup>";b.dataset.c=c;dock.appendChild(b)});
+var btns=$$("button",dock);
+function mv(b,fast){gsap.to(blob,{x:b.offsetLeft-6,y:b.offsetTop-6,width:b.offsetWidth,height:b.offsetHeight,duration:fast?0:.9,ease:"elastic.out(1,.65)",overwrite:true})}
+function setCnt(n){var q={v:+cnt.dataset.v||0},tot=String(cardEls.length).padStart(2,"0");gsap.to(q,{v:n,duration:.6,onUpdate:function(){cnt.textContent=String(Math.round(q.v)).padStart(2,"0")+" / "+tot;cnt.dataset.v=q.v}})}
+function tint(h){var col=new THREE.Color().setHSL(h/360,.85,.66);gsap.to(c1,{r:col.r,g:col.g,b:col.b,duration:1});document.documentElement.style.setProperty("--acc","hsl("+h+",85%,66%)")}
+
+/* filter: fade out -> toggle cards -> refresh pin -> fade in (no absolute positioning, so no overlap) */
+function run(c){
+ var vis=cardEls.filter(function(e){return c=="All"||e.dataset.cat==c});
+ setCnt(vis.length);
+ gsap.to(trk,{opacity:0,duration:.25,onComplete:function(){
+  cardEls.forEach(function(e){e.classList.toggle("off",!(c=="All"||e.dataset.cat==c))});
+  trk.scrollLeft=0;
+  ScrollTrigger.refresh();
+  gsap.set(trk,{opacity:1});
+  gsap.fromTo(vis,{opacity:0,y:50,scale:.92},{opacity:1,y:0,scale:1,duration:.55,ease:"power3.out",stagger:{amount:.6},onComplete:function(){busy=false}});
+ }});
+}
+function pick(b){if(b==act||busy)return;act=b;busy=true;btns.forEach(function(x){x.classList.toggle("on",x==b)});mv(b);tint(hues[b.dataset.c]);
+ var go=function(){run(b.dataset.c)};
+ if(hsT&&innerWidth>800&&Math.abs(lenis.scroll-hsT.scrollTrigger.start)>8){lenis.scrollTo(hsT.scrollTrigger.start,{duration:.6,onComplete:go})}else go()}
+btns.forEach(function(b){b.addEventListener("click",function(){pick(b)})});
+act=btns[0];btns[0].classList.add("on");setTimeout(function(){mv(btns[0],true);setCnt(cardEls.length)},150);
+addEventListener("resize",function(){mv(act,true)});
+
+/* ---------- loader + intro ---------- */
+var pc=$("#pct"),o={v:0};
+gsap.timeline()
+.to(o,{v:100,duration:RM?.2:1.4,ease:"power2.inOut",onUpdate:function(){pc.textContent=Math.round(o.v)}})
+.to("#loader",{yPercent:-100,duration:.9,ease:"expo.inOut"})
+.to(".hero .c",{y:0,rotation:0,duration:1.1,ease:"expo.out",stagger:.04},"-=.4")
+.from(".hero .tag,.hero .sub",{opacity:0,y:30,duration:.9,stagger:.15},"-=.8");
+
+/* ---------- scroll animations ---------- */
+gsap.to("#bar",{scaleX:1,ease:"none",scrollTrigger:{scrub:.3,start:0,end:"max"}});
+gsap.to(".hero h1",{yPercent:-25,opacity:.2,ease:"none",scrollTrigger:{trigger:".hero",scrub:true,start:"top top",end:"bottom top"}});
+gsap.fromTo($$(".w"),{color:"#44444f"},{color:"#f2f2f5",stagger:.05,ease:"none",scrollTrigger:{trigger:"#aboutTxt",start:"top 80%",end:"bottom 45%",scrub:true}});
+$$(".stat").forEach(function(s,i){gsap.from(s,{y:80,opacity:0,rotation:i%2?4:-4,duration:1,ease:"power3.out",scrollTrigger:{trigger:s,start:"top 90%"}})});
+$$("[data-n]").forEach(function(n){var t=+n.dataset.n,q={v:0};ScrollTrigger.create({trigger:n,start:"top 90%",once:true,onEnter:function(){gsap.to(q,{v:t,duration:2,ease:"power2.out",onUpdate:function(){n.textContent=Math.round(q.v)}})}})});
+$$(".h").forEach(function(h){gsap.from(h,{y:60,opacity:0,duration:1,ease:"power3.out",scrollTrigger:{trigger:h,start:"top 88%"}})});
+$$(".job").forEach(function(j){gsap.from(j,{x:-40,opacity:0,duration:.9,ease:"power3.out",scrollTrigger:{trigger:j,start:"top 85%"}})});
+gsap.to("#lnFill",{scaleY:1,ease:"none",scrollTrigger:{trigger:".tl",start:"top 70%",end:"bottom 70%",scrub:true}});
+gsap.from(".sk span",{y:40,opacity:0,stagger:.05,duration:.7,scrollTrigger:{trigger:".sk",start:"top 90%"}});
+gsap.from(".contact .big",{y:80,opacity:0,duration:1.1,ease:"power3.out",scrollTrigger:{trigger:".contact",start:"top 70%"}});
+gsap.from(".mag",{scale:0,duration:1.2,ease:"elastic.out(1,.5)",scrollTrigger:{trigger:".mag",start:"top 95%"}});
+
+/* marquees reacting to scroll velocity */
+var tw1=gsap.to(m1,{xPercent:-50,duration:60,ease:"none",repeat:-1}),tw2=gsap.fromTo(m2,{xPercent:-50},{xPercent:0,duration:60,ease:"none",repeat:-1}),ts=1;
+lenis.on("scroll",function(e){ts=1+Math.min(Math.abs(e.velocity),25)*.5});
+gsap.ticker.add(function(){ts+=(1-ts)*.05;tw1.timeScale(ts);tw2.timeScale(ts)});
+
+/* horizontal scroll work section */
+ScrollTrigger.matchMedia({"(min-width: 801px)":function(){
+  var d=function(){return Math.max(1,trk.scrollWidth-innerWidth+innerWidth*.1)};
+  hsT=gsap.to(trk,{x:function(){return -d()},ease:"none",scrollTrigger:{trigger:"#work",pin:true,scrub:.8,start:"top top",end:function(){return "+="+d()},invalidateOnRefresh:true}});
+}});
+})();
+</script>
 </body>
-
 </html>
