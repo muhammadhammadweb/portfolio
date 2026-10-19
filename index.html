@@ -64,7 +64,15 @@ section{padding:14vh 5vw}
 .hs{height:100svh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;padding:0}
 .hs .top{padding:9vh 5vw 3vh}
 .hs .h{font-size:clamp(2rem,4.5vw,3.8rem)}
-.track{display:flex;gap:28px;padding:0 5vw;width:max-content}
+
+/* ---------- Mobile Friendly Horizontal Scroll Track Fix ---------- */
+.track{display:flex;gap:28px;padding:0 5vw;width:max-content;user-select:none;-webkit-user-select:none;touch-action:pan-x pan-y}
+@media(max-width:800px){
+  .hs{height:auto;padding:12vh 0}
+  .track{overflow-x:auto;overflow-y:hidden;width:100%!important;padding-bottom:20px;cursor:grab;-webkit-overflow-scrolling:touch}
+  .track:active{cursor:grabbing}
+}
+
 .card{position:relative;flex:none;width:min(78vw,380px);height:clamp(260px,40vh,380px);border-radius:26px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;border:1px solid var(--line);background:rgba(255,255,255,.03);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transform-style:preserve-3d;will-change:transform}
 .card .shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;opacity:.6;z-index:0;transition:transform .8s cubic-bezier(.2,.7,.2,1),opacity .4s}
 .card:hover .shot{opacity:.9;transform:scale(1.07)}
@@ -97,7 +105,6 @@ section{padding:14vh 5vw}
 .links{display:flex;gap:26px;margin-top:6vh;flex-wrap:wrap;justify-content:center;color:var(--mut)}
 .links a:hover{color:var(--acc)}
 footer{padding:30px 5vw;display:flex;justify-content:space-between;color:var(--mut);font-size:.8rem;border-top:1px solid var(--line)}
-@media(max-width:800px){.about{grid-template-columns:1fr}nav ul{display:none}.hs{height:auto;padding:14vh 0}.track{overflow-x:auto;width:100%;scroll-snap-type:x mandatory}.card{scroll-snap-align:center}}
 .dock{position:relative;display:inline-flex;flex-wrap:wrap;gap:4px;margin-top:3vh;padding:6px;border-radius:30px;border:1px solid var(--line);background:rgba(255,255,255,.05);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 .dock button{position:relative;z-index:1;background:none;border:0;color:var(--fg);font:inherit;font-size:.85rem;padding:10px 18px;border-radius:99px;cursor:pointer;transition:color .3s,transform .3s}
 .dock button:hover{transform:translateY(-2px)}
@@ -275,7 +282,15 @@ lenis.on("scroll",ScrollTrigger.update);
 gsap.ticker.add(function(t){lenis.raf(t*1000)});gsap.ticker.lagSmoothing(0);
 $$('a[href^="#"]').forEach(function(a){a.addEventListener("click",function(e){var t=$(a.getAttribute("href"));if(t){e.preventDefault();lenis.scrollTo(t)}})});
 
-/* ---------- Optimized Three.js Particle Globe (Mobile Friendly) ---------- */
+/* ---------- Mobile Drag to Scroll Support for Track ---------- */
+if(isMob){
+  var isDown=false,startX,scrollLeft;
+  trk.addEventListener('mousedown',function(e){isDown=true;startX=e.pageX-trk.offsetLeft;scrollLeft=trk.scrollLeft});
+  trk.addEventListener('mouseleave',function(){isDown=false});
+  trk.addEventListener('mouseup',function(){isDown=false});
+  trk.addEventListener('mousemove',function(e){if(!isDown)return;e.preventDefault();var x=e.pageX-trk.offsetLeft;var walk=(x-startX)*2;trk.scrollLeft=scrollLeft-walk});
+}
+
 var cv=$("#gl"),R=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:false});
 R.setPixelRatio(Math.min(devicePixelRatio,isMob?1:1.5));
 var S=new THREE.Scene(),Cam=new THREE.PerspectiveCamera(60,1,.1,100);Cam.position.z=7;
