@@ -46,6 +46,8 @@ section{padding:14vh 5vw}
 @keyframes dr{0%{transform:translateY(-100%)}100%{transform:translateY(100%)}}
 .h{font-size:clamp(2rem,6vw,5rem);letter-spacing:-.04em;line-height:1;font-weight:700}
 .eyebrow{color:var(--acc);font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;margin-bottom:20px}
+
+/* ---------- Responsive About & Stats Grid Fix ---------- */
 .about{display:grid;grid-template-columns:1.2fr 1fr;gap:6vw;align-items:start}
 .about .txt p{font-size:clamp(1.1rem,2.2vw,1.7rem);line-height:1.45;color:var(--mut)}
 .about .txt p .w{transition:color .2s}
@@ -54,6 +56,7 @@ section{padding:14vh 5vw}
 .stat b{display:flex;align-items:baseline;gap:4px;font-size:clamp(3.5rem,8vw,6rem);line-height:1;font-weight:800;letter-spacing:-.04em;margin-bottom:8px}
 .stat b span[data-n]{font-size:inherit;font-weight:inherit;display:inline-block}
 .stat span{color:var(--mut);font-size:.85rem}
+
 .mq{padding:4vh 0;overflow:hidden;border-block:1px solid var(--line);background:transparent;backdrop-filter:blur(8px)}
 .mq .t{display:flex;align-items:center;width:max-content}
 .mq.r .t{margin-top:10px}
@@ -61,16 +64,18 @@ section{padding:14vh 5vw}
 .mq .lg:hover{border-color:rgba(255,255,255,.3);transform:translateY(-4px);background:rgba(255,255,255,.07)!important}
 .mq .lg img{height:40px;width:auto;max-width:140px;object-fit:contain;display:block;filter:brightness(0) invert(1);opacity:.85;transition:opacity .3s}
 .mq .lg:hover img{opacity:1}
+
 .hs{height:100svh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;padding:0}
 .hs .top{padding:9vh 5vw 3vh}
 .hs .h{font-size:clamp(2rem,4.5vw,3.8rem)}
 
-/* ---------- Mobile Friendly Horizontal Scroll Track Fix ---------- */
-.track{display:flex;gap:28px;padding:0 5vw;width:max-content;user-select:none;-webkit-user-select:none;touch-action:pan-x pan-y}
+/* ---------- Mobile Horizontal Swipe Track Fix ---------- */
+.track{display:flex;gap:28px;padding:0 5vw;width:max-content}
 @media(max-width:800px){
+  .about{grid-template-columns:1fr;gap:8vh}
   .hs{height:auto;padding:12vh 0}
-  .track{overflow-x:auto;overflow-y:hidden;width:100%!important;padding-bottom:20px;cursor:grab;-webkit-overflow-scrolling:touch}
-  .track:active{cursor:grabbing}
+  .track{overflow-x:auto;overflow-y:hidden;width:100%!important;padding-bottom:20px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+  .card{scroll-snap-align:center;flex-shrink:0}
 }
 
 .card{position:relative;flex:none;width:min(78vw,380px);height:clamp(260px,40vh,380px);border-radius:26px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;border:1px solid var(--line);background:rgba(255,255,255,.03);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transform-style:preserve-3d;will-change:transform}
@@ -87,6 +92,7 @@ section{padding:14vh 5vw}
 .card .go b{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#fff;color:#000;transition:transform .4s}
 .card:hover .go b{transform:rotate(-45deg) scale(1.15)}
 .card.off{display:none}
+
 .tl{margin-top:6vh;position:relative;padding-left:34px;max-width:900px}
 .tl .ln{position:absolute;left:6px;top:6px;bottom:0;width:2px;background:var(--line)}
 .tl .ln i{position:absolute;inset:0;background:linear-gradient(var(--acc),var(--acc2));transform:scaleY(0);transform-origin:top}
@@ -281,15 +287,6 @@ var lenis=new Lenis({lerp:isMob?.12:.09,smoothWheel:!RM});
 lenis.on("scroll",ScrollTrigger.update);
 gsap.ticker.add(function(t){lenis.raf(t*1000)});gsap.ticker.lagSmoothing(0);
 $$('a[href^="#"]').forEach(function(a){a.addEventListener("click",function(e){var t=$(a.getAttribute("href"));if(t){e.preventDefault();lenis.scrollTo(t)}})});
-
-/* ---------- Mobile Drag to Scroll Support for Track ---------- */
-if(isMob){
-  var isDown=false,startX,scrollLeft;
-  trk.addEventListener('mousedown',function(e){isDown=true;startX=e.pageX-trk.offsetLeft;scrollLeft=trk.scrollLeft});
-  trk.addEventListener('mouseleave',function(){isDown=false});
-  trk.addEventListener('mouseup',function(){isDown=false});
-  trk.addEventListener('mousemove',function(e){if(!isDown)return;e.preventDefault();var x=e.pageX-trk.offsetLeft;var walk=(x-startX)*2;trk.scrollLeft=scrollLeft-walk});
-}
 
 var cv=$("#gl"),R=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:false});
 R.setPixelRatio(Math.min(devicePixelRatio,isMob?1:1.5));
