@@ -78,6 +78,7 @@ section{padding:14vh 5vw}
   .hs{height:auto;padding:12vh 0}
   .track{overflow-x:auto;overflow-y:hidden;width:100%!important;padding-bottom:20px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
   .card{scroll-snap-align:center;flex-shrink:0}
+  .card .num{right:-185px;}
 }
 
 .card{position:relative;flex:none;width:min(78vw,380px);height:clamp(260px,40vh,380px);border-radius:26px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;border:1px solid var(--line);background:rgba(255,255,255,.03);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transform-style:preserve-3d;will-change:transform}
@@ -86,7 +87,7 @@ section{padding:14vh 5vw}
 .card::before{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),hsla(var(--h),90%,65%,.45),transparent 55%);opacity:.5;transition:opacity .4s;pointer-events:none}
 .card::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(7,7,11,.95) 0%,rgba(7,7,11,.55) 38%,transparent 70%);pointer-events:none}
 .card:hover::before{opacity:1}
-.card .num{position:absolute;right:-6px;top:-14px;z-index:2;font-size:7rem;font-weight:800;letter-spacing:-.08em;color:hsla(var(--h),90%,80%,.16);line-height:1;pointer-events:none}
+.card .num{position:absolute;right:-240px;top:-50px;z-index:2;font-size:7rem;font-weight:800;letter-spacing:-.08em;color:hsla(var(--h),90%,80%,.16);line-height:1;pointer-events:none}
 .card>:not(.shot){position:relative;z-index:2}
 .pill{align-self:flex-start;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;padding:7px 14px;border-radius:99px;border:1px solid var(--line);background:rgba(0,0,0,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .card h3{font-size:1.7rem;letter-spacing:-.03em;line-height:1.08;transform:translateZ(40px)}
