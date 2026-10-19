@@ -11,7 +11,6 @@
   --bg-gradient-onyx: linear-gradient(to bottom right, hsl(240, 1%, 25%) 3%, hsl(0, 0%, 19%) 97%);
   --bg-gradient-jet: linear-gradient(to bottom right, hsla(240, 1%, 18%, 0.251) 0%, hsla(240, 2%, 11%, 0) 100%), hsl(240, 2%, 13%);
   --bg-gradient-yellow-1: linear-gradient(135deg, hsl(45, 100%, 71%) 0%, hsla(36, 100%, 69%, 0) 100%);
-  --bg-gradient-yellow-2: linear-gradient(135deg, hsla(45, 100%, 71%, 0.251) 0%, hsla(35, 100%, 68%, 0) 100%);
   --border-gradient-onyx: linear-gradient(to bottom right, hsl(0, 0%, 25%) 0%, hsla(0, 0%, 25%, 0) 50%);
   
   --smoky-black: hsl(0, 0%, 7%);
@@ -25,7 +24,6 @@
   --vegas-gold: hsl(45, 54%, 58%);
   --light-gray: hsl(0, 0%, 84%);
   --light-gray-70: hsla(0, 0%, 84%, 0.7);
-  --bittersweet-shimmer: hsl(0, 43%, 51%);
 
   /* Typography */
   --ff-poppins: 'Poppins', sans-serif;
@@ -35,18 +33,15 @@
   --fs-4: 15px;
   --fs-5: 14px;
   --fs-6: 13px;
-  --fs-7: 12px;
   --fs-8: 11px;
 
   --fw-300: 300;
-  --fw-400: 400;
   --fw-500: 500;
   --fw-600: 600;
 
   /* Shadow & Transitions */
   --shadow-1: -4px 8px 24px hsla(0, 0%, 0%, 0.25);
   --shadow-2: 0 16px 30px hsla(0, 0%, 0%, 0.125);
-  --shadow-3: 0 16px 40px hsla(0, 0%, 0%, 0.25);
   --transition-1: 0.25s ease;
   --transition-2: 0.5s ease;
 }
@@ -65,7 +60,6 @@ a { text-decoration: none; color: inherit; }
 li { list-style: none; }
 img, ion-icon, button, time, span { display: block; }
 button { font: inherit; background: none; border: none; cursor: pointer; }
-input, textarea { display: block; width: 100%; font: inherit; background: none; }
 
 ::selection {
   background: var(--orange-yellow-crayola);
@@ -345,21 +339,6 @@ article.active { display: block; animation: fadeIn 0.5s ease backwards; }
   margin-bottom: 20px;
 }
 
-.service-list {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-}
-
-.service-item {
-  position: relative;
-  background: var(--border-gradient-onyx);
-  padding: 20px;
-  border-radius: 14px;
-  box-shadow: var(--shadow-2);
-  z-index: 1;
-}
-
 .service-icon-box { margin-bottom: 10px; }
 .service-item-title { color: var(--white-2); font-size: var(--fs-4); margin-bottom: 7px; }
 .service-item-text { color: var(--light-gray); font-size: var(--fs-6); line-height: 1.6; }
@@ -605,13 +584,6 @@ article.active { display: block; animation: fadeIn 0.5s ease backwards; }
   .project-list { grid-template-columns: repeat(3, 1fr); }
 }
 
-
-
-
-
-
-
-
 /* ===================================
    WHAT I'M DOING - GRID CONFIG
 =================================== */
@@ -674,27 +646,6 @@ article.active { display: block; animation: fadeIn 0.5s ease backwards; }
   border: 1px solid #383838;
 }
 
-.clients-slider .clients-item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-  background: var(--eerie-black-2, #1e1e1f);
-  border-radius: 12px;
-}
-
-.clients-slider img {
-  max-width: 120px;
-  filter: grayscale(100%);
-  opacity: 0.6;
-  transition: 0.3s ease;
-}
-
-.clients-slider img:hover {
-  filter: grayscale(0%);
-  opacity: 1;
-}
-
 /* Swiper Pagination Style */
 .swiper-pagination-bullet {
   background: #ffdb70 !important;
@@ -707,16 +658,12 @@ article.active { display: block; animation: fadeIn 0.5s ease backwards; }
   border-radius: 10px !important;
 }
 
-
-
-
-
-
 /* ===================================
    RESPONSIVE MAP CONTAINER
 =================================== */
 .mapbox {
   width: 100%;
+  margin-top: 20px;
   margin-bottom: 30px;
 }
 
@@ -760,12 +707,6 @@ article.active { display: block; animation: fadeIn 0.5s ease backwards; }
 .contact-form {
     padding-top: 20px;
 }
-
-
-
-
-
-
 
 /* ===================================
    RESUME TIMELINE & SPACING FIXES
@@ -903,24 +844,9 @@ article.active { display: block; animation: fadeIn 0.5s ease backwards; }
   border-radius: 10px;
 }
 
-
-
-
-
 .projects {
     margin-top: 20px;
 }
-
-.mapbox {
-    margin-top: 20px;
-}
-
-
-
-
-
-
-
 
 /* ===== Clients marquee (continuous logo scroll) ===== */
 .clients-marquee {
@@ -955,11 +881,6 @@ article.active { display: block; animation: fadeIn 0.5s ease backwards; }
   align-items: center;
   justify-content: center;
   background-color: #ffffff60;
-}
-
-/* Jis logo ka rang safed ho, us item par ye class laga do */
-.clients .marquee-item.dark-tile {
-  background: #2b2b2c;
 }
 
 .clients .marquee-item a {
@@ -998,7 +919,6 @@ article.active { display: block; animation: fadeIn 0.5s ease backwards; }
   .clients-marquee .marquee-track { animation: none; }
   .clients-marquee { overflow-x: auto; }
 }
-
 
   .timeline-item .timeline-item-title span {
     display: inline;
