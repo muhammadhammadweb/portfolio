@@ -51,14 +51,22 @@ section{padding:14vh 5vw}
 .about .txt p .w{transition:color .2s}
 .stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .stat{border:1px solid var(--line);border-radius:20px;padding:26px;background:rgba(255,255,255,.03);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
-.stat b{display:block;font-size:clamp(3.5rem,8vw,6.5rem);line-height:1;font-weight:800;letter-spacing:-.04em;margin-bottom:8px}
+
+/* ---------- Numbers Fix (Bara karne ke liye) ---------- */
+.stat b{display:flex;align-items:baseline;gap:4px;font-size:clamp(3.5rem,8vw,6rem);line-height:1;font-weight:800;letter-spacing:-.04em;margin-bottom:8px}
+.stat b span[data-n]{font-size:inherit;font-weight:inherit;display:inline-block}
+
 .stat span{color:var(--mut);font-size:.85rem}
-.mq{padding:4vh 0;overflow:hidden;border-block:1px solid var(--line);background:rgba(7,7,11,.6);backdrop-filter:blur(8px)}
+.mq{padding:4vh 0;overflow:hidden;border-block:1px solid var(--line);background:transparent;backdrop-filter:blur(8px)}
 .mq .t{display:flex;align-items:center;width:max-content}
 .mq.r .t{margin-top:10px}
-.mq .lg{display:flex;align-items:center;justify-content:center;height:72px;min-width:130px;margin:0 14px;padding:12px 24px;background:rgba(255,255,255,.92);border-radius:16px;opacity:.9;transition:transform .3s,opacity .3s}
-.mq .lg:hover{opacity:1;transform:translateY(-4px)}
-.mq .lg img{height:44px;width:auto;max-width:150px;object-fit:contain;display:block}
+
+/* ---------- Logo Background Transparent + Blur Fix ---------- */
+.mq .lg{display:flex;align-items:center;justify-content:center;height:72px;min-width:140px;margin:0 10px;padding:12px 24px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.03)!important;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:.95;transition:transform .3s,border-color .3s,background .3s}
+.mq .lg:hover{border-color:rgba(255,255,255,.3);transform:translateY(-4px);background:rgba(255,255,255,.07)!important}
+.mq .lg img{height:40px;width:auto;max-width:140px;object-fit:contain;display:block;filter:brightness(0) invert(1);opacity:.85;transition:opacity .3s}
+.mq .lg:hover img{opacity:1}
+
 .hs{height:100svh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;padding:0}
 .hs .top{padding:9vh 5vw 3vh}
 .hs .h{font-size:clamp(2rem,4.5vw,3.8rem)}
