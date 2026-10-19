@@ -301,13 +301,13 @@ function mk(f){var a=new Float32Array(N*3);for(var i=0;i<N;i++){var v=f(i);a[i*3
 // 1. Tech Shape 1: Laptop Base / Open Shell outline
 shapes.push(mk(function(i){
   var u=i/N;
-  if(u < 0.4) { // Screen outline
+  if(u < 0.4) {
     var x = (u/0.4)*3.2 - 1.6;
     return [x, 1.2 + (Math.random()-.5)*0.05, (Math.random()-.5)*0.2];
-  } else if(u < 0.8) { // Keyboard base plate
+  } else if(u < 0.8) {
     var x = ((u-0.4)/0.4)*3.8 - 1.9;
     return [x, -1.0 + (Math.random()-.5)*0.05, 1.2 * (Math.random() - 0.3)];
-  } else { // Center trackpad / internal circuitry scatter
+  } else {
     return [(Math.random()-.5)*1.2, -0.9 + (Math.random()-.5)*0.2, (Math.random()-.5)*0.8];
   }
 }));
@@ -320,7 +320,7 @@ shapes.push(mk(function(i){
   var y = (row * 0.45) - 1.0 + (Math.random()-.5)*0.05;
   var z = Math.sin(col)*0.3 + (Math.random()-.5)*0.2;
   return [x, y, z];
-});
+}));
 
 // 3. Tech Shape 3: Computer Mouse Contour
 shapes.push(mk(function(i){
@@ -335,10 +335,10 @@ shapes.push(mk(function(i){
 // 4. Tech Shape 4: Headphones Arc & Earcups
 shapes.push(mk(function(i){
   var u = i/N;
-  if(u < 0.5) { // Headband arc over top
+  if(u < 0.5) {
     var t = u * 2 * Math.PI;
     return [Math.cos(t)*1.8, Math.sin(t)*1.5 + 0.4, (Math.random()-.5)*0.3];
-  } else { // Left & Right earcups
+  } else {
     var side = i % 2 === 0 ? -1.8 : 1.8;
     return [side + (Math.random()-.5)*0.6, -0.4 + (Math.random()-.5)*0.8, (Math.random()-.5)*0.6];
   }
@@ -360,7 +360,6 @@ gsap.ticker.add(function(){
   for(var i=0;i<N*3;i++){cur[i]+=((A[i]+(B[i]-A[i])*k)-cur[i])*.08}
   geo.attributes.position.needsUpdate=true;
   pts.rotation.y=t*.12+mx*1.2+prog*2;pts.rotation.x=my*.8+Math.sin(t*.3)*.1;
-  // Jerk / zoom fix: Scale is fixed and stable at 1, no velocity scaling spikes!
   pts.scale.setScalar(1);
   mat.color.copy(c1).lerp(c2,Math.sin(prog*Math.PI));
   R.render(S,Cam)});
