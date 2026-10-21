@@ -387,10 +387,11 @@ addEventListener("resize",rs);rs();
 var mx=0,my=0,smx=0,smy=0,opV=.85,opT=.85;
 if(!isMob)addEventListener("pointermove",function(e){mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
 
-/* one shape per ~0.85 screen of scrolling, cycling; works up and down */
+/* whole page = 4 equal parts: laptop → code → headphones → globe (no repeat); works up and down */
 var curIdx=-1;
 function onScroll(){
-  var y=window.scrollY||0,i=Math.floor(y/(innerHeight*.85))%COUNT;
+  var y=window.scrollY||0,mxS=Math.max(1,document.documentElement.scrollHeight-innerHeight),
+  i=Math.min(COUNT-1,Math.floor(y/mxS*COUNT));                /* page split into 4 parts, each shape once, no repeat */
   opT=y<innerHeight*.6?.85:.5;                               /* brighter in hero, softer behind content */
   if(i!==curIdx){curIdx=i;tgt=getShape(i)}}
 addEventListener("scroll",onScroll,{passive:true});onScroll();
