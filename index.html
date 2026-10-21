@@ -306,40 +306,51 @@ function goTo(el,off){if(lenis)lenis.scrollTo(el,{offset:off||0});else el.scroll
 $$('a[href^="#"]').forEach(function(a){a.addEventListener("click",function(e){var t=$(a.getAttribute("href"));if(t){e.preventDefault();goTo(t)}})});
 
 /* ======================================================
-   3D BACKGROUND — web-dev icons (laptop, HTML, CSS, JS, code,
-   PHP, WordPress, Shopify, Wix, Squarespace, headphones).
-   Each icon is drawn once on a hidden 2D canvas and sampled
-   into particles. The icon changes as the user scrolls up/down;
+   3D BACKGROUND — 4 developer shapes:
+   laptop (with code on screen), </> code symbol, headphones,
+   wireframe world globe.
+   Each is drawn once on a hidden 2D canvas and sampled into
+   particles. The shape changes as the user scrolls up/down;
    the morph is time-based, so there are no scroll jerks.
    ====================================================== */
 var cv=$("#gl"),R=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:false,powerPreference:"low-power"});
 R.setPixelRatio(Math.min(devicePixelRatio,isMob?1:1.5));
 var S=new THREE.Scene(),Cam=new THREE.PerspectiveCamera(60,1,.1,100);Cam.position.z=7;
-var N=isMob?1500:3200,TAU=Math.PI*2,rnd=Math.random,SZ=360;
+var N=isMob?1700:3600,TAU=Math.PI*2,rnd=Math.random,SZ=360;
 function rr(a,b){return a+(b-a)*rnd()}
-function cut(x,t,f,px,py,al){x.save();x.globalCompositeOperation="destination-out";x.font=f;x.textAlign=al||"center";x.textBaseline="middle";x.fillText(t,px,py);x.restore()}
 function rrect(x,l,t,w,h,r){x.beginPath();x.moveTo(l+r,t);x.arcTo(l+w,t,l+w,t+h,r);x.arcTo(l+w,t+h,l,t+h,r);x.arcTo(l,t+h,l,t,r);x.arcTo(l,t,l+w,t,r);x.closePath()}
-function shield(x,g){x.beginPath();x.moveTo(-105,-130);x.lineTo(105,-130);x.lineTo(88,88);x.lineTo(0,132);x.lineTo(-88,88);x.closePath();x.fill();cut(x,g,"bold 190px Arial, sans-serif",0,8)}
 function ln(x,a,b,c,d){x.beginPath();x.moveTo(a,b);x.lineTo(c,d);x.stroke()}
 var ICONS=[
-/* 0 laptop */ function(x){x.lineWidth=14;x.lineJoin=x.lineCap="round";rrect(x,-112,-112,224,150,12);x.stroke();
-  x.lineWidth=11;ln(x,-75,-75,-15,-75);ln(x,-50,-48,40,-48);ln(x,-75,-21,10,-21);
-  x.lineWidth=14;x.beginPath();x.moveTo(-150,58);x.lineTo(150,58);x.lineTo(128,92);x.lineTo(-128,92);x.closePath();x.stroke()},
-/* 1 HTML5 */ function(x){shield(x,"5")},
-/* 2 CSS3 */ function(x){shield(x,"3")},
-/* 3 JS */ function(x){x.fillRect(-125,-125,250,250);cut(x,"JS","bold 125px Arial, sans-serif",112,72,"right")},
-/* 4 code */ function(x){x.lineWidth=26;x.lineJoin=x.lineCap="round";
-  x.beginPath();x.moveTo(-48,-88);x.lineTo(-125,0);x.lineTo(-48,88);x.stroke();
-  x.beginPath();x.moveTo(48,-88);x.lineTo(125,0);x.lineTo(48,88);x.stroke();ln(x,24,-108,-24,108)},
-/* 5 PHP */ function(x){x.beginPath();x.ellipse(0,0,165,92,0,0,TAU);x.fill();cut(x,"php","italic bold 120px Arial, sans-serif",0,6)},
-/* 6 WordPress */ function(x){x.lineWidth=15;x.beginPath();x.arc(0,0,142,0,TAU);x.stroke();
-  x.font="bold 200px Georgia, 'Times New Roman', serif";x.textAlign="center";x.textBaseline="middle";x.fillText("W",0,8)},
-/* 7 Shopify */ function(x){x.beginPath();x.moveTo(-105,-60);x.lineTo(105,-60);x.lineTo(90,132);x.lineTo(-90,132);x.closePath();x.fill();
-  x.lineWidth=18;x.lineCap="round";x.beginPath();x.arc(0,-62,52,Math.PI,TAU);x.stroke();cut(x,"S","bold 170px Arial, sans-serif",0,44)},
-/* 8 Wix */ function(x){x.font="900 165px Arial, sans-serif";x.textAlign="center";x.textBaseline="middle";x.fillText("WIX",0,0)},
-/* 9 Squarespace */ function(x){x.lineWidth=13;x.lineJoin="round";x.font="bold 320px Arial, sans-serif";x.textAlign="center";x.textBaseline="middle";x.strokeText("S",0,14)},
-/* 10 headphones */ function(x){x.lineWidth=20;x.lineCap="round";x.beginPath();x.arc(0,12,118,Math.PI,TAU);x.stroke();
-  rrect(x,-152,10,56,112,18);x.fill();rrect(x,96,10,56,112,18);x.fill()}
+/* 0 laptop: screen with code, notched base */
+function(x){x.lineJoin=x.lineCap="round";
+  x.lineWidth=14;rrect(x,-122,-120,244,162,16);x.stroke();                 /* screen frame */
+  x.lineWidth=12;                                                          /* </> on screen */
+  x.beginPath();x.moveTo(-34,-82);x.lineTo(-70,-52);x.lineTo(-34,-22);x.stroke();
+  x.beginPath();x.moveTo(34,-82);x.lineTo(70,-52);x.lineTo(34,-22);x.stroke();
+  ln(x,10,-90,-10,-14);
+  x.lineWidth=9;ln(x,-84,10,-8,10);ln(x,24,10,84,10);                      /* code lines */
+  x.beginPath();x.moveTo(-158,62);x.lineTo(158,62);x.lineTo(158,72);          /* base */
+  x.arcTo(158,92,138,92,18);x.lineTo(-138,92);x.arcTo(-158,92,-158,72,18);x.closePath();x.fill();
+  x.save();x.globalCompositeOperation="destination-out";rrect(x,-34,56,68,16,8);x.fill();x.restore()}, /* trackpad notch */
+/* 1 </> code symbol */
+function(x){x.lineJoin=x.lineCap="round";x.lineWidth=28;
+  x.beginPath();x.moveTo(-46,-100);x.lineTo(-136,0);x.lineTo(-46,100);x.stroke();
+  x.beginPath();x.moveTo(46,-100);x.lineTo(136,0);x.lineTo(46,100);x.stroke();
+  x.lineWidth=22;ln(x,28,-122,-28,122)},
+/* 2 headphones: band + cups + cushions */
+function(x){x.lineJoin=x.lineCap="round";
+  x.lineWidth=24;x.beginPath();x.arc(0,16,116,Math.PI,TAU);x.stroke();     /* headband */
+  rrect(x,-152,8,60,124,22);x.fill();rrect(x,92,8,60,124,22);x.fill();      /* ear cups */
+  x.lineWidth=10;ln(x,-122,0,-122,16);ln(x,122,0,122,16);
+  rrect(x,-84,26,16,88,8);x.fill();rrect(x,68,26,16,88,8);x.fill()},       /* cushions */
+/* 3 world globe (tilted wireframe) */
+function(x){x.lineJoin=x.lineCap="round";x.rotate(-.32);x.lineWidth=9;
+  x.beginPath();x.arc(0,0,138,0,TAU);x.stroke();
+  x.beginPath();x.ellipse(0,0,70,138,0,0,TAU);x.stroke();                   /* meridians */
+  x.beginPath();x.ellipse(0,0,112,138,0,0,TAU);x.stroke();
+  ln(x,0,-138,0,138);ln(x,-138,0,138,0);                                    /* axis + equator */
+  var ys=[-72,72,-110,110];
+  ys.forEach(function(y){var hw=Math.sqrt(138*138-y*y);ln(x,-hw,y,hw,y)})}  /* latitudes */
 ];
 
 var COUNT=ICONS.length,cache=[];
@@ -355,10 +366,8 @@ function buildShape(i){
   return a}
 function getShape(i){return cache[i]||(cache[i]=buildShape(i))}
 var c1=new THREE.Color(0x7cf5c8);
-/* brand colours: null = site accent colour */
-var BR=[null,0xe44d26,0x2965f1,0xf7df1e,null,0x8892bf,0x3b9fd1,0x95bf47,0xffffff,0xffffff,null].map(function(h){return h==null?null:new THREE.Color(h)});
 
-var cur=new Float32Array(getShape(0)),tgt=getShape(0),tcol=c1,sp=new Float32Array(N);
+var cur=new Float32Array(getShape(0)),tgt=getShape(0),sp=new Float32Array(N);
 for(var q=0;q<N;q++)sp[q]=.55+rnd()*.9;
 var geo=new THREE.BufferGeometry(),pa=new THREE.BufferAttribute(cur,3);
 if(THREE.DynamicDrawUsage)pa.setUsage(THREE.DynamicDrawUsage);
@@ -371,19 +380,19 @@ function rs(){var w=innerWidth,h=innerHeight;
   if(isMob){hMax=Math.max(hMax,h);h=hMax;if(w===lw)return}  /* ignore address-bar resize on phones */
   lw=w;R.setSize(w,h,false);Cam.aspect=w/h;Cam.updateProjectionMatrix();
   var vis=8.08*Cam.aspect;                                   /* visible world width at z=0 */
-  if(Cam.aspect>1.3){pts.position.x=vis*.15;pts.scale.setScalar(1)}      /* wide: icon on the right */
+  if(Cam.aspect>1.3){pts.position.x=vis*.15;pts.scale.setScalar(1)}      /* wide: shape on the right */
   else{pts.position.x=0;pts.scale.setScalar(Math.min(1,vis*.85/6.2))}}  /* narrow: centred, fits width */
 addEventListener("resize",rs);rs();
 
 var mx=0,my=0,smx=0,smy=0,opV=.85,opT=.85;
 if(!isMob)addEventListener("pointermove",function(e){mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
 
-/* one icon per ~0.85 screen of scrolling, cycling; works up and down */
+/* one shape per ~0.85 screen of scrolling, cycling; works up and down */
 var curIdx=-1;
 function onScroll(){
   var y=window.scrollY||0,i=Math.floor(y/(innerHeight*.85))%COUNT;
   opT=y<innerHeight*.6?.85:.5;                               /* brighter in hero, softer behind content */
-  if(i!==curIdx){curIdx=i;tgt=getShape(i);tcol=BR[i]||c1}}
+  if(i!==curIdx){curIdx=i;tgt=getShape(i)}}
 addEventListener("scroll",onScroll,{passive:true});onScroll();
 
 var t0=performance.now(),last=t0;
@@ -399,7 +408,7 @@ function loop(now){requestAnimationFrame(loop);
   pts.rotation.y=RM?0:Math.sin(t*.4)*.32+smx*.5;
   pts.rotation.x=smy*.3;
   opV+=(opT-opV)*k;mat.opacity=opV*(isMob?.62:1);
-  mat.color.lerp(tcol,Math.min(1,k*1.6));
+  mat.color.lerp(c1,Math.min(1,k*1.6));
   R.render(S,Cam)}
 requestAnimationFrame(loop);
 
