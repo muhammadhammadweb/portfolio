@@ -121,12 +121,13 @@ footer{padding:30px 5vw;display:flex;justify-content:space-between;color:var(--m
   .dock::-webkit-scrollbar{display:none}
   .dock button{white-space:nowrap;flex:none;padding:10px 14px}
   .cnt{display:block;margin:14px 0 0}
-  .grid{grid-template-columns:repeat(2,1fr);gap:12px}
-  .card{height:170px;padding:13px;border-radius:18px;contain-intrinsic-size:auto 170px}
+  /* phones: 2-row swipe carousel instead of a long vertical list */
+  .grid{grid-template-columns:none;grid-auto-flow:column;grid-template-rows:repeat(2,158px);grid-auto-columns:66vw;gap:12px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-padding-inline:5vw;margin-inline:-5vw;padding:0 5vw 14px;scrollbar-width:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+  .grid::-webkit-scrollbar{display:none}
+  .card{height:158px;padding:13px;border-radius:18px;scroll-snap-align:start;content-visibility:visible}
   .card h3{font-size:1rem}
   .pill{font-size:.58rem;padding:5px 10px;letter-spacing:.1em}
-  .card .go{justify-content:flex-end;margin-top:6px}
-  .card .go span{display:none}
+  .card .go{margin-top:6px}
   .card .go b{width:32px;height:32px}
   .more button{padding:13px 22px;font-size:.88rem}
   .mq .lg{height:60px;min-width:110px}
@@ -306,7 +307,7 @@ $$('a[href^="#"]').forEach(function(a){a.addEventListener("click",function(e){va
 
 /* ======================================================
    3D BACKGROUND — developer objects
-   laptop → code sign → keyboard → headphones → mouse
+   torus knot → code sign → cube → DNA → globe
    Shape is chosen by the section on screen (not by scroll
    speed), and the morph is time-based => no zoom jerks.
    ====================================================== */
@@ -315,49 +316,33 @@ R.setPixelRatio(Math.min(devicePixelRatio,isMob?1:1.5));
 var S=new THREE.Scene(),Cam=new THREE.PerspectiveCamera(60,1,.1,100);Cam.position.z=7;
 var N=isMob?1100:2400,TAU=Math.PI*2,rnd=Math.random;
 function rr(a,b){return a+(b-a)*rnd()}
-function boxS(cx,cy,cz,w,h,d){var A=w*h,B=d*h,C=w*d,u=rnd()*(A+B+C),s=rnd()<.5?-.5:.5;
-  if(u<A)return[cx+rr(-.5,.5)*w,cy+rr(-.5,.5)*h,cz+s*d];
-  if(u<A+B)return[cx+s*w,cy+rr(-.5,.5)*h,cz+rr(-.5,.5)*d];
-  return[cx+rr(-.5,.5)*w,cy+s*h,cz+rr(-.5,.5)*d]}
-function frame(w,h){var p=2*(w+h),t=rnd()*p,x,y;
-  if(t<w){x=t-w/2;y=h/2}else if(t<w+h){x=w/2;y=h/2-(t-w)}else if(t<2*w+h){x=w/2-(t-w-h);y=-h/2}else{x=-w/2;y=-h/2+(t-2*w-h)}
-  return[x+rr(-.04,.04),y+rr(-.04,.04),rr(-.04,.04)]}
-function cylX(cx,cy,cz,rad,len){var a=rnd()*TAU;
-  if(rnd()<.55)return[cx+rr(-.5,.5)*len,cy+rad*Math.cos(a),cz+rad*Math.sin(a)];
-  var q=rad*Math.sqrt(rnd()),s=rnd()<.5?-.5:.5;return[cx+s*len,cy+q*Math.cos(a),cz+q*Math.sin(a)]}
 function seg(a,b,th){var t=rnd();return[a[0]+(b[0]-a[0])*t+rr(-th,th),a[1]+(b[1]-a[1])*t+rr(-th,th),rr(-th,th)*1.5]}
 
-/* 1. Laptop */
-function laptop(){var u=rnd(),W=4.2,H=2.7,hy=-1.13,hz=-1.45,th=-.26;
-  function sc(x,y,z){return[x,y*Math.cos(th)-z*Math.sin(th)+hy,y*Math.sin(th)+z*Math.cos(th)+hz]}
-  if(u<.30)return boxS(0,-1.2,0,W,.14,2.9);
-  if(u<.58){var f=frame(W,H);return sc(f[0],f[1]+H/2,f[2])}
-  if(u<.80)return sc(rr(-W/2,W/2),rr(0,H),rr(-.03,.03));
-  if(u<.90){var a=rnd()*TAU;return sc(Math.cos(a)*.32,H/2+Math.sin(a)*.32,0)}
-  return[rr(-1.8,1.8),-1.12,-.95+((rnd()*5)|0)*.3]}
+/* 1. Torus knot */
+function knot(){var t=rnd()*TAU,r=Math.cos(3*t)+2,u=rnd()*TAU,v=Math.acos(rr(-1,1)),k=.13*rnd();
+  return[r*Math.cos(2*t)+k*Math.sin(v)*Math.cos(u),r*Math.sin(2*t)+k*Math.sin(v)*Math.sin(u),-Math.sin(3*t)+k*Math.cos(v)]}
 /* 2. Code sign  </>  */
 var SG=[[[-1,1.3],[-2.3,0]],[[-2.3,0],[-1,-1.3]],[[-.45,-1.7],[.45,1.7]],[[1,1.3],[2.3,0]],[[2.3,0],[1,-1.3]]],SW=[.17,.34,.66,.83,1];
 function code(){var u=rnd(),i=0;while(u>SW[i])i++;return seg(SG[i][0],SG[i][1],.1)}
-/* 3. Keyboard */
-var keys=[];for(var rw=0;rw<3;rw++)for(var c=-5;c<=5;c++)keys.push([c*.46,(rw-1.5)*.48,.38,.38]);
-[-2.8,-2.34,-1.88,1.88,2.34,2.8].forEach(function(x){keys.push([x,.72,.38,.38])});keys.push([0,.72,2.9,.38]);
-function kb(){if(rnd()<.2)return boxS(0,-.05,0,6.2,.16,2.5);var k=keys[(rnd()*keys.length)|0];return boxS(k[0],.13,k[1],k[2],.16,k[3])}
-/* 4. Headphones */
-function phones(){var u=rnd(),R0=2;
-  if(u<.3){var a=rr(-.12,Math.PI+.12),v=rnd()*TAU,q=R0+.1*Math.cos(v);return[q*Math.cos(a),q*Math.sin(a)*1.1,.1*Math.sin(v)]}
-  var sd=rnd()<.5?-1:1;
-  if(u<.8)return cylX(sd*2.15,-.1,0,.85,.5);
-  return cylX(sd*1.8,-.1,0,.62,.28)}
-/* 5. Mouse */
-function mouse(){var u=rnd(),ax=1.15,ay=.8,az=1.9;
-  if(u<.74){var a=rnd()*TAU,c=rnd(),s=Math.sqrt(1-c*c);return[ax*s*Math.cos(a),ay*c,az*s*Math.sin(a)]}
-  if(u<.82){var z=rr(-az,-.2),y=ay*Math.sqrt(Math.max(0,1-(z/az)*(z/az)));return[rr(-.02,.02),y+.02,z]}
-  if(u<.88)return cylX(0,.72,-.85,.2,.24);
-  var a2=rnd()*TAU,q=Math.sqrt(rnd());return[ax*q*Math.cos(a2),0,az*q*Math.sin(a2)]}
+/* 3. Nested wireframe cube */
+var CE=[];for(var ca=0;ca<8;ca++)for(var cb=ca+1;cb<8;cb++){var cd=ca^cb;if(cd==1||cd==2||cd==4)CE.push([ca,cb])}
+function cp(i,s){return[(i&1?s:-s),(i&2?s:-s),(i&4?s:-s)]}
+function cube(){var u=rnd(),j=.03,A,B,t=rnd();
+  if(u<.65){var e=CE[(rnd()*12)|0],s=u<.4?2:1.05;A=cp(e[0],s);B=cp(e[1],s)}
+  else{var i=(rnd()*8)|0;A=cp(i,2);B=cp(i,1.05)}
+  return[A[0]+(B[0]-A[0])*t+rr(-j,j),A[1]+(B[1]-A[1])*t+rr(-j,j),A[2]+(B[2]-A[2])*t+rr(-j,j)]}
+/* 4. DNA helix */
+function dna(){var u=rnd(),y,a,j=.05;
+  if(u<.72){y=rr(-2.7,2.7);a=y*1.7+(rnd()<.5?0:Math.PI);return[1.1*Math.cos(a)+rr(-j,j),y,1.1*Math.sin(a)+rr(-j,j)]}
+  y=Math.round(rr(-7,7))*.38;a=y*1.7;var t=rnd();return[1.1*Math.cos(a)*(1-2*t)+rr(-j,j),y,1.1*Math.sin(a)*(1-2*t)+rr(-j,j)]}
+/* 5. Wireframe globe */
+function globe(){var R0=2.3,th,ph;
+  if(rnd()<.5){ph=(((rnd()*7)|0)+1)/8*Math.PI;th=rnd()*TAU}else{th=((rnd()*10)|0)/10*TAU;ph=rnd()*Math.PI}
+  var j=rr(-.02,.02);return[R0*Math.sin(ph)*Math.cos(th)+j,R0*Math.cos(ph)+j,R0*Math.sin(ph)*Math.sin(th)+j]}
 
 function build(f,rx,sc,dy){var a=new Float32Array(N*3),c=Math.cos(rx),s=Math.sin(rx);
   for(var i=0;i<N;i++){var v=f(),y=v[1]*c-v[2]*s,z=v[1]*s+v[2]*c;a[i*3]=v[0]*sc;a[i*3+1]=y*sc+dy;a[i*3+2]=z*sc}return a}
-var shapes=[build(laptop,.18,.95,-.1),build(code,0,1,0),build(kb,.75,.8,0),build(phones,0,1,-.45),build(mouse,.85,1.15,-.2)];
+var shapes=[build(knot,0,.85,0),build(code,0,1,0),build(cube,.5,.85,0),build(dna,0,1,0),build(globe,.4,1,0)];
 
 var cur=new Float32Array(shapes[0]),tgt=shapes[0],sp=new Float32Array(N);
 for(var q=0;q<N;q++)sp[q]=.55+rnd()*.9;
@@ -374,11 +359,11 @@ function rs(){var w=innerWidth,h=innerHeight;
   pts.position.x=w>800?2.2:0;pts.scale.setScalar(w>800?1:.8)}
 addEventListener("resize",rs);rs();
 
-var mx=0,my=0,smx=0,smy=0,mixV=0,mixT=0,MIX=[0,.6,.2,.8,.4];
+var mx=0,my=0,smx=0,smy=0,mixV=0,mixT=0,MIX=[0,.6,.2,.8,.4],opV=.85,opT=.85,OPA=[.85,.32,.32,.32,.85];
 var c1=new THREE.Color(0x7cf5c8),c2=new THREE.Color(0x8b7bff);
 if(!isMob)addEventListener("pointermove",function(e){mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
 
-function setShape(i){tgt=shapes[i];mixT=MIX[i]}
+function setShape(i){tgt=shapes[i];mixT=MIX[i];opT=OPA[i]}
 if("IntersectionObserver" in window){
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)setShape(+e.target.dataset.sh)})},{rootMargin:"-45% 0px -45% 0px"});
   [[".hero",0],["#about",1],["#work",2],["#exp",3],["#contact",4]].forEach(function(m){var el=$(m[0]);if(el){el.dataset.sh=m[1];io.observe(el)}});
@@ -396,7 +381,7 @@ function loop(now){requestAnimationFrame(loop);
   var t=(now-t0)/1000;
   pts.rotation.y=RM?0:Math.sin(t*.35)*.5+smx*.6;
   pts.rotation.x=smy*.35;
-  mixV+=(mixT-mixV)*k;
+  mixV+=(mixT-mixV)*k;opV+=(opT-opV)*k;mat.opacity=opV*(isMob?.6:1);
   mat.color.copy(c1).lerp(c2,mixV);
   R.render(S,Cam)}
 requestAnimationFrame(loop);
@@ -417,7 +402,7 @@ if(!isMob){
    ====================================================== */
 var data=P.map(function(r,i){var p=r.split("|");return{n:p[0],c:p[1],u:p[2],s:p[3],h:(i*47+150)%360}});
 var grid=$("#grid"),moreBox=$("#more"),cnt=$("#cnt"),dock=$("#dock"),blob=$(".blob",dock);
-var PAGE=isMob?8:12,shown=0,list=data,act=null;
+var PAGE=innerWidth<=800?8:12,shown=0,list=data,act=null;
 function pad(n){return String(n).padStart(2,"0")}
 
 function mkCard(d,delay){
@@ -439,7 +424,7 @@ function upd(){
     mkBtn("Show "+Math.min(PAGE,left)+" more",function(){show(PAGE)});
     if(left>PAGE)mkBtn("Show all "+list.length,function(){show(left)});
   }else if(list.length>PAGE){
-    mkBtn("Show less",function(){grid.textContent="";shown=0;show(PAGE);goTo($("#work"))});
+    mkBtn("Show less",function(){grid.textContent="";grid.scrollLeft=0;shown=0;show(PAGE);goTo($("#work"))});
   }
 }
 function show(n){
@@ -450,7 +435,7 @@ function show(n){
 }
 function setFilter(c){
   list=c=="All"?data:data.filter(function(d){return d.c==c});
-  grid.textContent="";shown=0;show(PAGE);
+  grid.textContent="";grid.scrollLeft=0;shown=0;show(PAGE);
 }
 if(!isMob){
   grid.addEventListener("pointermove",function(e){var c=e.target.closest(".card");if(!c)return;var r=c.getBoundingClientRect();
