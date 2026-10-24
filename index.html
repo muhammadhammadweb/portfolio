@@ -183,6 +183,15 @@ footer{padding:30px 5vw;display:flex;justify-content:space-between;color:var(--m
   <div class="sk"><span>WordPress</span><span>Shopify</span><span>Webflow</span><span>Elementor</span><span>WooCommerce</span><span>Liquid</span><span>PHP</span><span>JavaScript</span><span>SEO</span><span>Figma → Code</span></div>
 </section>
 
+<section id="edu">
+  <div class="eyebrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;margin-right:8px"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Education</div><h2 class="h">Where I<br>learned.</h2>
+  <div class="tl"><div class="ln"><i></i></div>
+    <div class="job"><small>2019 — 2022</small><h4>BS Computer Science · Benazir Bhutto Shaheed University Lyari, Karachi</h4><p>Bachelor of Science in Computer Science.</p></div>
+    <div class="job"><small>2018</small><h4>Intermediate · Aisha Bawany Govt. College (Morning)</h4><p>Intermediate in Computer Science.</p></div>
+    <div class="job"><small>2016</small><h4>Matriculation · Faliq ul Isbah Academy</h4><p>Matriculation in Science.</p></div>
+  </div>
+</section>
+
 <section id="contact" class="contact">
   <div class="eyebrow">Contact</div>
   <div class="big">Let's build<br>something <em>wild.</em></div>
@@ -306,9 +315,9 @@ function goTo(el,off){if(lenis)lenis.scrollTo(el,{offset:off||0});else el.scroll
 $$('a[href^="#"]').forEach(function(a){a.addEventListener("click",function(e){var t=$(a.getAttribute("href"));if(t){e.preventDefault();goTo(t)}})});
 
 /* ======================================================
-   3D BACKGROUND — 4 developer shapes:
+   3D BACKGROUND — developer shapes:
    laptop (with code on screen), </> code symbol, headphones,
-   wireframe world globe.
+   wireframe world globe, and a graduation cap for Education.
    Each is drawn once on a hidden 2D canvas and sampled into
    particles. The shape changes as the user scrolls up/down;
    the morph is time-based, so there are no scroll jerks.
@@ -350,10 +359,16 @@ function(x){x.lineJoin=x.lineCap="round";x.rotate(-.32);x.lineWidth=9;
   x.beginPath();x.ellipse(0,0,112,138,0,0,TAU);x.stroke();
   ln(x,0,-138,0,138);ln(x,-138,0,138,0);                                    /* axis + equator */
   var ys=[-72,72,-110,110];
-  ys.forEach(function(y){var hw=Math.sqrt(138*138-y*y);ln(x,-hw,y,hw,y)})}  /* latitudes */
+  ys.forEach(function(y){var hw=Math.sqrt(138*138-y*y);ln(x,-hw,y,hw,y)})}, /* latitudes */
+/* 4 graduation cap (education) */
+function(x){x.lineJoin=x.lineCap="round";
+  x.beginPath();x.moveTo(0,-100);x.lineTo(168,-38);x.lineTo(0,24);x.lineTo(-168,-38);x.closePath();x.fill();   /* mortarboard */
+  x.lineWidth=15;x.beginPath();x.moveTo(-96,6);x.lineTo(-96,62);x.quadraticCurveTo(0,136,96,62);x.lineTo(96,6);x.stroke(); /* cap base */
+  x.save();x.globalCompositeOperation="destination-out";x.lineWidth=8;ln(x,0,-38,142,-38);x.beginPath();x.arc(0,-38,10,0,TAU);x.fill();x.restore(); /* cord on board */
+  x.lineWidth=8;ln(x,142,-30,142,52);rrect(x,130,50,24,46,9);x.fill()}   /* tassel */
 ];
 
-var COUNT=ICONS.length,cache=[];
+var cache=[];
 function buildShape(i){
   var c=document.createElement("canvas");c.width=c.height=SZ;
   var x=c.getContext("2d",{willReadFrequently:true});
@@ -387,12 +402,21 @@ addEventListener("resize",rs);rs();
 var mx=0,my=0,smx=0,smy=0,opV=.85,opT=.85;
 if(!isMob)addEventListener("pointermove",function(e){mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
 
-/* whole page = 4 equal parts: laptop → code → headphones → globe (no repeat); works up and down */
-var curIdx=-1;
+/* Before Education: page split in 3 → laptop, </>, headphones.
+   While the Education section is on screen → graduation cap.
+   After it (Contact) → world globe. Works scrolling up and down. */
+var curIdx=-1,eduEl=$("#edu");
 function onScroll(){
-  var y=window.scrollY||0,mxS=Math.max(1,document.documentElement.scrollHeight-innerHeight),
-  i=Math.min(COUNT-1,Math.floor(y/mxS*COUNT));                /* page split into 4 parts, each shape once, no repeat */
-  opT=y<innerHeight*.6?.85:.5;                               /* brighter in hero, softer behind content */
+  var y=window.scrollY||0,vh=innerHeight,mid=y+vh*.5,i;
+  if(eduEl){
+    var r=eduEl.getBoundingClientRect(),top=r.top+y,bot=r.bottom+y;
+    if(mid<top)i=Math.min(2,Math.floor(mid/Math.max(1,top)*3));
+    else if(mid<=bot)i=4;
+    else i=3;
+  }else{
+    var m=Math.max(1,document.documentElement.scrollHeight-vh);i=Math.min(3,Math.floor(y/m*4));
+  }
+  opT=y<vh*.6?.85:.5;                                        /* brighter in hero, softer behind content */
   if(i!==curIdx){curIdx=i;tgt=getShape(i)}}
 addEventListener("scroll",onScroll,{passive:true});onScroll();
 
@@ -499,7 +523,7 @@ $$(".stat").forEach(function(s){gsap.from(s,{y:50,opacity:0,duration:.8,ease:"po
 $$("[data-n]").forEach(function(n){var t=+n.dataset.n,q={v:0};ScrollTrigger.create({trigger:n,start:"top 90%",once:true,onEnter:function(){gsap.to(q,{v:t,duration:1.5,ease:"power2.out",onUpdate:function(){n.textContent=Math.round(q.v)}})}})});
 $$(".h").forEach(function(h){gsap.from(h,{y:40,opacity:0,duration:.8,ease:"power3.out",scrollTrigger:{trigger:h,start:"top 88%"}})});
 $$(".job").forEach(function(j){gsap.from(j,{x:-30,opacity:0,duration:.8,ease:"power3.out",scrollTrigger:{trigger:j,start:"top 85%"}})});
-gsap.to("#lnFill",{scaleY:1,ease:"none",scrollTrigger:{trigger:".tl",start:"top 70%",end:"bottom 70%",scrub:true}});
+$$(".tl").forEach(function(t){gsap.to($(".ln i",t),{scaleY:1,ease:"none",scrollTrigger:{trigger:t,start:"top 70%",end:"bottom 70%",scrub:true}})});
 gsap.from(".sk span",{y:30,opacity:0,stagger:.04,duration:.6,scrollTrigger:{trigger:".sk",start:"top 90%"}});
 gsap.from(".contact .big",{y:50,opacity:0,duration:1,ease:"power3.out",scrollTrigger:{trigger:".contact",start:"top 70%"}});
 gsap.from(".mag",{scale:0,duration:1,ease:"elastic.out(1,.5)",scrollTrigger:{trigger:".mag",start:"top 95%"}});
