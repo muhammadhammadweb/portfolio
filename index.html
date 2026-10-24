@@ -115,6 +115,9 @@ section{padding:14vh 5vw}
 footer{padding:30px 5vw;display:flex;justify-content:space-between;color:var(--mut);font-size:.8rem;border-top:1px solid var(--line)}
 
 @media(max-width:800px){
+  nav{padding:16px 4vw}
+  nav .logo{font-size:.9rem}
+  nav ul{gap:14px;font-size:.74rem}
   section{padding:11vh 5vw}
   .about{grid-template-columns:1fr;gap:8vh}
   .stat{padding:20px}
@@ -133,8 +136,12 @@ footer{padding:30px 5vw;display:flex;justify-content:space-between;color:var(--m
   .more button{padding:13px 22px;font-size:.88rem}
   .mq .lg{height:60px;min-width:110px}
 }
+@media(max-width:420px){nav{justify-content:center}nav .logo{display:none}nav ul{gap:12px}}
 @media(prefers-reduced-motion:reduce){.mq .t.run{animation:none}.card{animation:none}}
 </style>
+<!-- Vercel Web Analytics: enable it in Vercel dashboard -> Project -> Analytics -->
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 <div id="loader"><small>Loading portfolio</small><span id="pct">0</span></div>
@@ -142,7 +149,7 @@ footer{padding:30px 5vw;display:flex;justify-content:space-between;color:var(--m
 <canvas id="gl"></canvas>
 
 <nav><a class="logo" href="#top">M.Hammad</a>
-<ul><li><a href="#about">About</a></li><li><a href="#work">Work</a></li><li><a href="#exp">Experience</a></li><li><a href="#contact">Contact</a></li></ul></nav>
+<ul><li><a href="#about">About</a></li><li><a href="#work">Work</a></li><li><a href="#exp">Experience</a></li><li><a href="#edu">Education</a></li><li><a href="#contact">Contact</a></li></ul></nav>
 
 <main id="top">
 <section class="hero">
@@ -299,8 +306,8 @@ var P=[
 "Teach Learn Research|WordPress|https://teachlearnresearch.com/|techlearner.png"
 ];
 
-var L1="ausnrg.png,lighthouse.webp,aiacontracts.png,clearvucam.webp,lawwriting.webp,wanlin.png,abzgate.png,bestassignmentwriters.webp,cannybookwriters.png,prismlights.png,theshowmeexpo.png,walsallwallexperts.png,winningcommerce.png,dissertationwritingace.webp,assignmenthelpzone.webp,davidnealmcphee.webp,colincmckay.webp,padel360.webp,choicehealthwellness.webp,ilregnodoratokennel.png,globalcitation.png,ipack.png,rendomi.png,delis.webp".split(",");
-var L2="utility-select.png,aeromaritimegroup.png,garagedijkhuizen.png,punkworx.png,sky-acp.png,aliorstudio.png,rock-blues-jazz.png,drmarinaborisenko.png,paintingbymoli.webp,riseinconfidence.png,completedetox.png,forefrontlabel.png,nordpure.webp,fieldandfirecoffee.png,customvarsityjackets.png,enduosports.png,deemedfit.png,florawell.png,ruanorte.png,loveself.png,thenibblesapp.png,xomalabs.png,imyoo.png,everacoaching.png".split(",");
+var L1="ausnrg.png,lighthouse.webp,aiacontracts.png,clearvucam.webp,lawwriting.webp,wanlin.png,abzgate.png,bestassignmentwriters.webp,cannybookwriters.png,prismlights.png,theshowmeexpo.png,walsallwallexperts.png,winningcommerce.png,dissertationwritingace.webp,assignmenthelpzone.webp,davidnealmcphee.webp,colincmckay.webp,padel360.webp,choicehealthwellness.webp,ilregnodoratokennel.png,globalcitation.png,ipack.png,rendomi.png,delis.webp,ahlesa.png,absoltech.png,academicwisdom.png,badegg.png,britainacademics.png,careerssafari.png,cloud9shishalounge.webp,kirkcaldytaxis.png,martinezlegal.webp,mecdemag.jpg,nexodesigns.png,nursingassignmentswriter.png,personalstatementexperts.png,playusapp.png,saveourchildreneducationsierraleone.png".split(",");
+var L2="utility-select.png,aeromaritimegroup.png,garagedijkhuizen.png,punkworx.png,sky-acp.png,aliorstudio.png,rock-blues-jazz.png,drmarinaborisenko.png,paintingbymoli.webp,riseinconfidence.png,completedetox.png,forefrontlabel.png,nordpure.webp,fieldandfirecoffee.png,customvarsityjackets.png,enduosports.png,deemedfit.png,florawell.png,ruanorte.png,loveself.png,thenibblesapp.png,xomalabs.png,imyoo.png,everacoaching.png,scopusjournalpublisher.png,solar-craft.png,souzet.png,teachlearnresearch.png,theacademicassistance.png,theclasstaker.webp,thegraphicconcept.webp,thespecterink.png,thriversity.png,tpk.png,auadviser.png,soho-brand.png,nexomos-logo1.png,juice-footer.png,Logo-Synko.png".split(",");
 
 /* ---------- Client logos (CSS animated) ---------- */
 /* Marquee: builds one set, waits for the logos, hides broken ones, then repeats the set so the row is always full
