@@ -57,7 +57,8 @@ section{padding:14vh 5vw}
 
 /* ---------- Client logo marquee (pure CSS, no blur = light) ---------- */
 .mq{padding:4vh 0;overflow:hidden;border-block:1px solid var(--line);background:rgba(7,7,11,.92)}
-.mq .t{display:flex;align-items:center;width:max-content;animation:mq 70s linear infinite;will-change:transform}
+.mq .t{display:flex;align-items:center;width:max-content;will-change:transform}
+.mq .t.run{animation:mq var(--d,60s) linear infinite}
 .mq.r .t{margin-top:10px;animation-direction:reverse}
 @keyframes mq{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
 .mq .lg{display:flex;align-items:center;justify-content:center;height:72px;min-width:130px;margin:0 10px;padding:10px 20px;border:1px solid var(--line);border-radius:18px;background:#15151d}
@@ -132,7 +133,7 @@ footer{padding:30px 5vw;display:flex;justify-content:space-between;color:var(--m
   .more button{padding:13px 22px;font-size:.88rem}
   .mq .lg{height:60px;min-width:110px}
 }
-@media(prefers-reduced-motion:reduce){.mq .t{animation:none}.card{animation:none}}
+@media(prefers-reduced-motion:reduce){.mq .t.run{animation:none}.card{animation:none}}
 </style>
 </head>
 <body>
@@ -184,7 +185,7 @@ footer{padding:30px 5vw;display:flex;justify-content:space-between;color:var(--m
 </section>
 
 <section id="edu">
-  <div class="eyebrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;margin-right:8px"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Education</div><h2 class="h">Where I<br>learned.</h2>
+  <div class="eyebrow">Education</div><h2 class="h">Where I<br>learned.</h2>
   <div class="tl"><div class="ln"><i></i></div>
     <div class="job"><small>2019 — 2022</small><h4>BS Computer Science · Benazir Bhutto Shaheed University Lyari, Karachi</h4><p>Bachelor of Science in Computer Science.</p></div>
     <div class="job"><small>2018</small><h4>Intermediate · Aisha Bawany Govt. College (Morning)</h4><p>Intermediate in Computer Science.</p></div>
@@ -211,6 +212,11 @@ gsap.registerPlugin(ScrollTrigger);
 var RM=matchMedia("(prefers-reduced-motion:reduce)").matches;
 var isMob=innerWidth<=800||matchMedia("(hover:none)").matches;
 var $=function(s,c){return(c||document).querySelector(s)},$$=function(s,c){return[].slice.call((c||document).querySelectorAll(s))};
+
+/* After running optimize-images.js every image is a small .webp. If a .webp is missing the site falls back to the original file name. */
+var USE_WEBP=true;
+function wp(f){return USE_WEBP?f.replace(/\.(png|jpe?g)$/i,".webp"):f}
+function loadImg(im,base,f,onFail){im.onerror=function(){im.onerror=function(){onFail(im)};im.src=base+f};im.src=base+wp(f)}
 
 var P=[
 "AUS NRG|WordPress|https://ausnrg.com.au/|ausnrg.png",
@@ -297,7 +303,26 @@ var L1="ausnrg.png,lighthouse.webp,aiacontracts.png,clearvucam.webp,lawwriting.w
 var L2="utility-select.png,aeromaritimegroup.png,garagedijkhuizen.png,punkworx.png,sky-acp.png,aliorstudio.png,rock-blues-jazz.png,drmarinaborisenko.png,paintingbymoli.webp,riseinconfidence.png,completedetox.png,forefrontlabel.png,nordpure.webp,fieldandfirecoffee.png,customvarsityjackets.png,enduosports.png,deemedfit.png,florawell.png,ruanorte.png,loveself.png,thenibblesapp.png,xomalabs.png,imyoo.png,everacoaching.png".split(",");
 
 /* ---------- Client logos (CSS animated) ---------- */
-function fillMq(el,arr){var t=$(".t",el),h="";for(var k=0;k<2;k++)arr.forEach(function(f){h+='<span class="lg"><img src="./assets/images/Clients-logo/'+f+'" alt="Client logo" decoding="async" onerror="this.parentNode.style.display=\'none\'"></span>'});t.innerHTML=h}
+/* Marquee: builds one set, waits for the logos, hides broken ones, then repeats the set so the row is always full
+   and sets the animation time from the real width (constant speed, whatever the number of logos). */
+var MQ_SPEED=isMob?85:120;   /* pixels per second - raise for faster */
+function fillMq(el,arr){var t=$(".t",el),set=[],pending=arr.length;
+  function done(){
+    if(--pending>0)return;
+    var ok=set.filter(function(sp){return sp.style.display!=="none"});
+    if(!ok.length)return;
+    var w1=t.scrollWidth||1,k=Math.max(1,Math.ceil(innerWidth*1.2/w1)),fr=document.createDocumentFragment();
+    for(var c=0;c<2*k-1;c++)ok.forEach(function(sp){fr.appendChild(sp.cloneNode(true))});
+    t.appendChild(fr);
+    t.style.setProperty("--d",(w1*k/MQ_SPEED).toFixed(1)+"s");
+    t.classList.add("run");
+  }
+  arr.forEach(function(f){var sp=document.createElement("span"),im=new Image();sp.className="lg";
+    im.alt="Client logo";im.decoding="async";
+    im.addEventListener("load",done);
+    loadImg(im,"./assets/images/Clients-logo/",f,function(i){i.parentNode.style.display="none";done()});
+    sp.appendChild(im);set.push(sp);t.appendChild(sp)});
+  setTimeout(function(){if(!t.classList.contains("run")){pending=1;done()}},6000)}
 fillMq($("#mq1"),L1);fillMq($("#mq2"),L2);
 
 /* ---------- Text split ---------- */
@@ -460,7 +485,7 @@ function mkCard(d,delay){
   var a=document.createElement("a");a.className="card";a.href=d.u;a.target="_blank";a.rel="noopener";
   a.style.setProperty("--h",d.h);a.style.animationDelay=delay+"ms";
   var im=new Image();im.className="shot";im.alt=d.n+" website screenshot";im.loading="lazy";im.decoding="async";
-  im.onerror=function(){im.remove()};im.src="./assets/images/projects/"+d.s;
+  loadImg(im,"./assets/images/projects/",d.s,function(i){i.remove()});
   var pill=document.createElement("span");pill.className="pill";pill.textContent=d.c;
   var w=document.createElement("div"),h3=document.createElement("h3");h3.textContent=d.n;
   var go=document.createElement("div");go.className="go";go.innerHTML="<span>View live site</span><b>→</b>";
