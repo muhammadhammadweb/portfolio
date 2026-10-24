@@ -50,17 +50,17 @@ section{padding:14vh 5vw}
 .about .txt p{font-size:clamp(1.1rem,2.2vw,1.7rem);line-height:1.45;color:var(--mut)}
 .about .txt p .w{transition:color .2s}
 .stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.stat{border:1px solid var(--line);border-radius:20px;padding:26px;background:rgba(255,255,255,.04)}
+.stat{border:1px solid var(--line);border-radius:20px;padding:26px;background:#0e0e15}
 .stat b{display:flex;align-items:baseline;gap:4px;font-size:clamp(3.5rem,8vw,6rem);line-height:1;font-weight:800;letter-spacing:-.04em;margin-bottom:8px}
 .stat b span[data-n]{font-size:inherit;font-weight:inherit;display:inline-block}
 .stat span{color:var(--mut);font-size:.85rem}
 
 /* ---------- Client logo marquee (pure CSS, no blur = light) ---------- */
-.mq{padding:4vh 0;overflow:hidden;border-block:1px solid var(--line)}
+.mq{padding:4vh 0;overflow:hidden;border-block:1px solid var(--line);background:rgba(7,7,11,.92)}
 .mq .t{display:flex;align-items:center;width:max-content;animation:mq 70s linear infinite;will-change:transform}
 .mq.r .t{margin-top:10px;animation-direction:reverse}
 @keyframes mq{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
-.mq .lg{display:flex;align-items:center;justify-content:center;height:72px;min-width:130px;margin:0 10px;padding:10px 20px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.07)}
+.mq .lg{display:flex;align-items:center;justify-content:center;height:72px;min-width:130px;margin:0 10px;padding:10px 20px;border:1px solid var(--line);border-radius:18px;background:#15151d}
 .mq .lg img{height:36px;width:auto;max-width:120px;object-fit:contain;display:block}
 
 /* ---------- Projects: grid + Show more ---------- */
@@ -297,7 +297,7 @@ var L1="ausnrg.png,lighthouse.webp,aiacontracts.png,clearvucam.webp,lawwriting.w
 var L2="utility-select.png,aeromaritimegroup.png,garagedijkhuizen.png,punkworx.png,sky-acp.png,aliorstudio.png,rock-blues-jazz.png,drmarinaborisenko.png,paintingbymoli.webp,riseinconfidence.png,completedetox.png,forefrontlabel.png,nordpure.webp,fieldandfirecoffee.png,customvarsityjackets.png,enduosports.png,deemedfit.png,florawell.png,ruanorte.png,loveself.png,thenibblesapp.png,xomalabs.png,imyoo.png,everacoaching.png".split(",");
 
 /* ---------- Client logos (CSS animated) ---------- */
-function fillMq(el,arr){var t=$(".t",el),h="";for(var k=0;k<2;k++)arr.forEach(function(f){h+='<span class="lg"><img src="./assets/images/Clients-logo/'+f+'" alt="Client logo" loading="lazy" decoding="async" onerror="this.parentNode.style.display=\'none\'"></span>'});t.innerHTML=h}
+function fillMq(el,arr){var t=$(".t",el),h="";for(var k=0;k<2;k++)arr.forEach(function(f){h+='<span class="lg"><img src="./assets/images/Clients-logo/'+f+'" alt="Client logo" decoding="async" onerror="this.parentNode.style.display=\'none\'"></span>'});t.innerHTML=h}
 fillMq($("#mq1"),L1);fillMq($("#mq2"),L2);
 
 /* ---------- Text split ---------- */
@@ -395,7 +395,7 @@ function rs(){var w=innerWidth,h=innerHeight;
   if(isMob){hMax=Math.max(hMax,h);h=hMax;if(w===lw)return}  /* ignore address-bar resize on phones */
   lw=w;R.setSize(w,h,false);Cam.aspect=w/h;Cam.updateProjectionMatrix();
   var vis=8.08*Cam.aspect;                                   /* visible world width at z=0 */
-  if(Cam.aspect>1.3){pts.position.x=vis*.15;pts.scale.setScalar(1)}      /* wide: shape on the right */
+  if(Cam.aspect>1.3){pts.position.x=vis*.17;pts.scale.setScalar(.85)}      /* wide: shape on the right */
   else{pts.position.x=0;pts.scale.setScalar(Math.min(1,vis*.85/6.2))}}  /* narrow: centred, fits width */
 addEventListener("resize",rs);rs();
 
@@ -416,7 +416,7 @@ function onScroll(){
   }else{
     var m=Math.max(1,document.documentElement.scrollHeight-vh);i=Math.min(3,Math.floor(y/m*4));
   }
-  opT=y<vh*.6?.85:.5;                                        /* brighter in hero, softer behind content */
+  opT=y<vh*.6?.85:.22;                                        /* brighter in hero, softer behind content */
   if(i!==curIdx){curIdx=i;tgt=getShape(i)}}
 addEventListener("scroll",onScroll,{passive:true});onScroll();
 
